@@ -1,0 +1,27 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title:            ''
+tagline:          'Mathias Brandewinder blog'
+description:      'Figuring things out, one model at a time.'
+url:              http://mathias-brandewinder.github.io/
+baseurl:          http://mathias-brandewinder.github.io/
+
+author:
+  name:           'Mathias Brandewinder'
+  url:            https://twitter.com/brandewinder
+
+paginate:         5
+excerpt_separator: <!--more-->
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/mathias-brandewinder/mathias-brandewinder.github.io/
