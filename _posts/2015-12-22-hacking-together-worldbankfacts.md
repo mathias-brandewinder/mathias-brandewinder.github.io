@@ -16,11 +16,11 @@ Sometime last year, in a moment of beer-fueled inspiration, I ended up putting t
 
 People also had feature requests (of course they did), some obviously crucial (Quines! We need quines!), some less so. Among others came the suggestion to support querying the World Bank for data, and returning results as a chart.
 
+<!--more-->
+
 So... Let's do it! After a bit of thought, I decided I would not extend [@fsibot](https://twitter.com/fsibot) to support this, but rather build a separate bot, with its own [external DSL](http://martinfowler.com/books/dsl.html). My thinking here was that adding this as a feature to @fsibot would clutter the code; also, this is a specialized task, and it might make sense to create a dedicated language for it, to make it accessible to the broader public who might not be familiar with F# and its syntax.
 
 You can find [the code for this thing here](https://github.com/mathias-brandewinder/worldbankbot).
-
-<!--more-->
 
 ## The World Bank Type Provider
 

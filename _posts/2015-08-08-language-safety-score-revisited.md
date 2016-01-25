@@ -4,11 +4,13 @@ title: Language Safety Score, revisited
 tags:
 - F#
 - Machine-Learning
-- Languages
+- Programming-Language
 - Logistic-Regression
 ---
 
 A couple of weeks ago, I came across [this blog post][1] by [Steve Shogren](https://twitter.com/steveshogren), which looks at various programming languages, and attempts to define a “language safety score”, by taking into account a list of language criteria (Are nulls allowed? Can variables be mutated? And so on), aggregating them into an overall safety score – and finally looking for whether the resulting score was a reasonable predictor for the observed bug rate across various projects.
+
+<!--more-->
 
 I thought this was an interesting idea. However, I also had reservations on the methodology. Picking a somewhat arbitrary list of criteria, giving them indiscriminately the same weight, and summing them up, didn’t seem to me like the most effective approach – especially given that Steve had already collected a nice dataset. If the goal is to identify which language features best predict how buggy the code will be, why not start from there, and build a model which attempts to predict the bug rate based on language features?
 
