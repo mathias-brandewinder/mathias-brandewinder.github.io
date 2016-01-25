@@ -12,6 +12,8 @@ As much as we people who write code like to talk about code, the biggest challen
 
 This is why the idea of [Ubiquitous Language][1], coined by Eric Evans in his [Domain Driven Design book][2], always appealed to me. The further apart the languages of the domain expert and the code are, the more likely it is that something will be lost in translation.
 
+<!--more-->
+
 However, achieving this perfect situation, with “a language structured around the domain model and used by all team members to connect all the activities of the team with the software” [source][3], is hard. I have tried this in the past, mainly through tests. My idea at the time was that tests, especially BDD style, could perhaps provide domain experts with scenarios similar enough to their worldview that they could serve as a basis for an active dialogue. The experience wasn’t particularly successful: it helped some, but in the end, I never got to the point where tests would become a shared, common ground (which doesn’t mean it’s not possible – I just didn’t manage to do it).
 
 Fast forward a bit to today – I just completed a project, and it’s the closest I have ever been to seeing Ubiquitous Language in action. It was one of the most satisfying experiences I had, and F# had a lot to do with why it worked.
