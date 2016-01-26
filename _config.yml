@@ -20,12 +20,6 @@ author:
 paginate:         5
 excerpt_separator: <!--more-->
 
-# Google analytics
-analytics :
-  provider : google
-  google :
-      tracking_id : 'UA-339344-1'
-      
 # Custom vars
 version:          2.1.0
 
