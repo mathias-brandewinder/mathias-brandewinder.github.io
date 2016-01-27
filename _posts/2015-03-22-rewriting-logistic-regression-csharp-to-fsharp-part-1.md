@@ -21,7 +21,7 @@ The general outline of the code follows two parts:
 - Create a synthetic dataset, creating random input examples, and computing the expected result using a known function,
 - Use gradient descent to learn the model parameters, and compare them to the true value to check whether the method is working.
 
-You can [download the original C# code here][2]. Today we’ll focus only on the first part, which is mainly contained in two methods, `MakeAllData` and `MakeTrainTest`:
+You can download the original C# code here. Today we’ll focus only on the first part, which is mainly contained in two methods, `MakeAllData` and `MakeTrainTest`:
 
 ``` csharp
 static double[][] MakeAllData(int numFeatures, int numRows, int seed)
@@ -203,4 +203,3 @@ I’ll leave it at for today; next time we’ll look at the second part, the lea
 Easier, or more complicated than before? Anything you like or don’t like – or find unclear? Always interested to hear your opinion! Ping me if you have comments.
 
 [1]: https://msdn.microsoft.com/en-us/magazine/dn913188.aspx
-[2]: https://msdn.microsoft.com/en-us/magazine/msdnmag0315.aspx
