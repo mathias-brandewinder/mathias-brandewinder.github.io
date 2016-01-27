@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rewriting a Logistic Regression from C# to F#, part 1
+title: First impressions with DiffSharp, an F# autodiff library
 tags:
 - F#
 - Autodiff
