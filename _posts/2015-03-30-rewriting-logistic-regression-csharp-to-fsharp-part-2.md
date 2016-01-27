@@ -10,7 +10,7 @@ tags:
 - Machine-Learning
 ---
 
-In our previous post, we looked at James McCaffrey’s code, [“Gradient Descent Training Using C#”][1] from MSDN magazine, and [took a stab at rewriting the first part in F#]({% post_url 2015-03-30-rewriting-logistic-regression-csharp-to-fsharp-part-1 %}), to clarify a bit the way the dataset was created. Today, we’ll dive in the second block, which implements the logistic regression using gradient descent. Again, we won’t discuss why the algorithm works – the article does a pretty good job at that – and focus instead purely on the F# / C# conversion part.
+In our previous post, we looked at James McCaffrey’s code, [“Gradient Descent Training Using C#”][1] from MSDN magazine, and [took a stab at rewriting the first part in F#](http://brandewinder.com/2015/03/22/rewriting-logistic-regression-csharp-to-fsharp-part-1/), to clarify a bit the way the dataset was created. Today, we’ll dive in the second block, which implements the logistic regression using gradient descent. Again, we won’t discuss why the algorithm works – the article does a pretty good job at that – and focus instead purely on the F# / C# conversion part.
 
 <!--more-->
 
