@@ -240,6 +240,7 @@ Hat tip to [Rick Minerich](https://twitter.com/rickasaurus) for that one. I'll r
 ## Tip 10: Bonus Material
 
 Did you know that you could...
+
 * [debug an F# script? (around 0:12:35 in)][11]
 * [inspect the objects in your FSI session with **FsEye**?][12]
 * change the FSI font size in Tools/Options/Environment/Fonts and Colors/Show Settings for/F# Interactive?
