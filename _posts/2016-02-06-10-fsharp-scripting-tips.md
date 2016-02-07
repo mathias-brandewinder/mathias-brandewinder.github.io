@@ -168,7 +168,7 @@ The Nuget package manager is useful to consume existing packages. However, by de
 
 `#r @"../packages/FSharp.Data.2.2.5/lib/net40/FSharp.Data.dll"`
 
-Fixing the script requires manually editing the version number in the path, which quickly becomes a pain. [`**Paket**`][4] provides a better experience, because it stores packages without the version number, in this case, under:
+Fixing the script requires manually editing the version number in the path, which quickly becomes a pain. [**Paket**][4] provides a better experience, because it stores packages without the version number, in this case, under:
 
 `#r @"../packages/FSharp.Data/lib/net40/FSharp.Data.dll"`
 
