@@ -10,6 +10,8 @@ tags:
 
 Scott Hanselman recently had a [nice post on C# and F# REPLs][1], which reminded me of the time I started using F# scripts. Over time, I found out a couple of small tricks, which helped make the experience productive. I found about them mainly by accident, so I figured, let's see if I can list them in one place! Some of these are super simple, some probably a bit obscure, but hopefully, one of them at least will make your path towards scripting nirvana an easier one...
 
+> Note: these tips are not necessarily ordered by usefulness. For that matter, there might or might not be exactly 10 of them :)
+
 <!--more-->
 
 ## Tip 1: Use `.fsx` Files for Interactive Coding
@@ -65,6 +67,8 @@ val it : int = 3
    60; 61; 62; 63; 64; 65; 66; 67; 68; 69; 70; 71; 72; 73; 74; 75; 76; 77; 78;
    79; 80; 81; 82; 83; 84; 85; 86; 87; 88; 89; 90; 91; 92; 93; 94; 95; 96; 97;
    98; 99; 100; ...]` - note the ... at the end, which indicate that there is more.
+
+What if you inadvertently started a very long computation, or an infinite loop? In Visual Studio, you can either kill the session entirely, by right-clicking over the FSI window and selecting "Reset Interactive Session" or <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd>, or cancel the latest evaluation you requested ("Cancel Interactive Evaluation", or <kbd>Ctrl</kbd> + <kbd>Break</kbd>.).
 
 ## Tip 3: Run Scripts from the Command Line
 
@@ -164,7 +168,7 @@ The Nuget package manager is useful to consume existing packages. However, by de
 
 `#r @"../packages/FSharp.Data.2.2.5/lib/net40/FSharp.Data.dll"`
 
-Fixing the script requires manually editing the version number in the path, which quickly becomes a pain. [`Paket`][4] provides a better experience, because it stores packages without the version number, in this case, under:
+Fixing the script requires manually editing the version number in the path, which quickly becomes a pain. [`**Paket**`][4] provides a better experience, because it stores packages without the version number, in this case, under:
 
 `#r @"../packages/FSharp.Data/lib/net40/FSharp.Data.dll"`
 
@@ -244,6 +248,8 @@ Did you know that you could...
 * [debug an F# script? (around 0:12:35 in)][11]
 * [inspect the objects in your FSI session with **FsEye**?][12]
 * change the FSI font size in Tools/Options/Environment/Fonts and Colors/Show Settings for/F# Interactive?
+* add your own pretty-printer to FSI, [like this](https://github.com/mathnet/mathnet-numerics/blob/master/src/FSharp/MathNet.Numerics.fsx)?
+* mess with your coworkers' mental sanity, by executing `(*` (opening a multiline comment) in FSI? (credit: [Tomas](https://twitter.com/tomaspetricek)
 
 And again... if you are not using the [Visual F# Power Tools][13], you are missing out:
 
