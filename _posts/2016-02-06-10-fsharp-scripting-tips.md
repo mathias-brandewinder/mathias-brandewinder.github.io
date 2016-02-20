@@ -92,6 +92,8 @@ printfn "%s" msg
 
 For more information on FSI from the command line, [check the reference page here][3].
 
+*Updated, Feb 20: [Ramon Soto Mathiesen](https://twitter.com/genTauro42) points out that [Tip 9 also applies to the command line](https://twitter.com/genTauro42/status/696407757835132928).*
+
 ## Tip 4: Use Relative Paths
 
 Sometimes, your script will reference another resource; for instance, you need to read the contents of a `.txt` file somewhere. You can use absolute path, as in:
@@ -161,6 +163,16 @@ open System.Xaml
 ```
 
 > In Visual Studio, you can right-click a reference from Solution Explorer, and send to F# interactive. You can then directly open it, and start using it in FSI.
+
+*Updated, Feb 20: [Sergey Tihon](https://twitter.com/sergey_tihon) shared an interesting comment, explaining where Tip 5 can sometimes go wrong. I'd say, try Tip 5 first, but be aware that this might at times not quite work:*
+
+<blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-partner="tweetdeck"><p lang="en" dir="ltr"><a href="https://twitter.com/brandewinder">@brandewinder</a> don&#39;t load assemblies like in Tip 5 ) <a href="https://t.co/Owft1NmPoo">https://t.co/Owft1NmPoo</a></p>&mdash; Sergey Tihon (@sergey_tihon) <a href="https://twitter.com/sergey_tihon/status/696395229285523456">February 7, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+*Updated, Feb 20: [F# open source contributor Don Syme](https://twitter.com/dsyme) share a related nice trick:*
+
+<blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-partner="tweetdeck"><p lang="en" dir="ltr"><a href="https://twitter.com/jeroldhaas">@jeroldhaas</a> <a href="https://twitter.com/sergey_tihon">@sergey_tihon</a> <a href="https://twitter.com/brandewinder">@brandewinder</a> Use <a href="https://twitter.com/hashtag/I?src=hash">#I</a> __SOURCE_DIRECTORY__, it is wondrous, very satisfying. All relative paths then work</p>&mdash; Don Syme (@dsyme) <a href="https://twitter.com/dsyme/status/696429115184955393">February 7, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Tip 6: Use `Paket`
 
@@ -249,7 +261,8 @@ Did you know that you could...
 * [inspect the objects in your FSI session with **FsEye**?][12]
 * change the FSI font size in Tools/Options/Environment/Fonts and Colors/Show Settings for/F# Interactive?
 * add your own pretty-printer to FSI, [like this](https://github.com/mathnet/mathnet-numerics/blob/master/src/FSharp/MathNet.Numerics.fsx)?
-* mess with your coworkers' mental sanity, by executing `(*` (opening a multiline comment) in FSI? (credit: [Tomas](https://twitter.com/tomaspetricek)
+* mess with your coworkers' mental sanity, by executing `(*` (opening a multiline comment) in FSI? (credit: [Tomas](https://twitter.com/tomaspetricek))
+* simplify loading references with Visual Studio and Power Tools? (credit: [Kit Eason](https://twitter.com/kitlovesfsharp), see details in comments section).
 
 And again... if you are not using the [Visual F# Power Tools][13], you are missing out:
 
