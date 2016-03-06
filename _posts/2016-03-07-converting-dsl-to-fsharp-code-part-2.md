@@ -283,7 +283,7 @@ program.Run(10.0,code2)
 Result: 100.00
 ```
 
-_[Gist available here][7]_
+[Gist available here][7]
 
 ## Parsing nested expressions
 
@@ -329,7 +329,7 @@ program.Run(10.0,code)
 Result: 430.00
 ```
 
-_[Gist available here][8]_
+[Gist available here][8]
 
 ## Conclusion
 
@@ -341,7 +341,7 @@ Let's briefly recap the process we followed:
 * parse it into an internal F# representation, using Discriminated Unions,
 * process it using an F# interpreter
 
-The example we used was rather simple; however, it would be pretty easy to extend it from here, to support a variety of operations, such as min/max, or exponential. I specifically picked a DSL that was simple to parse, in that it support only pairs of arguments. A more natural DSL would perhaps handle arbitrary lists, such as `add(1,X,mul(x,x,x))`, or even better, `(x*x*x)+x+1`. This is feasible, but a bit more intricate - I chose to keep the example simple, to illustrate the whole process end-to-end, without getting bogged down into too many annoying side-tracks. If you are interested in seeing more elaborate examples, I recommend taking a look at [@TheBurningMonk](https://twitter.com/theburningmonk)'s wonderful [Random Arts Bot][9] project, and at [@ptrelford](https://twitter.com/ptrelford)'s amazing series [building and extending Small Basic][10], which provides a working example of implementing a full "serious" language.
+The example we used was rather simple; however, it would be pretty easy to extend it from here, to support a variety of operations, such as min/max, or exponential. I specifically picked a DSL that was simple to parse, in that it support only pairs of arguments. A more natural DSL would perhaps handle arbitrary lists, such as `add(1,X,mul(x,x,x))`, or even better, `(x*x*x)+x+1`. This is feasible, but a bit more intricate - I chose to keep the example simple, to illustrate the whole process end-to-end, without getting bogged down into too many annoying side-tracks. If you are interested in seeing more elaborate examples, I recommend taking a look at [@TheBurningMonk](https://twitter.com/theburningmonk) wonderful [Random Arts Bot][9] project, and at [@ptrelford](https://twitter.com/ptrelford) amazing series [building and extending Small Basic][10], which provides a working example of implementing a full "serious" language.
 
 Finally, the whole exercise got me thinking quite a bit about DSLs in general. The first interesting tension I see at play is between "internal" and "external"; in our case, the F# representation for expressions is actually quite good. It's not quite what a human would write, but on the flip side, we get tooling, static types, and we can directly use .NET, which are significant benefits. By contrast, the external DSL can be made much more human-friendly: for instance, we can simply type add(4,1.0), which is obviously less annoying than Add(Constant(4.0),Constant(1.0)) - but as we create a brand-new language, instead of a "dialect" of an existing one, we are left quite naked, with no tools or support. Furthermore, my experience so far has been that defining a language that can be parsed easily is much more intricate than one might think. At what point do the benefits of that language outweigh the cost?
 
