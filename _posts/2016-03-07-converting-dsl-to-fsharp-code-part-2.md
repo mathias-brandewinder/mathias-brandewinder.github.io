@@ -11,6 +11,8 @@ In [our previous post][1], we started attacking the following problem: we want o
 
 As a first step, we created an internal representation for our functions, using F# discriminated unions to [model functions as nested expressions][2]. This internal DSL gave us a type-safe, general representation for any function we might want to handle. However, we are still left with one problem: what we want now is to convert raw strings into that form. If we manage to do that, we are done: our user can, for instance, write functions in our own language in a text file, and have the application pick that file and convert it to F# code it can run.
 
+<!--more-->
+
 ## Setting up FParsec
 
 To achieve our goal, we are going to use [FParsec][3], an F# parser-combinator library. The general idea behind FParsec goes along these lines:
@@ -288,8 +290,6 @@ _[Gist available here][7]_
 We are getting warmer - now we can handle constants, variables, and simple addition and multiplication. However, we are still not supporting our full language: if we pass in a more complex expression, such as `add(x,mul(x,42))`, our program will fail.
 
 The issue here is that our type `Expression` is defined recursively; for example, an expression can be an addition, which is itself formed of 2 sub-expressions: `Add of Expression * Expression`. However, our parser is currently not recursive: `parseExpression` is handling only variables or constants. The tricky part is that to correctly define `parseExpression`, we need to define beforehand in code `parseAddition` and `parseMultiplication` - but to correctly define `parseAddition`, we also need to already have a definition for `parseExpression`.
-
-<iframe src="//giphy.com/embed/kbpT1fYPxC5EY" width="480" height="179" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/tornado-kbpT1fYPxC5EY">via GIPHY</a></p>
 
 So... what do we do?
 
