@@ -181,6 +181,6 @@ How is this helpful? At first sight, we are further away from our goal than init
 
 We will see in our next post why this might be a helpful idea after all. As a hint of things to come, we replaced our original problem (convert text to an F# function) with a much simpler one: we only have to worry about mapping the user input to 4 simple and well-defined shapes, the 4 cases of our discriminated union that constitute our internal DSL.
 
-So stay tuned for more, and see you next week! In the meanwhile, I hope you found something interesting in this post already...
+So stay tuned for more, and [see you next week](http://brandewinder.com/2016/02/20/converting-dsl-to-fsharp-code-part-2/)! In the meanwhile, I hope you found something interesting in this post already...
 
 [1]: https://gist.github.com/mathias-brandewinder/4c6fb72748becf2e930b
