@@ -142,7 +142,7 @@ test parseExpression "x"
 Success: X
 ```
 
-We are using another combinator here, [`<|>`][6]: `parseExpression` will try to apply `parseVariable` first, and if that doesn't succeed, try `parseConstant` next, as the following example illustrates:
+We are using another [combinator][6] here, `<|>`: `parseExpression` will try to apply `parseVariable` first, and if that doesn't succeed, try `parseConstant` next, as the following example illustrates:
 
 ``` fsharp
 test parseExpression "nope"
@@ -350,12 +350,12 @@ Along similar lines, I think FParsec itself is an interesting case. FParsec is a
 At any rate, I hope there was something for you in this series! This was an interesting exercise for me, in that the approach was not something I was familiar with. This comes directly from an actual problem I had to solve on a project, and, once I got over the initial fumbling around phase, it was quite surprising how much I could achieve with very little code, and how easy solving a seemingly hard problem turned out to be. Hopefully, this will inspire you to try it out, and help you get started :)
 
 [1]: http://brandewinder.com/2016/02/20/converting-dsl-to-fsharp-code-part-1/
-[2]: https://gist.github.com/mathias-brandewinder/4c6fb72748becf2e930b#file-version-2-fsx
+[2]: https://gist.github.com/mathias-brandewinder/4c6fb72748becf2e930b
 [3]: http://www.quanttec.com/fparsec/
-[4]: http://www.quanttec.com/fparsec/reference/charparsers.html#members.pfloat
-[5]: http://www.quanttec.com/fparsec/reference/parser-overview.html#chaining-and-piping-parsers
-[6]: http://www.quanttec.com/fparsec/reference/primitives.html#members.:60::124::62:
-[7]: https://gist.github.com/mathias-brandewinder/4c6fb72748becf2e930b#file-version-4-fsx
-[8]: https://gist.github.com/mathias-brandewinder/4c6fb72748becf2e930b#file-version-5-fsx
+[4]: http://www.quanttec.com/fparsec/reference/charparsers.html
+[5]: http://www.quanttec.com/fparsec/reference/parser-overview.html
+[6]: http://www.quanttec.com/fparsec/reference/primitives.html
+[7]: https://gist.github.com/mathias-brandewinder/4c6fb72748becf2e930b
+[8]: https://gist.github.com/mathias-brandewinder/4c6fb72748becf2e930b
 [9]: http://theburningmonk.com/2016/01/building-a-random-arts-bot-in-fsharp/
 [10]: http://trelford.com/blog/post/parser.aspx
