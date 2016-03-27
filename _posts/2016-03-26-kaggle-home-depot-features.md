@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Kaggle Home Depot competition notes: features
+title: Kaggle Home Depot competition notes&#58; features
 tags:
 - F#
 - Machine-Learning
