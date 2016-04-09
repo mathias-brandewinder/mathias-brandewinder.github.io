@@ -15,8 +15,9 @@ Anyways, if everything goes according to plan, I should be visiting F# communiti
 
 One thing I find pretty exciting is that all of a sudden, conferences are starting to have very nice F# and functional programming offerings. In particular, huge props to:
 
-Build Stuff in Vilnius: the conference last year was fantastic, fun, diverse, stimulating, and just a great atmosphere. And the F#/functional lineup this year is awesome. Trust me, if you can go – just go, you won’t regret it.
-NDC London: when you see a major conference like NDC putting together one entire track solely dedicated to functional programming, you know something is happening. I am really stoked – at that point, I don’t see why I would attend conferences without a solid functional track. My daily work is primarily functional, and in my (biased) opinion, functional is where a lot of the innovation is happening lately. So… thanks to NDC for bridging the gap, and putting together a program that I can enjoy!
+* Build Stuff in Vilnius: the conference last year was fantastic, fun, diverse, stimulating, and just a great atmosphere. And the F#/functional lineup this year is awesome. Trust me, if you can go – just go, you won’t regret it.
+* NDC London: when you see a major conference like NDC putting together one entire track solely dedicated to functional programming, you know something is happening. I am really stoked – at that point, I don’t see why I would attend conferences without a solid functional track. My daily work is primarily functional, and in my (biased) opinion, functional is where a lot of the innovation is happening lately. So… thanks to NDC for bridging the gap, and putting together a program that I can enjoy!
+
 At any rate, here is the current plan – stay tuned for updates and more details, and hope to see you somewhere along the way!
 
 <iframe src="https://www.google.com/maps/d/embed?mid=zJ4Wo5XaR4h8.k8AKySfC_hGs" width="640" height="480"></iframe></p>
