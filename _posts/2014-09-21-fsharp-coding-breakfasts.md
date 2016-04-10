@@ -1,6 +1,6 @@
 ---
 layout: post
-title: F# Coding Breakfasts and Lunches: let's code together!
+title: F# Coding Breakfasts and Lunches&#58; let's code together!
 tags:
 - F#
 - Community
