@@ -16,6 +16,7 @@ In my last post, I discussed how the features of a machine learning model could 
 One aspect I find interesting - and slightly disturbing - about machine learning is its focus on effectiveness. My time among economists was mostly spent studying models that were supposed to help understand how things work. In the end, a good machine learning model is one that makes good predictions; why a specific model works is typically not the primary question.
 
 In that frame, the question 'is model A better than model B' becomes 'does A make better predictions than B'. To answer that question, we need two ingredients:
+
 * a way to measure whether a prediction is good or bad,
 * a sample of observations with known correct answers (examples), to compare the model's prediction against a ground truth.
 
