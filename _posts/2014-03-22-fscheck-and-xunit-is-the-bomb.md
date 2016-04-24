@@ -6,6 +6,7 @@ tags:
 - FsCheck
 - XUnit
 - Property-Based-Testing
+- Testing
 ---
 
 A couple of days ago, I got into the following Twitter exchange:

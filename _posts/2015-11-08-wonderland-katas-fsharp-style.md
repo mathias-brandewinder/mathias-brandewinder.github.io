@@ -7,6 +7,7 @@ tags:
 - Katas
 - Unquote
 - Property-Based-Testing
+- Testing
 ---
 
 A couple of days ago, I stumbled across the [Wonderland Clojure Katas](https://github.com/gigasquid/wonderland-clojure-katas), by [@gigasquid](https://www.twitter.com/gigasquid). It's a wonderful project, with 7 independent coding exercises, inspired by Lewis Carrol's "Alice in Wonderland". I love that type of stuff, and saw that [@byronsamaripa](https://twitter.com/byronsamaripa) had already made a [Scala port](https://github.com/bsamaripa/Wonderland-Scala-Katas), so I figured, why not port it to F#?

@@ -4,7 +4,7 @@ title: Rewriting a Logistic Regression from C# to F#, part 2
 tags:
 - F#
 - C#
-- Algorithm
+- Algorithms
 - Logistic-Regression
 - Design
 - Machine-Learning
