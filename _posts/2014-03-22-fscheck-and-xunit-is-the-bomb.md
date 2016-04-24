@@ -117,7 +117,7 @@ module Specification =
 
 Let’s run that – fail. If you click on the test results, here is what you’ll see:
 
-![Square test result]({{ site.url }}/assets/square-test-result.png)
+![Square test result]({{ site.url }}/assets/square-test.png)
 
 FsCheck found a counter-example, 0.0. Ooops! Our specification is incorrect here, the square value doesn’t have to be strictly positive, and could be zero. This is an obvious mistake, let’s fix the test, and get on with our lives:
 
@@ -141,7 +141,7 @@ let ``square should be positive`` (x:float) =
 
 Victory – the test now passes:
 
-![Passing square test]({{ site.url }}/assets/passing-square-test.png.png)
+![Passing square test]({{ site.url }}/assets/passing-square-test.png)
 
 In many respects, this reminds me of Pex, a tool I really enjoyed back in the days. To catch bugs, you have to think like a bug, which is difficult to do. Developers tend to focus on the happy path when writing code, and thinking about the myriads of ways things could go wrong is genuinely hard. Having a machine think about inputs, in a very mechanical way, helps overcome that.
 
