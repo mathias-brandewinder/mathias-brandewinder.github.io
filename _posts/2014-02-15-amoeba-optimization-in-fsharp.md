@@ -46,7 +46,7 @@ So how does the algorithm work?
 
 I won’t go into full detail on the implementation, but here are some points of interest. At each iteration, the Amoeba has a collection of candidate solutions, Points that could be a Solution, with their value (the value of the function to be minimized at that point). These points can be ordered by value, and as such, always have a best and worst point. The following picture, which I lifted from the article, shows what points the Amoeba is probing:
 
-![Amoeba method]({{ site.url }}/assets/McCaffery-Amoeba.png)
+![Amoeba]({{ site.url }}/assets/amoeba.png)
 
 Source: [“Amoeba Optimization Method in C#”](http://msdn.microsoft.com/en-us/magazine/dn201752.aspx)
 
