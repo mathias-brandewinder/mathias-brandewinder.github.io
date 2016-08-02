@@ -46,7 +46,7 @@ reality, and conveniently assume that the world is flat, and that the distance
 between two points is simply:
 
 ```
-distance(A,B) = sqrt((x<sub>A</sub> - x<sub>B</sub>)<sup>2</sup> + (y<sub>A</sub> - y<sub>B</sub>)<sup>2</sup>)
+distance(A,B) = sqrt((xA - xB)^2 + (yA - yB)^2)
 ```
 
 To keep things simple, the "ShippingSystem" will be represented by a 
@@ -200,11 +200,8 @@ Now let's
 rebuild - success! We can now go to NUnit, and select "Reload project". Under 
 the node "TestsCity", we have now one new item, "TestSetAndGetCityCoordinates", 
 which is the test we just wrote. Run the test: all nodes show up red, and on the 
-right a message 
-says
-
-"IntroToTDD.ShippingSystem.TestsCity.TestSetAndGetCityCoordinates 
-: Expected: 3.0d, But was: 0.0d". The red signals that the test fails 
+right a message says `"IntroToTDD.ShippingSystem.TestsCity.TestSetAndGetCityCoordinates : Expected: 3.0d, But was: 0.0d"`.
+The red signals that the test fails 
 (no surprise), and the reason is that while the XCoordinate of San Francisco was 
 expected to be 3.0, it was actually 0.0. Given that XCoordinate returns 0.0 no 
 matter what, this does not come as a surprise; we know what we need to do 
