@@ -17,7 +17,7 @@ If you order the population by increasing wealth and plot out the cumulative % o
 
 <!--more-->
  
-![]({{ site.url }}/assets/2008-09-16--LorentzCurve.jpg)
+![]({{ site.url }}/assets/2008-09-16-LorentzCurve.jpg)
 
 I came across the Gini coefficient through [this post](http://www.theresearchkitchen.com/blog/archives/219), which discusses its possible use to measure project risk. If the project&rsquo;s success relied heavily on the contribution of few team members, the Gini index would capture the degree of concentration of that risk. I thought this was an interesting idea; the post provides an illustration, and shows (surprise!) that open-source software development projects usually rely on a few core contributors, and a multitude of lightweight, occasional helpers.
 
