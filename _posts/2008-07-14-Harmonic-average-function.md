@@ -77,5 +77,5 @@ Function HarmonicAverage(unitsRange As Range, valuesRange As Range) As Double
 End Function
 ```
 
-[(HarmonicAverage.zip (7.63 kb)](https://1drv.ms/u/s!AiindlgV58srw89_jm8y9wlyjXxZVA)
-[Module1.bas (1.47 kb)](https://1drv.ms/u/s!AiindlgV58srw9ACTUJeZ3arwWh8Pw)
+[(HarmonicAverage.zip (7.63 kb)]({{ site.url }}/downloads/HarmonicAverage.zip)
+[Module1.bas (1.47 kb)]({{ site.url }}/downloads/Module1.bas)
