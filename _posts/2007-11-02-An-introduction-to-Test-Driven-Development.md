@@ -5,7 +5,6 @@ tags:
 - TDD
 - NUnit
 - Testing
-- .Net
 ---
 
 Last week, I gave a short talk on Test-Driven Development, in C#, using NUnit, 

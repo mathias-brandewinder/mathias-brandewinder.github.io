@@ -18,7 +18,7 @@ So I struggled for a while with this issue, and came up with a way to build summ
 <!--more-->
 
 [Named ranges are a great feature](http://www.cpearson.com/excel/named.htm) -  they allow you to give explicit names to cells on sheets, and refer to the content of the cell by its name. This provides a nice way to make formulas in workbook understandable. The workbook attached, 
-[UnitedFruit.xls (70.50 kb)]({{ site.url }}/assets/UnitedFruit.xls), illustrates the principle. It represents a fictional (sort of) company, which sells 3 types of fruits, in 3 states. If you go to the &ldquo;Apple&rdquo; sheet, and select cell F4, you will see that it contains the formula &ldquo;=AppleUnitPrice&rdquo;, which refers to cell B5 in the &ldquo;Inputs&rdquo; sheet. Select cells F4:M4 in &ldquo;Apple&rdquo;, and you will see that it is named &ldquo;AppleCaliforniaPrice&rdquo;. Cell F6, which contains the revenue, contains the pretty straightforward formula =AppleCaliforniaPrice*AppleCaliforniaUnitsSold.
+[UnitedFruit.xls (70.50 kb)]({{ site.url }}/downloads/UnitedFruit.xls), illustrates the principle. It represents a fictional (sort of) company, which sells 3 types of fruits, in 3 states. If you go to the &ldquo;Apple&rdquo; sheet, and select cell F4, you will see that it contains the formula &ldquo;=AppleUnitPrice&rdquo;, which refers to cell B5 in the &ldquo;Inputs&rdquo; sheet. Select cells F4:M4 in &ldquo;Apple&rdquo;, and you will see that it is named &ldquo;AppleCaliforniaPrice&rdquo;. Cell F6, which contains the revenue, contains the pretty straightforward formula =AppleCaliforniaPrice*AppleCaliforniaUnitsSold.
 
 So what&rsquo;s wrong with named ranges?
 
@@ -48,4 +48,4 @@ What are the limits of this approach? Quite frankly, I am not sure. I suspect th
 
 One clear drawback of the method is the loss of clarity. =AppleCaliforniaRevenue is clearer than =INDIRECT(Product &amp; Region &amp; &ldquo;Revenue&rdquo;). For that reason, I do not advocate to use that approach systematically: use it where it is most useful, that is, in sheets which are likely to be reorganized over time, or in sheets where it is valuable to check the consistency of naming conventions.
 
-[UnitedFruit.xls (70.50 kb)]({{ site.url }}/assets/UnitedFruit.xls)
+[UnitedFruit.xls (70.50 kb)]({{ site.url }}/dowloads/UnitedFruit.xls)

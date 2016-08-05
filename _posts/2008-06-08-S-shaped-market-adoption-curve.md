@@ -43,9 +43,9 @@ The formula I ended up with is, not surprisingly, quite a bit longer (and unplea
 > Time2: 2012.5
 > Value2: 90%
 
-The [Excel sheet attached]({{ site.url }}/assets/S-Curve.xls) illustrates the curve in action. Given how lengthy the formula for the curve is, I would recommend to consider first whether the formula proposed by Juan Mendez is sufficient for your needs, and, if you really want to go ahead with mine, to write it as a user-defined function, so that you won't have to keep such a large formula in your cells.
+The [Excel sheet attached]({{ site.url }}/downloads/S-Curve.xls) illustrates the curve in action. Given how lengthy the formula for the curve is, I would recommend to consider first whether the formula proposed by Juan Mendez is sufficient for your needs, and, if you really want to go ahead with mine, to write it as a user-defined function, so that you won't have to keep such a large formula in your cells.
 
-[S-Curve.xls (26.00 kb)]({{ site.url }}/assets/S-Curve.xls)
+[S-Curve.xls (26.00 kb)]({{ site.url }}/downloads/S-Curve.xls)
 
 ## The math
 
