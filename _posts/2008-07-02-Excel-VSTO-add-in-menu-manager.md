@@ -215,8 +215,8 @@ This is still work-in-progress, and I would welcome
 feedback, comments, or criticism (questions, too); nothing like a review to
 improve your code!
 
-[Source code for the Excel add-in sample.](https://1drv.ms/u/s!AiindlgV58srw89_36kznzxGY0BLhw)
+[Source code for the Excel add-in sample.]({{ site.url }}/downloads/SampleAddInSetup.zip)
 
-[Setup for the sample Excel add-in](https://1drv.ms/u/s!AiindlgV58srw9AAuiazyH6aoQuGpg)
+[Setup for the sample Excel add-in]({{ site.url }}/downloads/SampleExcelAddIn.zip)
 
 I apologize for the large and somewhat cumbersome installer; the size is due to the inclusion of Office 2003 and 2007 PIA. Once downloaded, extract the entire folder and run ExcelAddInSetup.msi. You may have to run Setup.exe as well, depending on how your machine is setup.
