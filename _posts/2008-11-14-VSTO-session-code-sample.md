@@ -1,6 +1,6 @@
 ---
 layout: post
-title: VSTO session: code sample
+title: VSTO session code sample
 tags:
 - VSTO
 - Add-In

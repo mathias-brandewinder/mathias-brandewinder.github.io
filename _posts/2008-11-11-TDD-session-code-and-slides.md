@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TDD session: code and slides
+title: TDD session code and slides
 tags:
 - TDD
 - Svcc
