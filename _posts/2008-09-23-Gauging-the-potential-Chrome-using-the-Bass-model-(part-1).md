@@ -30,7 +30,7 @@ The mathematical formulation of the model goes like this:
 
 It is a very elegant and lightweight model, which takes only 3 parameters, and is surprisingly good at replicating actual adoption. The Excel model attached provides an illustration of the dynamics of the model, depending on its input parameters, the total population, and the rates of innovation and imitation.
 
-[Bass.xls (27.50 kb)]({{ site.url }}/files/Bass.xls)
+[Bass.xls (27.50 kb)]({{ site.url }}/downloads/Bass.xls)
 
 <!--more-->
 
@@ -58,7 +58,7 @@ One possible approach is to assume that the introduction follows a Bass curve, a
 
 I created an Excel spreadsheet which does this automatically using the Solver. I will only outline the general principles I followed here, because going into details would go way beyond the scope of that post.
 
-[BassFitter.xls (31.00 kb)]({{ site.url }}/files/BassFitter.xls)
+[BassFitter.xls (31.00 kb)]({{ site.url }}/downloads/BassFitter.xls)
 
 The worksheet sets up side by side the actual historical data and the &ldquo;theoretical&rdquo; value of the Bass model. For each period, the square of the difference between the actual and theoretical value is computed; the worse the fit, the higher the number. The overall quality of the fit is measured as the sum of the square differences, so that a perfect fit will result in a zero-sum.
 
