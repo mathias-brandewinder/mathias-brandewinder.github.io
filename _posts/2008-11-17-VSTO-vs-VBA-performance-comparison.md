@@ -59,9 +59,9 @@ End Sub
 
 **The C# / VSTO version**
 
- ``` csharp 
- public void Run()
- {    
+``` csharp 
+public void Run()
+{    
     RunStart = DateTime.Now;
     Random randomizer = new Random();
     int runs = 1000000;
@@ -92,5 +92,5 @@ End Sub
     RunEnd = DateTime.Now;    
     double proba = (double)ruins / (double)runs;    
     MessageBox.Show(string.Format("Started at {0} and ended at {1}: {2} ruins probability observed.", RunStart.ToLongTimeString(), RunEnd.ToLongTimeString(), proba.ToString()));
- }
+}
 ```   
