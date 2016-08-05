@@ -15,7 +15,7 @@ During my VSTO add-in session last week-end, the following question came up: wha
 
 The code I wrote was intended to isolate computation speed; to do that, I tried to write something simple and comparable in both languages, using little memory, with no interaction with the host application.The code performs a simple Monte Carlo simulation, replicating the gambler's ruin problem. A gambler calls heads or tails, starting with $30, and loses/wins 1$ at every coin toss; what is the probability that he loses all his money if he plays up to 1,000 times? The simulation runs 1,000,000 games, and records all the cases where the gambler is ruined. The code for both implementations is provided below.Next I'll try and see how things look with procedures involving lots of object manipulation and memory usage. Oh, and the by the way, the gambler has about 34% chances of going home with no money left!
 
-The VBA version:
+**The VBA version:**
 
 ``` vb
 Option Explicit
@@ -54,10 +54,11 @@ endTime = Now
 Dim proba As Double
 proba = ruins / runs
 MsgBox (startTime & endTime & proba)
-End Sub```
+End Sub
+```
 
- The C# / VSTO version
- 
+**The C# / VSTO version**
+
  ``` csharp 
  public void Run()
  {    
