@@ -1,6 +1,6 @@
 ---
 layout: post
-title: &#35;warning&#58; the power of in-your-face
+title: warning, the power of in-your-face
 tags:
 - C#
 - Refactoring
