@@ -59,6 +59,6 @@ public double ValidateDivision(double numerator, double denominator)
 
 When you run this in the NUnit GUI, you will see something like this, displaying the “mother” test, and the result of each data set:
 
-![TestCase]({{ site.url }}/assets/2009-05-17-TestCase_thumb.jpg)
+![TestCase]({{ site.url }}/assets/2009-05-17-TestCase.jpg)
 
 As an aside, this post made me realize that dividing a double by zero was not throwing a “DivideByZeroException”, as I naively thought it would, but returns a double.PositiveInfinity (or NegativeInfinity, depending on the numerator). Goes to show that nothing beats [writing unit tests when trying to understand a feature](http://blog.goeran.no/PermaLink,guid,fe01bed3-c526-4b76-bb91-f82f4792aece.aspx) of a language!

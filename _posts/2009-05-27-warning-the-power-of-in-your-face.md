@@ -1,6 +1,6 @@
 ---
 layout: post
-title: #warning&#58; the power of in-your-face
+title: &#35;warning&#58; the power of in-your-face
 tags:
 - C#
 - Refactoring
@@ -20,6 +20,6 @@ XmlNodeList atBatNodes = document.GetElementsByTagName("atbat");
 
 Now, when you build, you will see something like this in Visual Studio:
 
-![warning]({{ site.url }}/assets/2009-05-27-warning_thumb_1.jpg)
+![warning]({{ site.url }}/assets/2009-05-27-warning.jpg)
 
 It has all the benefits of the embedded comment – it’s close to the code that needs to be changed - but will also show up as a list which will be in-your-face every time you build. I’ll try that out, and see how that goes, and what stays in the todo.txt!
