@@ -10,7 +10,7 @@ tags:
 - Books
 ---
 
-I finished “[The Drunkard’s Walk](http://www.amazon.com/Drunkards-Walk-Randomness-Rules-Lives/dp/0375424040) – how randomness rules our lives”, by Leonard Mlodinow, a few days after [Sway]({{ site.url }}/2009/06/14/sway/); I have postponed writing about it, because a minor storm of work has hit my parts – but I really loved this book, and thought I should say a few words about it.  
+I finished “[The Drunkard’s Walk](http://www.amazon.com/Drunkards-Walk-Randomness-Rules-Lives/dp/0375424040) – how randomness rules our lives”, by Leonard Mlodinow, a few days after [Sway]({{ site.url }}/2009/06/14/Sway/); I have postponed writing about it, because a minor storm of work has hit my parts – but I really loved this book, and thought I should say a few words about it.  
 
 The book’s point is that humans are very bad at drawing conclusions from observations of random phenomena. They routinely make gross mistakes when dealing with conditional probability (92% of Americans, some of them with pretty solid mathematical credentials, get the [Monty Hall](http://www.codinghorror.com/blog/archives/001278.html) problem wrong), and fall prey to the Law of Small Numbers, seeing patterns where there is none, and refusing to admit the importance of randomness in shaping our fates. In the end, the message is pretty upbeat – I loved this quote from Thomas Watson:   
 
