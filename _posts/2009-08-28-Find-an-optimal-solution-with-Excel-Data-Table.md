@@ -69,7 +69,7 @@ Next, select the range containing your input values and the formula:
 
 Almost there! Let’s go to Data Table in What-If Analysis…  
 
-![image]({{ site.url }}/assets/2009-08-28-what if.png)
+![image]({{ site.url }}/assets/2009-08-28-what-if.png)
 
 Your input data is organized in columns, so use “Column Input Cell”, and select B1, the bridge location, which is the input value you want to replace.  
 
