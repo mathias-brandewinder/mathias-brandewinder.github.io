@@ -13,11 +13,11 @@ In my [last post]({{ site.url }}/2009/08/28/Find-an-optimal-solution-with-Excel-
 
 We are trying to figure out which 2 bridges we should build, in order to minimize the overall travel time for the inhabitants of the island.  
 
-[Island]({{ site.url }}/assets/2009-09-03-Island_thumb.png)
+![Island]({{ site.url }}/assets/2009-09-03-Island_thumb.png)
 
 I worked out the math for one bridge last time. We will start we a similar setup, but adjust our spreadsheet so that for each islander, we compute the travelling distance for 2 bridges, and select the shortest route.  
 
-![image]({{ site.url }}/assets/2009-09-03-bridges.png)
+![image]({{ site.url }}/assets/2009-09-03-2-bridges.png)
 
 The ranges B1 and B2 are named Bridge1 and Bridge2. Column I now contains the formula computing the shortest route for each islander. For row 5 for instance, the formula is   
 
