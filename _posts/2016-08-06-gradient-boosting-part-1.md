@@ -67,11 +67,11 @@ reds.Rows
 |> Chart.Show
 ```
 
-![Alcohol Level vs Quality]({{ site.url }}/assets/2016-08-06-alcohol-level-vs-quality.png)
+![Alcohol Level vs Quality]({{ site.url }}/assets/2016-08-06-alcohol-level-vs-quality.PNG)
 
 The relationship isn't clear cut, but higher alcohol levels seem to go together with higher quality. Similarly, we plot Volatile Acidity against Quality:
 
-![Volatile Acidity vs Quality]({{ site.url }}/assets/2016-08-06-volatile-acidity-vs-quality.png)
+![Volatile Acidity vs Quality]({{ site.url }}/assets/2016-08-06-volatile-acidity-vs-quality.PNG)
 
 Again, no blatant relationship, but as acidity goes up, quality seems to generally decrease.
 
@@ -140,7 +140,7 @@ predicted
 |> Chart.Show
 ```
 
-![Test Stump Activation]({{ site.url }}/assets/2016-08-06-test-stump.png)
+![Test Stump Activation]({{ site.url }}/assets/2016-08-06-test-stump.PNG)
 
 For alcohol levels under `11.0`, the model predicts a quality of `5.443`, for levels above `11.0`, a quality of `6.119`.
 
@@ -232,7 +232,7 @@ redSample
 |> Chart.Show
 ```
 
-![Alcohol levels vs Residuals]({{ site.url }}/assets/2016-08-06-alcohol-levels-vs-residuals.png)
+![Alcohol levels vs Residuals]({{ site.url }}/assets/2016-08-06-alcohol-levels-vs-residuals.PNG)
 
 Overall, the errors are distributed somewhat evenly around `0.0`; however, there is a bit of a visible pattern, marked in red on the chart. We seem to over-shoot in the region immediately on the left of the threshold, and under-shoot on the right. How about trying to fit a stump on the residuals, to capture effects our initial crude stump didn't pick up?
 
@@ -273,11 +273,11 @@ redSample
 |> Chart.Show
 ```
 
-![Two stumps combination]({{ site.url }}/assets/2016-08-06-two-stumps.png)
+![Two stumps combination]({{ site.url }}/assets/2016-08-06-two-stumps.PNG)
 
 Plotting the residuals now produces the following chart:
 
-![Two stumps residuals]({{ site.url }}/assets/2016-08-06-two-stumps-residuals.png)
+![Two stumps residuals]({{ site.url }}/assets/2016-08-06-two-stumps-residuals.PNG)
 
 The overall error is better, but there are still potential patterns to exploit. What we could do at that point is repeat the procedure, and fit another stump on the new residuals to decrease the error further.
 
@@ -344,7 +344,7 @@ val it : float = 811.4601191
 
 Another clear improvement, from `850.34` to `811.46`. How does our model look like now?
 
-![Two stumps residuals]({{ site.url }}/assets/2016-08-06-depth-10.png)
+![Two stumps residuals]({{ site.url }}/assets/2016-08-06-depth-10.PNG)
 
 By combining simple stumps, our model is starting to look like a staircase, progressively approximating a curve. Let's take a quick look at how our aggregate error evolves, as depth increases:
 
@@ -356,7 +356,7 @@ By combining simple stumps, our model is starting to look like a staircase, prog
 |> Chart.Show
 ```
 
-![Depth vs Error]({{ site.url }}/assets/2016-08-06-depth-vs-error.png)
+![Depth vs Error]({{ site.url }}/assets/2016-08-06-depth-vs-error.PNG)
 
 At each step, adding a stump decreases the overall error, with improvements slowing down progressively as we go deeper.
 
