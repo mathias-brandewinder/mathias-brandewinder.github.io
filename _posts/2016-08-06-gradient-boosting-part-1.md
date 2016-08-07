@@ -232,7 +232,7 @@ redSample
 |> Chart.Show
 ```
 
-![Alcohol levels vs Residuals]({{ site.url }}/assets/2016-08-06-alcohol-levels-vs-residuals.PNG)
+![Alcohol levels vs Residuals]({{ site.url }}/assets/2016-08-06-alcohol-level-vs-residuals.PNG)
 
 Overall, the errors are distributed somewhat evenly around `0.0`; however, there is a bit of a visible pattern, marked in red on the chart. We seem to over-shoot in the region immediately on the left of the threshold, and under-shoot on the right. How about trying to fit a stump on the residuals, to capture effects our initial crude stump didn't pick up?
 
