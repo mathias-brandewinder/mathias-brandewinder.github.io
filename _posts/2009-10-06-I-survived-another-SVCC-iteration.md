@@ -15,7 +15,7 @@ tags:
 
 Personally, I wanted to give a big thank-you to the people who attended my session on Test-Driven Development – and for bearing with my voice, which was pretty shaky. I got sick this week and wasn’t sure until Saturday evening if I could do it, because on Thursday my voice was totally gone. I think I had more herbal tea with honey this week than in my entire life, but you guys made it all worth it: I had a great time giving my presentation, and you guys rocked!  As I said during the session, the theory behind TDD is pretty succinct, so there isn’t much in the slides themselves worth posting. Instead, I thought I would list a few pointers:  
 
-NUnit: you can find it [here](http://www.nunit.org). I recommend checking out the [Quick Start](http://www.nunit.org/index.php?p=quickStart&r=2.5.2) page, which covers most of what you need to start writing unit tests. I have written a post on [data-driven tests]({{ site.url }/2009/05/17/Data-driven-tests-with-NUnit-25/) here.  
+NUnit: you can find it [here](http://www.nunit.org). I recommend checking out the [Quick Start](http://www.nunit.org/index.php?p=quickStart&r=2.5.2) page, which covers most of what you need to start writing unit tests. I have written a post on [data-driven tests]({{ site.url }}/2009/05/17/Data-driven-tests-with-NUnit-25/) here.  
 
 While we are talking about tools, I haven’t presented it during the session, but I really like [TestDriven.Net](http://testdriven.net/). There is a free community version for your personal use. It’s a Visual Studio add-on which allows you to run and debug your tests from Visual Studio.  
 
