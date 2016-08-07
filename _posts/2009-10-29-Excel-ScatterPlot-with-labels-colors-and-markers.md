@@ -28,4 +28,4 @@ Note that you have to fill in all fields, for every point of the chart.
 
 Once you have your data, simply select the entire range, all 5 columns of it, not including the headers, and click the “Generate ScatterPlot” button – et voila!   
 
-[Download the ScatterPlot Workbook.](http://www.clear-lines.com/downloads/PowerScatterPlot/PowerScatterPlot.xls)
+[Download the ScatterPlot Workbook.]({{ site.url }}/downloads/PowerScatterPlot.xls)

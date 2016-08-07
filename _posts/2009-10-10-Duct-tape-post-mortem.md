@@ -21,7 +21,7 @@ At that point I think the question of whether design patterns are an evil over-e
 
 ![Tug-O-War]({{ site.url }}/assets/2009-10-10-TugOWar.jpg)
 
-*From </em><em>[http://www.dartmouthindependent.com/](http://www.dartmouthindependent.com/)*
+*From [http://www.dartmouthindependent.com/](http://www.dartmouthindependent.com/)*
 
 One of the issue I have with the glorification of the Duct Tape Programmer is that Duct Tape programming is defined as a negative: to be a Duct Tape programmer, you should  
 

@@ -17,17 +17,17 @@ Readership has been going up through the year, slowly but regularly. I don’t t
 
 The top visited posts this year were:  
 
-* [S-shaped market adoption curve](http://www.clear-lines.com/blog/post/S-shaped-market-adoption-curve.aspx) 
+* [S-shaped market adoption curve]({{ site.url }}/2008/06/08/S-shaped-market-adoption-curve/) 
 
-* [Excel VSTO add-in menu manager](http://www.clear-lines.com/blog/post/Excel-VSTO-add-in-menu-manager.aspx) 
+* [Excel VSTO add-in menu manager]({{ site.url }}/2008/07/02/Excel-VSTO-add-in-menu-manager/) 
 
-* [Converting Excel date format to System.DateTime](http://www.clear-lines.com/blog/post/Converting-Excel-date-format-to-SystemDateTime.aspx)
+* [Converting Excel date format to System.DateTime]({{ site.url }}/2008/09/05/Converting-Excel-date-format-to-SystemDateTime/)
 
-* [VSTO-Add-In installation woes](http://www.clear-lines.com/blog/post/VSTO-Add-In-installation-woes.aspx)
+* [VSTO-Add-In installation woes]({{ site.url }}/2008/08/29/VSTO-Add-In-installation-woes/)
 
-* [Excel named ranges and INDIRECT()](http://www.clear-lines.com/blog/post/Excel2c-named-ranges-and-INDIRECT().aspx)
+* [Excel named ranges and INDIRECT()]({{ site.url }}/2008/04/22/Excel2c-named-ranges-and-INDIRECT()/)
 
-* [Testing for exceptions with NUnit 2.5](http://www.clear-lines.com/blog/post/Testing-for-exceptions-with-NUnit-25.aspx)
+* [Testing for exceptions with NUnit 2.5]({{ site.url }}/2009/05/11/Testing-for-exceptions-with-NUnit-25/)
 
 This is interesting to me. Three of these are about using .Net and Excel together, two are “pure” Excel, and the first exclusively .Net post comes in 6th position only. Which tells me that, while .Net is well covered, there is a gap in VSTO-related information out there.  
 
