@@ -2,9 +2,8 @@
 layout: post
 title: Bugs hiding in plain sight
 tags:
-- .Net
 - Math
-- Nunit
+- NUnit
 - Testing
 - Precision
 - Accuracy
