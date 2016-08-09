@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Education Day: Creating WPF Line of Business Applications (M-V-VM) Using C# and VB.NET
+title: Education Day - Creating WPF Line of Business Applications (MVVM) Using C# and VB.NET
 tags:
 - Bay.Net
 - WPF
