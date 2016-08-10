@@ -4,12 +4,14 @@ title: Create an Excel 2007 VSTO add-in&#58; wrapping up part 1
 tags:
 - Excel-2007
 - Add-In
-- Treeview
+- TreeView
 - Events
-- Oba
-- Vsto
+- OBA
+- VSTO
 - Workbook
 - Worksheet
+- Excel
+- C#
 ---
 
 {% include vsto-series.html %}

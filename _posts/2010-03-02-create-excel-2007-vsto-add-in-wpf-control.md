@@ -7,10 +7,15 @@ tags:
 - User-Interface
 - OBA
 - VSTO
+- Excel
 - Task-Pane
 - Excel-2007
 - TreeView
+- C#
+- Excel
 ---
+
+{% include vsto-series.html %}
 
 Now that our [Custom Task Pane]({{ site.url }}/2010/02/17/create-excel-2007-vsto-add-in-custom-task-pane/) is in place, and that we can drive its visibility with the [Ribbon]({{ site.url }}/2010/02/22/create-excel-2007-vsto-add-in-ribbon/), it’s time to begin adding some real functionality to the add-in. In our next two installments, we will create a tree view in the task pane, which will display all the workbooks that are currently open, and the worksheets within each workbook. Later on, we will use that tree view to select the worksheet we want to compare the current active worksheet to.  
 

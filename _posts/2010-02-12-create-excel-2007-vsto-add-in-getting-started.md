@@ -10,6 +10,8 @@ tags:
 - C#
 ---
 
+{% include vsto-series.html %}
+
 In the recent past, I have been developing solutions for clients using VSTO – Visual Studio Tools for Office – and I believe that VSTO is a technology which has a lot to offer. I used to write a lot of VBA code to automate Excel, but after spending the past 5 years or so writing C# code using .Net, I find VBA limiting, and the development environment extremely frustrating. So when I saw that [Jon Peltier](http://twitter.com/jon_peltier) had begun a tutorial series on how to [build a classic Excel add-in](http://peltiertech.com/WordPress/build-an-excel-add-in-1-basic-routine/), I thought, why not do the same with VSTO?  
 
 My baseline objective will be to write an add-in which tracks the differences between two open worksheets, and allows the user to merge some of the contents, if appropriate.  

@@ -12,6 +12,8 @@ tags:
 - User-Interface
 ---
 
+{% include vsto-series.html %}
+
 Now that we have created the [VSTO add-in project]({{ site.url }}/2010/02/12/create-excel-2007-vsto-add-in-getting-started), it’s time to add some functionality to it. We want to provide a user interface to select what sheets we want to compare, and navigate between the differences that the add-in has found. In order to do this, we will create a custom task pane.  
 
 You can think of a custom task pane as a placeholder for controls. The best way to illustrate the concept is to simply do it. In our project, we will add a folder “TaskPane”, and add a new User Control by right-clicking on the TaskPane folder, which we will name “TaskPaneView”.  

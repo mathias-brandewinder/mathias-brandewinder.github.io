@@ -7,9 +7,13 @@ tags:
 - Ribbon
 - User-Interface
 - VSTO
+- Excel
 - OBA
 - Task-Pane
+- C#
 ---
+
+{% include vsto-series.html %}
 
 In our previous installment, we went through [adding a Custom Task Pane to Excel]({{ site.url }}/2010/02/17/create-excel-2007-vsto-add-in-custom-task-pane/) to host the user interface of our VSTO add-in. However, we left off with one problem to solve. The task pane is shown when the add-in starts up, but if the user closes it, there is no mechanism to show it again. We will resolve that problem by using the ribbon, adding a button that restores the task pane visibility.  
 
