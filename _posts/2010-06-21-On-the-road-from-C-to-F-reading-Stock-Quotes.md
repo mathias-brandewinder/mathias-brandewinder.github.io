@@ -97,7 +97,7 @@ let ReadQuotes symbol date1 date2 =
   |> printfn "%s"
 ``` 
 
-The |> is called the **pipe-forward** operator. In plain English, it translates into “take the intermediate result that is on the left, and pass it as an argument to the function that follows”. Or, in our case, “Take the request produced by CreateRequest and pass it to GetResponse”, and then “take the response from GetResponse and print it on screen”.
+The `|>` is called the **pipe-forward** operator. In plain English, it translates into “take the intermediate result that is on the left, and pass it as an argument to the function that follows”. Or, in our case, “Take the request produced by CreateRequest and pass it to GetResponse”, and then “take the response from GetResponse and print it on screen”.
 
 We are now nearly done. Let’s add a quick function where the user can input a symbol and two dates, and execute ReadQuotes:
 
