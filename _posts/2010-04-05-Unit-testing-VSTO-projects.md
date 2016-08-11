@@ -14,7 +14,7 @@ tags:
 
 A few weeks back, Michael asked an interesting question in a comment: how do you go about [unit testing a VSTO project]({{ site.url }}/2008/08/29/VSTO-Add-In-installation-woes/)? One of the reasons I prefer working with VSTO over VBA, is that it makes it possible to write automated tests. What I realized with this question, though, is that I unit test heavily the .Net functionality of my add-ins, but not much (if at all) the interaction with Excel.  
 
-Note: I am aware of the existence of a [VBA unit testing</em></a><em> solution](http://www.blog.methodsinexcel.co.uk/2010/03/30/unit-testing-excel-vba-xlunit-demo/), [xlUnit](http://xlvbadevtools.codeplex.com/); I found the project conceptually pretty cool, but from a practical standpoint, it doesn’t seem nearly as convenient as NUnit or the other established frameworks, which isn’t much of a surprise, given the maturity of unit testing in the .Net world.
+Note: I am aware of the existence of a [VBA unit testing solution](http://www.blog.methodsinexcel.co.uk/2010/03/30/unit-testing-excel-vba-xlunit-demo/), [xlUnit](http://xlvbadevtools.codeplex.com/); I found the project conceptually pretty cool, but from a practical standpoint, it doesn’t seem nearly as convenient as NUnit or the other established frameworks, which isn’t much of a surprise, given the maturity of unit testing in the .Net world.
 
 The reason for this is double. First, most of my VSTO projects focus on generating heavy computation outside of Excel, and writing results to Excel; as a result, the meat of the logic has little to do with Excel, and there isn’t all that much to test there.  
 
