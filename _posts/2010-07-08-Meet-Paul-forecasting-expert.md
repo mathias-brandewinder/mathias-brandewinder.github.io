@@ -12,7 +12,7 @@ tags:
 
 A new method of forecasting has been brought to my attention: [Paul](http://www.huffingtonpost.com/2010/07/06/paul-the-octopus-stuns-ge_n_636118.html). Paul is an English-born octopus, currently living in Germany, and has been predicting with [high accuracy](http://en.wikipedia.org/wiki/Paul_the_Octopus#The_2010_FIFA_World_Cup) the results of the German soccer team, by picking between two boxes marked with the flag of the two competing teams:  
 
-http://www.youtube.com/v/kFvrAdyFUJ8&hl=en  
+<iframe width="420" height="315" src="https://www.youtube.com/embed/Ya85knuDzp8" frameborder="0" allowfullscreen></iframe>
 
 How unlikely is it that Paul would have such a string of correct forecasts? Pretty unlikely. If you assume that Paul’s picks were completely random, with a 50% chance of correctly calling the winner, the probability of making 11 good calls out of 12 comes down to 0.29%. Does this mean Paul is the next big thing in forecasting? It’s possible, but I don’t think so (this said with all due respect to Paul and his skills). Leonard Mlodinow, in his excellent book, [The Drunkard's Walk](http://www.amazon.com/gp/product/0307275175?ie=UTF8&tag=wwwclearlines-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0307275175), makes the following comment:  
 

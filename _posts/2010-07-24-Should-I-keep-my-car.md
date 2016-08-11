@@ -80,7 +80,11 @@ I can now also compare how much I would spend, using ZipCar or CityCarShare. I r
 
 ![CarSharing]({{ site.url }}/assets/2010-07-24-CarSharing_thumb.png)
 
-All in all, the comparison comes down as follows:  **ZipCar: $346 / month**  **CityCarShare: $366 / month**  **Own car: $389 / month**          
+All in all, the comparison comes down as follows:  
+
+**ZipCar: $346 / month**  
+**CityCarShare: $366 / month**  
+**Own car: $389 / month**          
 
 [Download Excel analysis file]({{ site.url }}/downloads/CarDecision.xlsx)
  

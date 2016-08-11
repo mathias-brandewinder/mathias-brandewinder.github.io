@@ -156,7 +156,7 @@ Similarly, create 3 more entries, to end up with the following list:
 String | Description | Anakin AddIn
 String |FriendlyName | Anakin AddIn
 DWORD | LoadBehavior | 3
-String | Manifest | [TARGETDIR]ClearLines.Anakin.vsto|vstolocal (where **ClearLines.Anakin.vsto** is the VSTO deployment manifest file, one of the 2 files we added to the setup project earlier on)
+String | Manifest | [TARGETDIR]ClearLines.Anakin.vsto&#124;vstolocal (where **ClearLines.Anakin.vsto** is the VSTO deployment manifest file, one of the 2 files we added to the setup project earlier on)
 
 At that point, you should see something like this:
 
