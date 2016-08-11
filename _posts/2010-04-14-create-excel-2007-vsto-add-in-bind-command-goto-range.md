@@ -205,7 +205,7 @@ Now that we have a `SelectedDifference`, we can bind the View to the Row and Col
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
-        <!-- same as before -->
+      same as before
       <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Path=SelectedDifference.Row}"/>
       <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Path=SelectedDifference.Column}"/>
    </Grid>
@@ -266,7 +266,7 @@ Now hooking up the button in the ComparisonView to the Command is a one-liner:
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
-        <!-- same as before -->
+      same as before
       <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" 
               Command="{Binding Path=GoToNextDifference}"
               Content=">" 
