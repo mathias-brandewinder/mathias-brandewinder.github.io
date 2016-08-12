@@ -52,7 +52,7 @@ Running this yields the following result:
 Here is the full distribution:
 
 
-**# of Friday the 13th** | **# of Years** | **%**</td>
+**# of Friday the 13th** | **# of Years** | **%**
 --- | --- | ---
 1 | 12 | 43%
 2 | 12 | 43%
