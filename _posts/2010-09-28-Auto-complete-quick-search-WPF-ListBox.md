@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Auto-complete" quick-search WPF ListBox
+title: Auto-complete quick-search WPF ListBox
 tags:
 - WPF
 - User-Interface
