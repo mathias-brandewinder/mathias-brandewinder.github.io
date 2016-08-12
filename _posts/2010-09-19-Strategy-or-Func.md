@@ -42,7 +42,7 @@ string Translate(string original, string from, string to);
 
 But in that case, I would have to convert “from” and “to” to the proper language code for each version. Not very difficult, but un-necessarily complicated. Worse, the interface would have a general signature, suggesting that any language can be requested, with only 2 languages supported, which is pretty misleading.
 
-And then I realized that this was a perfect situation for the [Funky Strategy Pattern]({{} site.url }/2010/04/09/Funky-strategy-pattern/):
+And then I realized that this was a perfect situation for the [Funky Strategy Pattern]({{ site.url }}/2010/04/09/Funky-strategy-pattern/):
 
 ```  csharp
 private void toHindiButton_Click(object sender, RibbonControlEventArgs e)
