@@ -9,8 +9,8 @@ tags:
 A little while ago, I looked into [dynamically sorting a list]({{ site.url }}/2010/10/31/Select-how-to-sort-a-list-dynamically/), based on a criterion supplied by the user. There was one limit on the solution I presented, however: only one criterion could be applied at a time. What if we wanted to sort by multiple criteria?  
 For instance, using the same example as in the previous post, if we had a list of `Products` with a Name, a `Supplier` and a `Price`, how would we go about sorting by Supplier and then by Price? Or by Name and then Supplier? And how could we make that flexible, so that we can sort by an arbitrary number of criteria. This would be particularly useful if we had in mind the development of a user interface where users could select how they want to see a list of items displayed on screen.  
 
-Besides **OrderBy**, LINQ provides the **[ThenBy](http://msdn.microsoft.com/en-us/library/bb534743.aspx)
-<a href="http://msdn.microsoft.com/en-us/library/bb534743.aspx">ThenBy</a>** extension method. `ThenBy` is applied to an `IOrderedEnumerable` – a collection that has already been ordered – and sorts its, maintaining the existing order. For instance, in the following example, products are first sorted by `Supplier`, and for each `Supplier`, by `Price`:  
+Besides `OrderBy`, LINQ provides the `[ThenBy](http://msdn.microsoft.com/en-us/library/bb534743.aspx)
+<a href="http://msdn.microsoft.com/en-us/library/bb534743.aspx">` extension method. `ThenBy` is applied to an `IOrderedEnumerable` – a collection that has already been ordered – and sorts its, maintaining the existing order. For instance, in the following example, products are first sorted by `Supplier`, and for each `Supplier`, by `Price`:  
 
 ``` csharp
 private static void Main(string[] args)
