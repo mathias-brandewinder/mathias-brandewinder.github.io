@@ -23,4 +23,4 @@ In other words, begin with the Assert, figure out the Act part, Arrange the acto
 
 I think what trips some people is that while a good test will look like a little story, progressing from a beginning to a logical end, the process leading to it follows a completely opposite direction. Kent Beck points the [Self-Similarity](http://en.wikipedia.org/wiki/Self-similarity) in the entire process: write stories which describe what the application will do once done, write tests which describe what the feature does once the code is implemented, and write asserts which will pass once the test is complete. Always start with the end in mind, and do exactly what it takes to achieve your goal.  
 
-![Self Similarity]({{ site.url }}/assets/2011-11-13-dyn002_original_472_480_pjpeg_2665126_e9a998bfcc0456c55ca52c2c29484609%5B1%5D.jpg)
+![Self Similarity]({{ site.url }}/assets/2011-11-13-souriez.jpg)
