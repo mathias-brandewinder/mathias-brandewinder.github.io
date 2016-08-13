@@ -10,7 +10,13 @@ tags:
 - Simulation
 - Sequence
 ---
-In our previous installments, we laid the groundwork of our Bee Colony Algorithm implementation. Today, it’s time to put the bees to work, searching for an acceptable solution to the Traveling Salesman problem.  We will approach the search as a Sequence: starting from an initial hive and solution, we will unfold it, updating the state of the hive and the current best solution at each step. Let’s start with the hive initialization. Starting from an initial route, we need to create a pre-defined number of each Bee type, and provide them with an initial destination:  ```  fsharp;">let Initialize nScouts nActives nInactives cities (rng : Random) =
+
+In our previous installments, we laid the groundwork of our Bee Colony Algorithm implementation. Today, it’s time to put the bees to work, searching for an acceptable solution to the Traveling Salesman problem.  
+
+We will approach the search as a Sequence: starting from an initial hive and solution, we will unfold it, updating the state of the hive and the current best solution at each step. Let’s start with the hive initialization. Starting from an initial route, we need to create a pre-defined number of each Bee type, and provide them with an initial destination:  
+
+``` fsharp
+let Initialize nScouts nActives nInactives cities (rng : Random) =
    [    
       for i in 1 .. nScouts do 
          let solution = Evaluate(Shuffle rng cities)
@@ -24,15 +30,14 @@ In our previous installments, we laid the groundwork of our Bee Colony Algorithm
    ]
 ``` 
 
-
-There is probably a more elegant way to do this, but this is good enough: we use a simple [List comprehension](http://en.csharp-online.net/FSharp_Functional_Programming%E2%80%94List_Comprehensions)
-<a href="http://en.csharp-online.net/FSharp_Functional_Programming%E2%80%94List_Comprehensions">List comprehension</a> to generate a list on the fly, yielding the appropriate number of each type of bees, and assigning them a shuffled version of the starting route.
-
+There is probably a more elegant way to do this, but this is good enough: we use a simple [List comprehension](http://en.csharp-online.net/FSharp_Functional_Programming%E2%80%94List_Comprehensions) to generate a list on the fly, yielding the appropriate number of each type of bees, and assigning them a shuffled version of the starting route.
 
 <!--more-->
+
 Next, we need a function to update our hive, and the current best solution available:
 
-```  fsharp;">let Update (hive, currentBest : Solution) rng = 
+``` fsharp
+let Update (hive, currentBest : Solution) rng = 
    let searchResult = List.map (fun b -> Search b rng) hive
    let newSolutions = List.choose (fun e -> snd e) searchResult
    let newBest = List.fold (fun best solution -> 
@@ -46,14 +51,12 @@ Next, we need a function to update our hive, and the current best solution avail
    (updatedHive, newBest)
 ``` 
 
+The function takes 2 arguments: a Tuple of the current state of affairs (the hive and the best solution), and a random number generator. First, we use `List.map`, to apply the [Search]({{ site.url }}/2011/05/09/Getting-the-bees-to-Work/) function we defined earlier to each bee, returning a new List of Tuples, containing each bee and an option containing the result of its search (a new solution, or None). We then extract the new solutions from that list, using [`List.choose`](http://msdn.microsoft.com/en-us/library/ee353456.aspx) to retrieve the second element of the Tuples when they are not None, and use a `List.fold` to find the new best solution from that list, if it is better than the current best solution. Finally, we update the Hive, by having each Bee perform its Waggle dance and share its new information via `List.map`, and applying the Activate function to promote some of the inactive bees to Active status – and return a Tuple of the updated hive and updated best solution.
 
-The function takes 2 arguments: a Tuple of the current state of affairs (the hive and the best solution), and a random number generator. First, we use List.map, to apply the [Search](http://clear-lines.com/blog/post/Getting-the-bees-to-Work.aspx)
-<a href="http://clear-lines.com/blog/post/Getting-the-bees-to-Work.aspx">Search</a> function we defined earlier to each bee, returning a new List of Tuples, containing each bee and an option containing the result of its search (a new solution, or None). We then extract the new solutions from that list, using [List.choose](http://msdn.microsoft.com/en-us/library/ee353456.aspx)
-<a href="http://msdn.microsoft.com/en-us/library/ee353456.aspx">List.choose</a> to retrieve the second element of the Tuples when they are not None, and use a List.fold to find the new best solution from that list, if it is better than the current best solution. Finally, we update the Hive, by having each Bee perform its Waggle dance and share its new information via List.map, and applying the Activate function to promote some of the inactive bees to Active status – and return a Tuple of the updated hive and updated best solution.
+We are now almost done – we can now define a `Solve` function, which will call Initialize to create an initial hive, and unfold an infinite Sequence of solutions:
 
-We are now almost done – we can now define a Solve function, which will call Initialize to create an initial hive, and unfold an infinite Sequence of solutions:
-
-```  fsharp;">let Solve scouts actives inactives route =
+``` fsharp
+let Solve scouts actives inactives route =
    let rng = new Random()
    let hive = Initialize scouts actives inactives route rng
    let initialBest = List.map (fun b -> Solution b) hive 
@@ -61,10 +64,10 @@ We are now almost done – we can now define a Solve function, which will call I
    Seq.unfold (fun h -> Some(h, (Update h rng))) (hive, initialBest)
 ``` 
 
-
 It’s now time to see this in action. Let’s add a file to our project, and create a small console application Program.fs. First, we need a good test case: let’s generate a list of cities named A to Z, located on a circle:
 
-```  fsharp;">let RandomRoute radius points = 
+``` fsharp
+let RandomRoute radius points = 
    [ 
       let rng = new Random()
       let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
@@ -78,12 +81,12 @@ It’s now time to see this in action. Let’s add a file to our project, and cr
    ]
 ``` 
 
-
 If our algorithm is working, it should return a list of cities sorted in alphabetical (or reverse-alphabetical) order.
 
 Next, let’s create an entry point for our console application, and watch the bees at work:
 
-```  fsharp;">[<EntryPoint>]
+``` fsharp
+[<EntryPoint>]
 let main (args : string[]) =
    printfn "Bee Hive colony at work!"
    
@@ -113,17 +116,16 @@ let main (args : string[]) =
    0
 ``` 
 
-
 Running this produces the following:
 
-<a href="http://www.clear-lines.com/blog/image.axd?picture=image_2.png">![image]({{ site.url }}/assets/2011-05-22-image_thumb_2.png)
-<img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="image" border="0" alt="image" src="http://www.clear-lines.com/blog/image.axd?picture=image_thumb_2.png" width="505" height="279" /></a>
+![image]({{ site.url }}/assets/2011-05-22-image_thumb_2.png)
 
-In about three minutes, starting from a path of length 3450, we found a solution of length 946, out of a possible best&#160; of 627. The list has long stretches of correctly reverse-sorted cities (it got D to R properly ordered), with a few misplaced cities. Not too bad!
+In about three minutes, starting from a path of length 3450, we found a solution of length 946, out of a possible best of 627. The list has long stretches of correctly reverse-sorted cities (it got D to R properly ordered), with a few misplaced cities. Not too bad!
 
-Before going further, here is the complete code I wrote so far, in its current state. First, the Solver.fs file, which contains the algorithm logic:
+Before going further, here is the complete code I wrote so far, in its current state. First, the `Solver.fs` file, which contains the algorithm logic:
 
-```  fsharp;">module Solver
+``` fsharp
+module Solver
 open System
 
 let probaFalsePositive = 0.1 // proba to incorrectly pick a worse solution
@@ -294,10 +296,10 @@ let Solve scouts actives inactives route =
    Seq.unfold (fun h -> Some(h, (Update h rng))) (hive, initialBest)
 ``` 
 
+Then, the `Program.fs` file, which contains the Console application:
 
-Then, the Program.fs file, which contains the Console application:
-
-```  fsharp;">module Program
+``` fsharp
+module Program
 
 open System
 open System.Diagnostics
@@ -344,7 +346,6 @@ let main (args : string[]) =
    Console.ReadLine() |> ignore
    0
 ``` 
-
 
 At that stage, we have a running algorithm, which seems to be doing what we expect, in about 200 lines of code. I am sure that code could be improved, and I would love to hear comments or suggestions to make it better!
 
