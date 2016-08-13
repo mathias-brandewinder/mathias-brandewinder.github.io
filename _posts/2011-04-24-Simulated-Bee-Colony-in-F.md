@@ -7,6 +7,8 @@ tags:
 - Traveling-Salesman
 - Optimization
 - Simulation
+- Algorithms
+- F#
 ---
 
 April 2011’s issue of MSDN Magazine had an interesting piece on [**Bee Colony Algorithms**](http://msdn.microsoft.com/en-us/magazine/gg983491.aspx) by **Dr. James McCaffrey,**, explaining the concepts and providing an example, applying the algorithm to the Traveling Salesman Problem. In a nutshell, the algorithm is a [meta-heuristic](http://en.wikipedia.org/wiki/Metaheuristic), that is, a method that is not guaranteed to produce an optimal solution, but will search for “decent” solutions in a large space. In a real-life bee hive,&#160; bees scout for areas rich with food, keep visiting them until they are exhausted, and tell other bees about good spots so that more bees come search that area. By analogy, the algorithm uses scout bees, which search for new random solutions, and recruit inactive bees which become active and start searching for improved solutions around their current solution.  

@@ -10,8 +10,9 @@ tags:
 
 One of my initial goals for 2011 was to get my feet wet with Python, but after the last (and excellent) [San Francisco F# user group](http://www.sfsharp.org/) meetup, dedicated to F# for Python developers, I got all excited about F# again, and dug back my copy of [Programming F#](http://oreilly.com/catalog/9780596153656).  
 
-The book contains a Sequence example which I found inspiring:  
-``` fsharp
+The book contains a Sequence example which I found inspiring:
+
+``` fsharp 
 open System
 
 let RandomSequence =

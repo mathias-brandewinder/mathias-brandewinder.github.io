@@ -9,7 +9,7 @@ tags:
 - Sequence
 ---
 
-In my last post, I looked into running a [simple simulation using F# sequences]({{ site.url }}2011-04-10-Simple-simulation-with-F-Sequences/); our model mapped a sequence of random numbers to 2 states, Rainy and Sunny.  What if we wanted to model something a bit more realistic, like a system where the weather tomorrow depends on the weather today? Let’s say, for instance, that if the weather is Sunny today, there is a 60% chance that it’s still Sunny tomorrow, but if it’s Rainy today, we have a 70% chance that tomorrow is Rainy.  
+In my last post, I looked into running a [simple simulation using F# sequences]({{ site.url }}/2011/04/16/Simulating-a-Markov-Chain-with-F-Sequences/); our model mapped a sequence of random numbers to 2 states, Rainy and Sunny.  What if we wanted to model something a bit more realistic, like a system where the weather tomorrow depends on the weather today? Let’s say, for instance, that if the weather is Sunny today, there is a 60% chance that it’s still Sunny tomorrow, but if it’s Rainy today, we have a 70% chance that tomorrow is Rainy.  
 
 *Technicality: we will also assume that if we know today’s weather, what happened yesterday brings us no additional information on the probability of rain or sun tomorrow.*  
 
