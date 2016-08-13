@@ -12,12 +12,12 @@ As happy as I am with how [Bumblebee](http://bumblebee.codeplex.com/) came out s
 And then it hit me yesterday, as I was reading some material on [F# Azure worker roles](http://archive.msdn.microsoft.com/fsharpazure).  
 
 
-> Novice: 
->    Master, I fail to find the path to the immutable way. 
-> Master: 
->    Immutable way? 
->    Nothing changes, just call the
->    Immutable way.
+> Novice:  
+>    Master, I fail to find the path to the immutable way.  
+> Master:  
+>    Immutable way?  
+>    Nothing changes, just call the  
+>    Immutable way.  
 
 This is an execrable [Haiku](http://en.wikipedia.org/wiki/Haiku), and a reminder to myself. When I get stuck with my old mutable ways in F#, usually the answer is recursion.  
 
