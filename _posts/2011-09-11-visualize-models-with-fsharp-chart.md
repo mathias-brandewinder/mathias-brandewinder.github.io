@@ -50,15 +50,15 @@ The poisson function is used to [generate a Poisson distribution](http://en.wiki
 
 Now that we have a model, we can start playing with it. Send the whole code to the interactive window, wait for the script to load – and start typing:
 
-![fsi]({{ site.url }}/2011-09-11-fsi_thumb.png)
+![fsi]({{ site.url }}/assets/2011-09-11-fsi_thumb.png)
 
 Hit Enter, here we have it – a column chart representing our simulated sales:
 
-![Simulation Chart]({{ site.url }}/2011-09-11-SimulationChart_thumb.png)
+![Simulation Chart]({{ site.url }}/assets/2011-09-11-SimulationChart_thumb.png)
 
 How about different values? Let’s try a lambda of 10, over 200 periods – just type in fsi, and we are set:
 
-![Another Simulation Chart]({{ site.url }}/2011-09-11-AnotherSimulationChart_thumb.png)
+![Another Simulation Chart]({{ site.url }}/assets/2011-09-11-AnotherSimulationChart_thumb.png)
 
 My experimentations are still early stage, but I am very interested in exploring this further. FSharpChart supports a ton of chart types, and gives me the ability to generate whatever I want to look at at the time, using .NET code, all from within Visual Studio. The example I went through was generating simulated data, but in principle, I should also be able to re-use existing C# code that deals with retrieving existing historical data. More on this in the next few weeks, I suspect!
 

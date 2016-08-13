@@ -15,9 +15,9 @@ It’s this time of the year again: on Saturday & Sunday October 8 + 9, [Silicon
 
 I’ll be giving [3 talks this year](http://www.siliconvalley-codecamp.com/Sessions.aspx?AttendeeId=583)      
 
-* Sat, 11:45 - **Beginning TDD for C# Developers**.    
- * Sun, 1:15:** For Those About to Mock**.     
- * Sun, 2:45: **An excursion in F#**   
+* Sat, 11:45: **Beginning TDD for C# Developers**.    
+* Sun, 1:15: **For Those About to Mock**.     
+* Sun, 2:45: **An excursion in F#**   
  
 Hope to see you there, and also that I will have some energy left to attend some of the other talks!  
 
