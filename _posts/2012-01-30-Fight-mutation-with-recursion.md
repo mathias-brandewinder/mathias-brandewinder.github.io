@@ -9,8 +9,9 @@ tags:
 
 As happy as I am with how [Bumblebee](http://bumblebee.codeplex.com/) came out so far, there was one sore spot bugging me. I tried my best to write it in a functional style, but failed in one place. The inner part of the Search algorithm, which processes bees coming back in the queue with a new solution, was written as a while loop, using two mutable references to maintain the best solution found so far, and the list of solutions stored by the inactive bees.  
 
-And then it hit me yesterday, as I was reading some material on [F# Azure worker roles](http://archive.msdn.microsoft.com/fsharpazure).  
+<!--more-->
 
+And then it hit me yesterday, as I was reading some material on [F# Azure worker roles](http://archive.msdn.microsoft.com/fsharpazure).  
 
 > Novice:  
 >    Master, I fail to find the path to the immutable way.  

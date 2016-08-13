@@ -10,6 +10,8 @@ tags:
 
 I finally finished “Working effectively with legacy code”, reading it a few pages at a time every morning on my way to work. Legacy code is one of these topics you know are important, but which you never really want to hear about, so the book has stayed on the backlog for a while. Recently, I helped out someone establish tests on a legacy code base, and began following [Michael Feather’s tweets](https://twitter.com/#!/mfeathers) with great enjoyment, and decided it was time to read it.  
 
+<!--more-->
+
 ## Who should read it?  
 
 The developer who is already familiar with unit testing, comfortable with his language, object-oriented concepts, and what makes code maintainable - and wants to expand his thoughts and tools on testing and testability.  

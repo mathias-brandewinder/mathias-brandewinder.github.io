@@ -18,6 +18,8 @@ During a development effort, regardless of the technology used, lots of things c
 
 What I have often seen done with Excel development goes along these lines: on a regular basis, the developer saves the workbook somewhere “safe” with a time-stamp convention, like “MyWorkbook-2010-12-24.xlsx”.  
 
+<!--more-->
+
 On the plus side, this is a very lightweight process, which addresses some of the issues. At the same time, it is cumbersome: the developer needs to be diligent, the process is manual and error-prone (messing up the timestamp, or accidentally over-writing archives is very possible), and recovering the right version from a folder that contains multiple versions only identified by a timestamp is impractical.  
 
 Developers working in other ecosystems have been facing the same issue, and address it with specialized tools: **source control** systems. In a nutshell, the idea of source control is to operate like a library: the source code is stored in a “vault” (known as the **Repository**), developers check out a local copy of the current version on their machine, edit it, and check in/**commit** the modified code back into the vault if they are happy with the result.  

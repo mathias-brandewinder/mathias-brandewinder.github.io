@@ -29,6 +29,7 @@ series.Values = new double[] {1d, 3d, 2d, 5d};
 series.XValues = new string[] {"A", "B", "C", "D"};
 series.Name = "Series Name";
 ``` 
+<!--more-->
 
 This will create a simple Line chart in its own sheet – without any reference to a worksheet data range.
 

@@ -15,6 +15,8 @@ Level: intermediate. Code version: [39134382823e](http://vstostocks.codeplex.com
 
 The straightforward way to organize an Add-In solution is to just create a single project of type Excel 2007 Add-In (or whichever Office application / version you may target). So why would I go through the pain of structuring my Solution into four distinct Projects in the VSTO Stocks add-in?  Having a single project is a perfectly valid way to proceed, with things kept simple and tight. However, a drawback of going that route is that it makes it easy to write untestable code, with poor separation of concerns.  
 
+<!--more-->
+
 *Note: in the past, I also ran into testing issues with one single project, because I couldn’t reference the Add-In project itself in my automated tests suite, which was problematic. This problem seems to be gone now.*  
 
 Specifically, one source of such problems is to directly reference either ThisAddIn or Globals classes to access the Excel object model. They behave more or less as static classes would, which is a testing nightmare. For instance, in order to access the Active worksheet in a method, I could write code like this:  
