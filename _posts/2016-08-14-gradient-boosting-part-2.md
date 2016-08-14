@@ -380,9 +380,11 @@ The results are pretty decent, too:
 
 ![Actual vs Predicted]({{ site.url }}/assets/2016-08-14-actual-vs-predicted.PNG)
 
-Out of curiosity, I also performed a crude training vs. testing analysis, to get a feel for potential over-fitting issues. Interestingly, as depth increases from 1 to 15, the error in both 
+Out of curiosity, I also performed a crude training vs. testing analysis, to get a feel for potential over-fitting issues.
 
 ![Over Fitting]({{ site.url }}/assets/2016-08-14-overfitting.PNG)
+
+The result we observe is typical of trees: as we increase depth, the error on the training sample steadily decreases, indicating that deeper tree fit the data better and better. However, the testing sample tells a different story: for a little while, error on the training and testing samples match fairly closely, but after we reach a certain depth (here, 3), they start diverging. While our tree fit the training sample better and better, that improvement doesn't generalize to other samples, as we can see on the testing sample; at that point, we are over-fitting. In our particular case, this means that we shouldn't put much trust in trees deeper than 3.
 
 ## Conclusion
 
