@@ -22,7 +22,7 @@ This will be our goal today: we will create a [Regression Tree](https://en.wikip
 
 ## Regression Trees
 
-*[Full code for this post available here as a Gist]*(https://gist.github.com/mathias-brandewinder/05683d63bfa67c8b706ce458035c0b81#file-gradient-boosting-2-fsx)
+[*Full code for this post available here as a Gist*](https://gist.github.com/mathias-brandewinder/05683d63bfa67c8b706ce458035c0b81#file-gradient-boosting-2-fsx)
 
 The Stump model is rather simple: we take a `Feature` and a split value, the threshold. If the input value is under that threshold, we predict the average output value computed across examples under the threshold, otherwise, we do the opposite:
 
