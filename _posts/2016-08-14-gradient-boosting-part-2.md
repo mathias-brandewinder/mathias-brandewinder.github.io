@@ -18,11 +18,11 @@ In and of itself, this is an interesting result: the approach allows us to aggre
 
 This will be our goal today: we will create a [Regression Tree](https://en.wikipedia.org/wiki/Decision_tree_learning#Types), which we will in a future installment use in place of stumps in our Boosting procedure.
 
-[Full code for this post available here as a Gist](https://gist.github.com/mathias-brandewinder/05683d63bfa67c8b706ce458035c0b81#file-gradient-boosting-2-fsx)
-
 <!--more-->
 
 ## Regression Trees
+
+*[Full code for this post available here as a Gist]*(https://gist.github.com/mathias-brandewinder/05683d63bfa67c8b706ce458035c0b81#file-gradient-boosting-2-fsx)
 
 The Stump model is rather simple: we take a `Feature` and a split value, the threshold. If the input value is under that threshold, we predict the average output value computed across examples under the threshold, otherwise, we do the opposite:
 
@@ -378,11 +378,11 @@ let fullTree = learnTree (evenSplitter 5,sumOfSquaresCost) redSample features 10
 
 The results are pretty decent, too:
 
-![Actual vs Predicted]({{ site.url }}/assets/2016-08-14-actual-vs-predicted.png)
+![Actual vs Predicted]({{ site.url }}/assets/2016-08-14-actual-vs-predicted.PNG)
 
 Out of curiosity, I also performed a crude training vs. testing analysis, to get a feel for potential over-fitting issues. Interestingly, as depth increases from 1 to 15, the error in both 
 
-![Over Fitting]({{ site.url }}/assets/2016-08-14-overfitting.png)
+![Over Fitting]({{ site.url }}/assets/2016-08-14-overfitting.PNG)
 
 ## Conclusion
 
