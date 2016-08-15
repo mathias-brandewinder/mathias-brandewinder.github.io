@@ -9,7 +9,7 @@ tags:
 - FSharpChart
 ---
 
-{% include ml-in-action-series %}
+{% include ml-in-action-series.html %}
 
 With all sorts of people waving around the term "Machine Learning" lately, I figured it was time to look into what the fuss was about, so I purchased "[Machine Learning In Action](http://www.manning.com/pharrington/)". I am mostly enjoying the book so far, with one inconvenience: all the code presented is in Python, which is easy enough to follow, but not directly useful to me. The best way to learn is to get your hands dirty and code, so I am planning on converting the Python examples into F# as a progress through  -  which should also be a good exercise in learning more F#.
 
