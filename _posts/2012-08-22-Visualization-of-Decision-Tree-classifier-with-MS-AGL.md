@@ -16,6 +16,6 @@ In my recent post on [Decision Tree Classifiers]({{ site.url }}/2012/08/05/Decis
 
 Here is the result of the visualization, you can find [his code here](https://github.com/paks/Machine-Learning-In-Action):
  
-![Lenses Dataset Decision Tree]({{ site.url }}/assets/2012-08-22-2012%2f8%2fDecision-Tree.PNG)
+![Lenses Dataset Decision Tree]({{ site.url }}/assets/2012-08-22-Decision-Tree.PNG)
 
 Unfortunately, as far as I can tell, the library is not open source, and requires a MSDN license. The amount of great stuff produced at Microsoft Research is amazing, it's just too bad that at times licensing seems to get in the way of getting the word out...
