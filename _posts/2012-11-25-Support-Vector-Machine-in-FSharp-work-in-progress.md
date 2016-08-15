@@ -11,6 +11,8 @@ tags:
 - FsharpChart
 ---
 
+{% include ml-in-action-series.html %}
+
 I am still working my way through "[Machine Learning in Action](http://www.manning.com/pharrington/)", converting the samples from Python to F#. I am currently in the middle of chapter 6, dedicated to [Support Vector Machines](http://en.wikipedia.org/wiki/Support_vector_machine), which has given me more trouble than the previous ones. This post will be sharing my current progress: the code I have so far is a working translation of the na&iuml;ve SVM implementation, presented in the first half of the chapter. We'll get to kernels, and the full [Platt](http://research.microsoft.com/en-us/projects/svm/) [SMO algorithm](http://en.wikipedia.org/wiki/Sequential_minimal_optimization) in a later post - today will be solely discussing the simple, un-optimized version.
 
 Two factors slowed me down with this chapter: the math, and Python.

@@ -11,6 +11,8 @@ tags:
 - Ensemble-Method
 ---
 
+{% include ml-in-action-series.html %}
+
 This post continues my journey converting the Python samples from [Machine Learning in Action](http://www.manning.com/pharrington/) into [F#](http://fsharp.org/). On the program today: chapter 7, dedicated to AdaBoost. This is also the last chapter revolving around classification. After almost 6 months spending my week-ends on classifiers, I am rather glad to change gears a bit!
 
 ## The idea behind the algorithm
