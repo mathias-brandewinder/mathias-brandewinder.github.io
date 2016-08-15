@@ -8,7 +8,7 @@ tags:
 - Probability
 - Logistic-Regression
 - Sigmoid
-- Fsharpchart
+- FsharpChart
 ---
 
 {% include ml-in-action-series.html %}
@@ -29,7 +29,7 @@ To achieve that result, the algorithm relies on the Sigmoid function:
 f(x) = 1 / (1 + exp(-x))
 ```
 
-![Plot of Sigmoid Function]({{ site.url }}/assets/2012-09-30-2012%2f9%2fSigmoidFunction.PNG)
+![Plot of Sigmoid Function]({{ site.url }}/assets/2012-09-30-SigmoidFunction.PNG)
 
 For any input value, the Sigmoid function returns a value in `] 0 ; 1 [`. A positive value will return a value greater than 0.5, and the greater the input value, the closer to 1. One could think of the function as returning a probability: for very high or low values of x, there is a high certainty that it belongs to one of the two groups, and for values close to zero, the probability of each group is 50% / 50%.
 
@@ -228,7 +228,7 @@ The function uses `FSharpChart.Combine` to produce a list of Charts in a List co
 
 Running this script in fsi should produce the following chart:
 
-![Logistic Regression Result]({{ site.url }}/assets/2012-09-30-2012%2f9%2fRegressionResult.PNG)
+![Logistic Regression Result]({{ site.url }}/assets/2012-09-30-RegressionResult.PNG)
 
 The chart looks reassuring - we get a nice red line, which has the properties we expect: it neatly separates our datasets in two groups based on their label.
 
