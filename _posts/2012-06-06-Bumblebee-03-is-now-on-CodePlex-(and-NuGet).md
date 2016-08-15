@@ -13,6 +13,8 @@ The [source code](http://bumblebee.codeplex.com/SourceControl/changeset/changes/
 
 What’s new in Version 0.3? Mostly code cleanup – when I revisited my original code a few months after the fact, I had a hard time following it, so I reorganized things internally in a way which I hope is clearer. The main change from an API perspective is the constructor for C# problems: I removed the Tuples from the Func delegates, which were mostly noise and didn’t help much.  
 
+<!--more-->
+
 Other than that, the changes are mostly cosmetic: the main Search loop has been transformed into a recursive immutable loop, code has been shuffled around and renamed for readability, the test suite has been updated and uses the FsUnit NuGet package.  
 
 Speaking of NuGet, I published [Bumblebee as a NuGet package here](https://nuget.org/packages?q=bumblebee)
