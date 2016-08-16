@@ -178,7 +178,7 @@ Now for a few quick comments on the current implementation. I decided to try out
 
 The obvious way to approach the recursive partitioning of the training set goes along these lines: starting with an original dataset like this one...
 
-    |     |   
+Sex | Age | Result   
 --- | --- | ---
 male | kid | survive
 male | adult | die
@@ -190,15 +190,15 @@ female | adult | die
 
 [male group]
 
-    |   
+Age | Result  
 --- | ---
 kid | survive
 adult | die
 
 [female group]
 
-    |     |   
---- | --- | ---
+Age | Result  
+--- | --- |
 kid | survive
 adult | survive
 adult | die

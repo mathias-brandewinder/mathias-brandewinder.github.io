@@ -11,31 +11,31 @@ It looks like this summer will be my strangest vacation in a while – I’ll be
 
 As of <strike>July 13th</strike> July 28th, here is the plan: 
 
-[July 31, Sacramento: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.sacnetug.org/Event/Index)
+* [July 31, Sacramento: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.sacnetug.org/Event/Index)
 
-[August 8, Houston: “An Introduction to F# for the C# Developer”](http://www.meetup.com/Houston-FSharp-User-Group/events/128850482/)
+* [August 8, Houston: “An Introduction to F# for the C# Developer”](http://www.meetup.com/Houston-FSharp-User-Group/events/128850482/)
 
-[August 9, Houston: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/Houston-FSharp-User-Group/events/122589282/)
+* [August 9, Houston: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/Houston-FSharp-User-Group/events/122589282/)
 
-[August 12, Nashville: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://nashfp.eventbrite.com/)
+* [August 12, Nashville: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://nashfp.eventbrite.com/)
 
-[August 13, Charlotte: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/CharlotteAltNet/events/124132022/)
+* [August 13, Charlotte: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/CharlotteAltNet/events/124132022/)
 
-[August 14, Raleigh: “An Introduction to F# for the C# Developer”](http://www.meetup.com/TriNUG/events/126183832/)
+* [August 14, Raleigh: “An Introduction to F# for the C# Developer”](http://www.meetup.com/TriNUG/events/126183832/)
 
-[August 15, Raleigh: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/TriNUG/events/130852172/)
+* [August 15, Raleigh: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/TriNUG/events/130852172/)
 
-[August 16, Washington DC: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/F-meetup-in-Dupont-Circle/events/131370292/)
+* [August 16, Washington DC: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/F-meetup-in-Dupont-Circle/events/131370292/)
 
-[August 17, Philadelphia: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://phillyaltnetaugust2013.eventbrite.com/)
+* [August 17, Philadelphia: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://phillyaltnetaugust2013.eventbrite.com/)
 
-[August 19, New York City: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/nyc-fsharp/events/132196162/)
+* [August 19, New York City: “Coding Dojo: a gentle introduction to Machine Learning with F#”](http://www.meetup.com/nyc-fsharp/events/132196162/)
 
-August 20, Boston: [“An introduction to F# for the C# developer”](http://www.meetup.com/New-England-F-Users-Group/events/130409692/)
+* August 20, Boston: [“An introduction to F# for the C# developer”](http://www.meetup.com/New-England-F-Users-Group/events/130409692/)
 
-August 21, Boston: [“Coding Dojo: a gentle introduction to Machine Learning“](http://www.meetup.com/intelligence/events/131395962/)
+* August 21, Boston: [“Coding Dojo: a gentle introduction to Machine Learning“](http://www.meetup.com/intelligence/events/131395962/)
 
-August 22, Detroit: TBA 
+* August 22, Detroit: TBA 
 
 … and a few more should be added to the list soon! I’ll let you extrapolate what possible cities could be following, given the map below. Stay tuned for updates.
 
@@ -44,22 +44,22 @@ August 22, Detroit: TBA
 
 Huge thanks to the people who helped make this happen – I am sure I forgot some of you, sorry about that, and I’ll owe you a beer when I visit your city! 
 
-[@zychr](https://twitter.com/zychr) and the Sacramento .NET group 
+* [@zychr](https://twitter.com/zychr) and the Sacramento .NET group 
 
-[@panesofglass](https://twitter.com/panesofglass) and the [Houston F# group](http://www.meetup.com/Houston-FSharp-User-Group/)
+* [@panesofglass](https://twitter.com/panesofglass) and the [Houston F# group](http://www.meetup.com/Houston-FSharp-User-Group/)
 
-[@bryan_hunter](https://twitter.com/bryan_hunter) and [@NashFP](https://twitter.com/NashFP) in Nashville 
+* [@bryan_hunter](https://twitter.com/bryan_hunter) and [@NashFP](https://twitter.com/NashFP) in Nashville 
 
-[@mattduffield](https://twitter.com/mattduffield) and the [Charlotte Alt.NET group](http://www.meetup.com/CharlotteAltNet/)
+* [@mattduffield](https://twitter.com/mattduffield) and the [Charlotte Alt.NET group](http://www.meetup.com/CharlotteAltNet/)
 
-[@Jamie_Dixon](https://twitter.com/jamie_dixon) and the [Triangle .NET group](http://www.meetup.com/TriNUG/)
+* [@Jamie_Dixon](https://twitter.com/jamie_dixon) and the [Triangle .NET group](http://www.meetup.com/TriNUG/)
 
-[@devshorts](https://twitter.com/devshorts) and the newly founded [Washington DC F# meetup group!](http://www.meetup.com/F-meetup-in-Dupont-Circle/)
+* [@devshorts](https://twitter.com/devshorts) and the newly founded [Washington DC F# meetup group!](http://www.meetup.com/F-meetup-in-Dupont-Circle/)
 
-[@briandonahue](https://twitter.com/briandonahue) and the [Philly Alt.NET group](http://phillyaltnet.wordpress.com/)
+* [@briandonahue](https://twitter.com/briandonahue) and the [Philly Alt.NET group](http://phillyaltnet.wordpress.com/)
 
-[@rickasaurus](https://twitter.com/rickasaurus) and the [NYC F# group](http://www.meetup.com/nyc-fsharp/)
+* [@rickasaurus](https://twitter.com/rickasaurus) and the [NYC F# group](http://www.meetup.com/nyc-fsharp/)
 
-[@plepilov](https://twitter.com/plepilov), [@talbott](https://twitter.com/talbott), [@jonnyboats](https://twitter.com/JonnyBoats) and [@hackreduce](https://twitter.com/hackreduce) + [New England F# group](http://www.meetup.com/New-England-F-Users-Group/) in Boston 
+* [@plepilov](https://twitter.com/plepilov), [@talbott](https://twitter.com/talbott), [@jonnyboats](https://twitter.com/JonnyBoats) and [@hackreduce](https://twitter.com/hackreduce) + [New England F# group](http://www.meetup.com/New-England-F-Users-Group/) in Boston 
 
 … and of course [@INETA](https://twitter.com/INETA)!
