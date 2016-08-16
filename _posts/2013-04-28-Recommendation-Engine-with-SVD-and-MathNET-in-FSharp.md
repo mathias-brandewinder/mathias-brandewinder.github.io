@@ -133,12 +133,11 @@ val it : unit = ()
 
 So how could we go about creating a recommendation? Imagine for a minute that our dataset looked like this:
 
-
-    | Movie 1 | Movie 2 | Movie 3 
---- | --- | --- | ---
-User 1 | 5 | 5 | 1
-User 3 | 1 | 1 | 5
-User 4 | 5 | ??? | 1
+User | Movie 1 | Movie 2 | Movie 3  
+--- | --- | --- | ---  
+User 1 | 5 | 5 | 1  
+User 3 | 1 | 1 | 5  
+User 4 | 5 | ??? | 1  
 
 If I were to guess the missing rating for User 4 / Movie 2, I’d probably guess 5-ish: the ratings for Movie 2 look a whole lot like Movie 1, and User 4 rated Movie 1 a 5; given how similar they are, it’s a reasonable bet to think User 4 would rate Movie 2 similarly to Movie 1. Conversely, Movie 2 and Movie 3 are nothing alike, so I wouldn’t put too much weight on the rating User 4 gave to Movie 3. 
 
