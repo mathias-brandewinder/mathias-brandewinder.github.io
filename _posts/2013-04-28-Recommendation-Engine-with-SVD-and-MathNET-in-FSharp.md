@@ -10,6 +10,8 @@ tags:
 - Recommendation-Engine
 ---
 
+{% include ml-in-action-series.html %}
+
 In our previous post, we began [exploring Singular Value Decomposition (SVD) using Math.NET and F#,]({{ site.url }}/2013/03/25/Simplify-data-with-SVD-and-MathNET-in-FSharp/) and showed how this linear algebra technique can be used to “extract” the core information of a dataset and construct a reduced version of the dataset with limited loss of information. 
 
 Today, we’ll pursue our excursion in Chapter 14 of [Machine Learning in Action](http://www.manning.com/pharrington/), and look at how this can be used to build a collaborative recommendation engine. We’ll follow the approach outlined by the book, starting first with a “naïve” approach, and then using an SVD-based approach. We’ll start from a slightly modified setup from last post, loosely inspired by the [Netflix Prize](http://en.wikipedia.org/wiki/Netflix_Prize). The full code for the example can be found [here on GitHub](https://github.com/mathias-brandewinder/Machine-Learning-In-Action/blob/0948913e61c53cae92d8f8cf016b33aea6919382/MachineLearningInAction/MachineLearningInAction/Chapter14-Recommender.fsx). 
@@ -108,15 +110,15 @@ Running this in FSI should produce something like this:
 ```
 val data : DenseMatrix =
   DenseMatrix 100x12-Double
-             0            0            1            2            0 ...            0
-             0            4            0            4            1 ...            1
-             1            2            0            0            0 ...            2
-             0            0            0            0            1 ...            0
-             0            0            0            2            0 ...            0
-             1            0            0            0            0 ...            0
-             1            0            0            0            0 ...            2
-             ...          ...          ...          ...          ... ...          ...
-             0            1            0            2            2 ...            0
+      0            0            1            2            0 ...        0
+      0            4            0            4            1 ...        1
+      1            2            0            0            0 ...        2
+      0            0            0            0            1 ...        0
+      0            0            0            2            0 ...        0
+      1            0            0            0            0 ...        0
+      1            0            0            0            0 ...        2
+      ...          ...          ...          ...          ... ...      ...
+      0            1            0            2            2 ...        0
 ```
 
 Math.NET 2.5.0 now automatically renders matrices in a user-friendly format, abridging the contents; only the first 5 columns and 7 rows, and the last elements, are displayed, which doesn’t clutter (or crash…) FSI when dealing with large datasets. In this particular case, we see that the user in second row is an Action fan, for instance. If we want to see his full profile, we can simply extract the corresponding row:
@@ -132,7 +134,7 @@ val it : unit = ()
 So how could we go about creating a recommendation? Imagine for a minute that our dataset looked like this:
 
 
- | Movie 1 | Movie 2 | Movie 3
+    | Movie 1 | Movie 2 | Movie 3 
 --- | --- | --- | ---
 User 1 | 5 | 5 | 1
 User 3 | 1 | 1 | 5
