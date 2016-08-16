@@ -22,7 +22,8 @@ In my experience, this also makes refactoring tools much less important in F# th
 Conversely, I have found myself annoyed a few times looking at F# code where succinctness erred on the side of obfuscation. This tendency for terse naming conventions seems to be a cultural heritage from other functional languages, and makes sense to an extent – functional code tends to focus on applying generic transformations to “things”, and not that much on what the “thing” might be.
 
 As an illustration, I have seen often code along these lines:
-``` fsharp
+
+``` fsharp 
 match list with
 | x::xs -> ...
 ``` 
