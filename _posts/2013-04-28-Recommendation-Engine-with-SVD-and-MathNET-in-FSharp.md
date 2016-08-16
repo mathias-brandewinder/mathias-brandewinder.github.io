@@ -110,15 +110,15 @@ Running this in FSI should produce something like this:
 ```
 val data : DenseMatrix =
   DenseMatrix 100x12-Double
-      0            0            1            2            0 ...        0
-      0            4            0            4            1 ...        1
-      1            2            0            0            0 ...        2
-      0            0            0            0            1 ...        0
-      0            0            0            2            0 ...        0
-      1            0            0            0            0 ...        0
-      1            0            0            0            0 ...        2
-      ...          ...          ...          ...          ... ...      ...
-      0            1            0            2            2 ...        0
+      0        0        1        2        0 ...        0
+      0        4        0        4        1 ...        1
+      1        2        0        0        0 ...        2
+      0        0        0        0        1 ...        0
+      0        0        0        2        0 ...        0
+      1        0        0        0        0 ...        0
+      1        0        0        0        0 ...        2
+      ...      ...      ...      ...      ... ...      ...
+      0        1        0        2        2 ...        0
 ```
 
 Math.NET 2.5.0 now automatically renders matrices in a user-friendly format, abridging the contents; only the first 5 columns and 7 rows, and the last elements, are displayed, which doesn’t clutter (or crash…) FSI when dealing with large datasets. In this particular case, we see that the user in second row is an Action fan, for instance. If we want to see his full profile, we can simply extract the corresponding row:
