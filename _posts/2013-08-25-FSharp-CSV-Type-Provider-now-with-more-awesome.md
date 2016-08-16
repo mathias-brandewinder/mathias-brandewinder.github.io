@@ -30,7 +30,7 @@ type Passenger = DataSet.Row
 
 This is pretty awesome. In a couple of lines, just by passing in the path to my CSV file and some (optional) schema information, I get a Passenger type:
 
-![All properties are optional]({{ site.url}}/2013-08-25-Titanic_thumb.png)
+![All properties are optional]({{ site.url}}/assets/2013-08-25-Titanic_thumb.png)
 
 What’s neat here is that first, I immediately get a Passenger with properties – with the correct Optional types, thanks to `SafeMode` and `PreferOptional`. Then, notice in the Schema the `Pclass->Class, Parch->ParentsOrChildren, SibSp->SiblingsOrSpouse` bit? This renames “on the fly” the properties; instead of the pretty obscurely named **`Parch`** feature coming from the CSV file header, I get a nice and readable **`ParentsOrChildren`** property. The Type Provider even does a few more cool things, automagically; for instance, the feature “Survived”, which is encoded in the original dataset as 0 or 1, gets automatically converted to a boolean. Really nice.
 
