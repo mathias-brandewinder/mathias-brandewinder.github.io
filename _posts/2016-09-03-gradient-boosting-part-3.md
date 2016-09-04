@@ -143,7 +143,7 @@ $$
 
 ... then the residuals as we are computing them happen to be the gradient of that particular loss function.
 
-This is interesting, for 2 reasons. First, this connects gradient boosting to gradient descent: what we have been doing so far can be seen as gradient descent, implicitly using the SSR, or sum-of-square residuals, as a loss function, and trying at each step to find a predictor that most closely matches the gradient. Then, this allows us to generalize our algorithm. Rather than using the "plain residuals", we can decide on any arbitrary loss function, and compute the pseudo residuals at each step as the gradient of the loss function we are interested in.
+This is interesting, for 2 reasons. First, this connects gradient boosting to gradient descent: what we have been doing so far can be seen as gradient descent, implicitly using the sum-of-square residuals (or SSR), as a loss function, and trying at each step to find a predictor that most closely matches the gradient. Then, this allows us to generalize our algorithm. Rather than using the "plain residuals", we can decide on any arbitrary loss function, and compute the pseudo residuals at each step as the gradient of the loss function we are interested in.
 
 This also opens a new problem: if we do not use the SSR as a loss function, simply stacking up the predictors we get at each iteration will not necessarily give us the smallest overall loss. So instead of building our aggregate predictor as
 
