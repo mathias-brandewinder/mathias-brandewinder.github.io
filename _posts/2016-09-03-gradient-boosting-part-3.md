@@ -63,7 +63,7 @@ The problem statement suggests an obvious direction: we don't really care what a
 type Learner = Example seq -> Predictor
 ```
 
-Given a set of examples (observations, and the value to predict), a `Learner` will do its magic, and return to us the best `Predictor` it can find.
+Given a set of examples, that is, observations, and the value to predict, a `Learner` will do its magic, and return to us the best `Predictor` it can find.
 
 All we need to do then is rearrange a bit our original code, and inject an arbitrary `Learner`:
 
@@ -143,7 +143,7 @@ $$
 
 ... then the residuals as we are computing them happen to be the gradient of that particular loss function.
 
-This is interesting, for 2 reasons. First, this connects gradient boosting to gradient descent: what we have been doing so far can be seen as gradient descent, implicitly using the sum-of-square residuals (SSR) as a loss function, and trying at each step to find a predictor that most closely matches the gradient. Then, this allows us to generalize our algorithm. Rather than using the "plain residuals", we can decide on any arbitrary loss function, and compute the pseudo residuals at each step as the gradient of the loss function we are interested in.
+This is interesting, for 2 reasons. First, this connects gradient boosting to gradient descent: what we have been doing so far can be seen as gradient descent, implicitly using the SSR, or sum-of-square residuals, as a loss function, and trying at each step to find a predictor that most closely matches the gradient. Then, this allows us to generalize our algorithm. Rather than using the "plain residuals", we can decide on any arbitrary loss function, and compute the pseudo residuals at each step as the gradient of the loss function we are interested in.
 
 This also opens a new problem: if we do not use the SSR as a loss function, simply stacking up the predictors we get at each iteration will not necessarily give us the smallest overall loss. So instead of building our aggregate predictor as
 
@@ -395,7 +395,7 @@ $$
 L_{\delta}(x) = 
 \begin{cases}
 \frac 12 x^2 & \text{for } \lvert x \rvert \le \delta \\
-\delta (\lvert x \rvert - 1/2 \delta) & \text{otherwise}
+\delta (\lvert x \rvert - \frac 12 \delta) & \text{otherwise}
 \end{cases}
 $$
 
