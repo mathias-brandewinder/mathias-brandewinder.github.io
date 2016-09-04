@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Basic Regression Tree
+title: Gradient Boosting using Automatic Differentiation
 use_math: true
 tags:
 - F#
@@ -52,8 +52,6 @@ let features = [
 ```
 
 We have available a basic regression tree implementation, `learnTree`, which, given a sample, a list of `Feature`, will learn a tree to a given depth.
-
-// TODO refer to first part of the gist
 
 ## Using Trees instead of Stumps
 
@@ -140,7 +138,7 @@ $$
 This makes sense on an intuitive level: we are trying to learn a new model that will adjust for whatever our current best predictor "misses". However, there is another way to look at this. If you consider the loss function:
 
 $$ 
-L(y_i,F(x_i)) = 0.5 \times (y_i - F(x_i)^2 
+L(y_i,F(x_i)) = \frac 12 \times (y_i - F(x_i))^2 
 $$
 
 ... then the residuals as we are computing them happen to be the gradient of that particular loss function.
@@ -396,8 +394,8 @@ That is one reason why it is sometimes convenient to use different loss function
 $$ 
 L_{\delta}(x) = 
 \begin{cases}
-1/2 x^2 & \text{for } \abs x \le \delta \\
-\delta (\abs x - 1/2 \delta) & \text{otherwise}
+\frac 12 x^2 & \text{for } \lvert x \rvert \le \delta \\
+\delta (\lvert x \rvert - 1/2 \delta) & \text{otherwise}
 \end{cases}
 $$
 
