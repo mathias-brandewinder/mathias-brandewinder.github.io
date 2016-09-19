@@ -82,13 +82,15 @@ You can define different behaviors in your script, depending on whether it is ru
 
 ``` fsharp
 #if INTERACTIVE
-    let msg = "Interactive"
+let msg = "Interactive"
 #else
-    let msg = "Not Interactive"
+let msg = "Not Interactive"
 #endif
 
 printfn "%s" msg
 ```
+
+*Updated, Sep 19: thanks Matt Klein for [pointing the issue](http://stackoverflow.com/q/39581342/114519).*
 
 For more information on FSI from the command line, [check the reference page here][3].
 
