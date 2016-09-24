@@ -1,0 +1,96 @@
+{
+    "events":
+    [
+        {
+            "host":"SELA Developer Practice",
+            "date":"2016-12-11",
+            "until":"2016-12-15",
+            "city":"Rishon Le-Zyon",
+            "country":"Israel",
+            "url":"http://www.seladeveloperpractice.com/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Introduction to Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: Big Data with Azure, MBrace, and F#"
+                },
+                {
+                    "description":"Talk: Agile Experiments in Machine Learning with F#"
+                }
+            ]
+        },
+        {
+            "host":"Progressive F#",
+            "date":"2016-12-05",
+            "until":"2016-12-06",
+            "city":"London",
+            "country":"UK",
+            "url":"https://skillsmatter.com/conferences/7431-progressive-f-sharp-tutorials-2016",
+            "activities":
+            [
+                {
+                    "description":"Talk: Here Be Dragons - Mapping the F# World"
+                }
+            ]
+        }, 
+        {
+            "host":"ProgramUtvikling",
+            "date":"2016-10-17",
+            "until":"2016-10-18",
+            "city":"Oslo",
+            "country":"Norway",
+            "url":"http://programutvikling.no/en/course/practical-machine-learning-with-functional-programming-1/",
+            "activities":
+            [
+                {
+                    "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
+                }
+            ]
+        },
+        {
+            "host":"Get.NET",
+            "date":"2016-10-15",
+            "city":"Gdansk",
+            "country":"Poland",
+            "url":"https://konferencjaget.net/en/gdansk/schedule",
+            "activities":
+            [
+                {
+                    "description":"Talk: Agile Experiments in Machine Learning with F#"
+                }
+            ]
+        },
+        {
+            "host":"Paris F# Meetup",
+            "date":"2016-10-11",
+            "city":"Paris",
+            "country":"France",
+            "url":"http://www.meetup.com/fr-FR/Functional-Programming-in-F/events/234346335/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Machine Learning Hands-On!"
+                }
+            ]
+        },
+        {
+            "host":"Silicon Valley Code Camp",
+            "date":"2016-10-01",
+            "until":"2016-10-02",
+            "city":"San Jose",
+            "country":"California",
+            "url":"https://www.siliconvalley-codecamp.com/",
+            "activities":
+            [
+                {
+                    "description":"Talk: Crunching through big data with MBrace, Azure and F#"
+                },
+                {
+                    "description":"Talk: The T in TDD: Test, Types, Tales"
+                }
+            ]
+        }    
+    ]
+}

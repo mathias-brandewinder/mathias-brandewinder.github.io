@@ -15,4 +15,24 @@ Oh, and I am available for consulting, too :)
 
 If you want to reach out directly, email me at mathias dot brandewinder at gmail, [ping me on Twitter as @brandewinder](https://twitter.com/brandewinder), or find me on the [fsharp.org Slack channels](https://fsharp.slack.com)!
 
+## Upcoming events
+
+{% assign events = site.data.events.events | sort:"date" %}
+{% assign now = site.time | date: "%s" %}
+
+{% for event in events %}
+
+{% assign eventdate = event.date | date: "%s" %}
+{% if eventdate >= now %}
+
+[{{ event.date | date: "%b %d" }}{% if event.until <> nil %}-{{ event.until | date: "%d" }}{% endif %}: {{ event.host }}, {{ event.city}} ({{ event.country }})]({{ event.url }})
+
+{% for activity in event.activities %}
+* {{ activity.description }}
+{% endfor %}
+
+{% endif %}
+
+{% endfor %}
+
 {% include disqus.html %}
