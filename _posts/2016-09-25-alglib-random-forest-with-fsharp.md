@@ -40,10 +40,11 @@ let info,forest,report =
         )
 ```
 
-We'll illustrate shortly how the inputs should be prepared. The function produces 3 outputs:
-* `info`: an integer return code. `1` signals success, `-2` or `-1` are supposed to signal issues (more on that in a second).
-* `forest`: a random forest (`alglib.decisionforest`), which can be used to produce predictions.
-* `report`: an `alglib.dfreport` that contains various quality metrics.
+We'll illustrate shortly how the inputs should be prepared. The function produces 3 outputs:  
+
+* `info`: an integer return code. `1` signals success, `-2` or `-1` are supposed to signal issues (more on that in a second).  
+* `forest`: a random forest (`alglib.decisionforest`), which can be used to produce predictions.  
+* `report`: an `alglib.dfreport` that contains various quality metrics. 
 
 ## The Titanic dataset
 
@@ -133,12 +134,13 @@ let info,forest,report =
         )
 ```
 
-Some points of note here:
-* `features` represents the number of columns that are input values
-* when set to `1`, `classes` indicates a regression
-* `trees` represents how many trees we want in the forest, that is, how deep / long we want to train. The documentation recommends 50 to 100. From experience, higher is possible, but an `OutOfMemoryException` is also a possibility :) 
-* `featuresincluded`: this is the extra parameter from the other function available. It drives how many of the available features should be randomly selected at each split. This is done automatically in the other case.
-* `learningproportion`: this is a tuning parameter, the documentation recommends values between 0.05 (for very noisy datasets) and 0.66 (for clean datasets). This determines how much of the training set is used for each tree, and lower values should help prevent over-fitting.
+Some points of note here:  
+
+* `features` represents the number of columns that are input values  
+* when set to `1`, `classes` indicates a regression  
+* `trees` represents how many trees we want in the forest, that is, how deep / long we want to train. The documentation recommends 50 to 100. From experience, higher is possible, but an `OutOfMemoryException` is also a possibility :)   
+* `featuresincluded`: this is the extra parameter from the other function available. It drives how many of the available features should be randomly selected at each split. This is done automatically in the other case.  
+* `learningproportion`: this is a tuning parameter, the documentation recommends values between 0.05 (for very noisy datasets) and 0.66 (for clean datasets). This determines how much of the training set is used for each tree, and lower values should help prevent over-fitting.  
 
 ## Running the regression
 
@@ -152,9 +154,10 @@ alglib+alglibexception: Exception of type 'alglib+alglibexception' was thrown.
 
 So much for using error codes. My experience with the library has been that if there is something wrong with the input, it will either explode or never return. Perhaps I am doing something wrong?
 
-The 2 issues you may hit when preparing the data are:
-* invalid indexing: for instance, setting `samplesize` to a value larger than the sample size will result in `System.IndexOutOfRangeException: Index was outside the bounds of the array.`.
-* missing data / `nan`: this is the problem we are hitting here. The training set is expected to be a `float [,]`, but if it contains `nan` values, for either input or output, you'll run into problems.
+The 2 issues you may hit when preparing the data are:  
+
+* invalid indexing: for instance, setting `samplesize` to a value larger than the sample size will result in `System.IndexOutOfRangeException: Index was outside the bounds of the array.`.  
+* missing data / `nan`: this is the problem we are hitting here. The training set is expected to be a `float [,]`, but if it contains `nan` values, for either input or output, you'll run into problems.  
 
 Let's address this, with a quick-and-dirty filter:
 
@@ -249,10 +252,11 @@ Let's try to incorporate sex, and the port of embarkation - Southampton, Cherbou
 
 So incorporating sex would simply entail adding a column with 0.0 or 1.0 values for either case, and encoding the port of embarkation would use a 3-state vector, `[1.0;0.0;0.0]` for Southampton, `[0.0;1.0;0.0]` for Cherbourg, and `[0.0;0.0;1.0]` for Queenstown.
 
-This ignores the possibility of missing data, however. We can take 3 strategies here (as well as for numerical values):
-* we do not think missing data conveys useful information, and filter it out as we did,
-* we think missing value conveys useful information, in what case we can simply add another state. For instance, port of embarkation would take 4 states, the 4th one being "unknown port of embarkation", represented as `[0.0;0.0;0.0;1.0]`,
-* we can attempt to replace missing values by "reasonable ones". In general I tend to dislike making up data, but at the same time, in the case of a dataset where all rows contain mostly good data with some missing, we would end up discarding a lot of rows, which can be a problem.
+This ignores the possibility of missing data, however. We can take 3 strategies here (as well as for numerical values):  
+
+* we do not think missing data conveys useful information, and filter it out as we did,  
+* we think missing value conveys useful information, in what case we can simply add another state. For instance, port of embarkation would take 4 states, the 4th one being "unknown port of embarkation", represented as `[0.0;0.0;0.0;1.0]`,  
+* we can attempt to replace missing values by "reasonable ones". In general I tend to dislike making up data, but at the same time, in the case of a dataset where all rows contain mostly good data with some missing, we would end up discarding a lot of rows, which can be a problem.  
 
 We could for instance model our data like this, without making any attempt at elegance:
 
