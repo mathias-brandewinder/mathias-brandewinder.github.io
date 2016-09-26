@@ -48,7 +48,7 @@ We'll illustrate shortly how the inputs should be prepared. The function produce
 
 ## The Titanic dataset
 
-The dataset we will use comes as a CSV file, "titanic.csv", which contains the following columns:
+The dataset (which you can [download from here]({{ site.url }}/assets/titanic.csv)) we will use comes as a CSV file, "titanic.csv", which contains the following columns:
 
 Name | Type | Notes
 --- | --- | ---
