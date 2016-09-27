@@ -36,6 +36,37 @@
             ]
         }, 
         {
+            "host":"BuildStuff",
+            "date":"2016-11-21",
+            "until":"2016-11-22",
+            "city":"Kiev",
+            "country":"Ukraine",
+            "url":"http://www.buildstuff.com.ua/kiev/",
+            "activities":
+            [
+                {
+                    "description":"Talk: Agile Experiments in Machine Learning with F#"
+                }
+            ]
+        },  
+        {
+            "host":"BuildStuff",
+            "date":"2016-11-16",
+            "until":"2016-11-20",
+            "city":"Vilnius",
+            "country":"Lithuania",
+            "url":"http://www.buildstuff.lt/",
+            "activities":
+            [
+                {
+                    "description":"Talk: Agile Experiments in Machine Learning with F#"
+                },
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                }
+            ]
+        },         
+        {
             "host":"ProgramUtvikling",
             "date":"2016-10-17",
             "until":"2016-10-18",
