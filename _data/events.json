@@ -65,7 +65,20 @@
                     "description":"Workshop: Practical Machine Learning with Functional Programming"
                 }
             ]
-        },         
+        },
+        {
+            "host":"Oslo F# Meetup",
+            "date":"2016-10-18",
+            "city":"Oslo",
+            "country":"Norway",
+            "url":"http://www.meetup.com/OsloFSharp/events/234444003/",
+            "activities":
+            [
+                {
+                    "description":"Workshop (with Evelina Gabasova): Machine learning hands-on: making good predictions from many bad ones"
+                }
+            ]
+        },             
         {
             "host":"ProgramUtvikling",
             "date":"2016-10-17",
