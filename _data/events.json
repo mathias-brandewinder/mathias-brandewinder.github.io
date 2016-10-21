@@ -2,6 +2,34 @@
     "events":
     [
         {
+            "host":"ProgramUtvikling",
+            "date":"2017-09-11",
+            "until":"2017-09-12",
+            "city":"Oslo",
+            "country":"Norway",
+            "url":"http://programutvikling.no/en/course/practical-machine-learning-with-functional-programming-1/",
+            "activities":
+            [
+                {
+                    "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
+                }
+            ]
+        },
+        {
+            "host":"ProgramUtvikling",
+            "date":"2017-02-27",
+            "until":"2017-02-28",
+            "city":"Oslo",
+            "country":"Norway",
+            "url":"http://programutvikling.no/en/course/practical-machine-learning-with-functional-programming-1/",
+            "activities":
+            [
+                {
+                    "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
+                }
+            ]
+        },
+        {
             "host":"SELA Developer Practice",
             "date":"2016-12-11",
             "until":"2016-12-15",
