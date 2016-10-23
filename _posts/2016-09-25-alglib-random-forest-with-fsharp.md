@@ -271,7 +271,7 @@ let trainingset =
             float row.SibSp
             // modelling a simple categorical,
             // discarding unknown / missing data
-            (if row.Sex = "male" then 0.0 elif row.Sex = "female" then 0.0 else Double.NaN)
+            (if row.Sex = "male" then 1.0 elif row.Sex = "female" then 0.0 else Double.NaN)
             // modelling a categorical with missing values
             (if row.Embarked = "S" then 1.0 else 0.0)
             (if row.Embarked = "C" then 1.0 else 0.0)
@@ -335,7 +335,7 @@ let trainingset =
             float row.SibSp
             // modelling a simple categorical,
             // discarding unknown / missing data
-            (if row.Sex = "male" then 0.0 elif row.Sex = "female" then 0.0 else Double.NaN)
+            (if row.Sex = "male" then 1.0 elif row.Sex = "female" then 0.0 else Double.NaN)
             // modelling a categorical with missing values
             (if row.Embarked = "S" then 1.0 else 0.0)
             (if row.Embarked = "C" then 1.0 else 0.0)
@@ -353,7 +353,7 @@ We simply encode survival as 1.0 or 0.0; all we need to do then is change `class
 ``` fsharp
 let samplesize = trainingset.GetUpperBound(0)
 let features = 8
-let classes = 2 // regression
+let classes = 2 // classification
 let trees = 10
 let featuresincluded = 4
 let learningproportion = 0.5
@@ -396,7 +396,7 @@ let trainingset =
             float row.SibSp
             // modelling a simple categorical,
             // discarding unknown / missing data
-            (if row.Sex = "male" then 0.0 elif row.Sex = "female" then 0.0 else Double.NaN)
+            (if row.Sex = "male" then 1.0 elif row.Sex = "female" then 0.0 else Double.NaN)
             // the output y
             (if row.Embarked = "S" then 0.0 
              elif row.Embarked = "C" then 1.0
@@ -410,7 +410,7 @@ let trainingset =
 
 let samplesize = trainingset.GetUpperBound(0)
 let features = 4
-let classes = 3 // regression
+let classes = 3 // classification
 let trees = 10
 let featuresincluded = 2
 let learningproportion = 0.5
