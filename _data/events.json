@@ -30,6 +30,34 @@
             ]
         },
         {
+            "host":"Mini NDC Copenhagen",
+            "date":"2017-02-22",
+            "until":"2017-02-24",
+            "city":"Copenhagen",
+            "country":"Denmark",
+            "url":"http://cph.ndcmini.com/",
+            "activities":
+            [
+                {
+                    "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
+                }
+            ]
+        },    
+        {
+            "host":"NDC London",
+            "date":"2017-01-16",
+            "until":"2017-01-20",
+            "city":"London",
+            "country":"UK",
+            "url":"http://ndc-london.com/",
+            "activities":
+            [
+                {
+                    "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
+                }
+            ]
+        },        
+        {
             "host":"SELA Developer Practice",
             "date":"2016-12-11",
             "until":"2016-12-15",
@@ -60,6 +88,9 @@
             [
                 {
                     "description":"Talk: Here Be Dragons - Mapping the F# World"
+                },
+                {
+                    "description":"Workshop: Making good predictions from many bad ones"
                 }
             ]
         }, 
