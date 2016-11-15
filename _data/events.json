@@ -54,6 +54,9 @@
             [
                 {
                     "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: Serverless F# with Azure Functions: fsibot goes nano-services"
                 }
             ]
         },        
