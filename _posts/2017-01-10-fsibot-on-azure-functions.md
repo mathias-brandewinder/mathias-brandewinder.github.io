@@ -1,6 +1,6 @@
 ---
 layout: post
-title: new relase of @fsibot, now on Azure Functions
+title: New relase of @fsibot, now on Azure Functions
 tags:
 - F#
 - Azure-Functions
@@ -20,6 +20,8 @@ About 2 years ago, I wrote a little application, [@fsibot]({{ site.url }}/2014/0
 It was very fun to write, rather pointless, but turned out to be an interesting exercise, which [taught me a lot][1]. And, in spite of its simplicity, it's a decent sample app, which touches on many aspects a real-world app might encounter.
 
 After some hiccups early on, @fsibot has been running pretty smoothly, until I noticed issues recently. Rather than trying to figure out what the hell was going on, I decided to port it over [Azure Functions][2], which sounded like a better fit for it. While at it, I also made a couple of changes to the bot. If you are interested, you can [find the code on GitHub][3].
+
+<!--more-->
 
 ## New features
 
