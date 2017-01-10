@@ -42,7 +42,20 @@
                     "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
                 }
             ]
-        },    
+        },
+        {
+            "host":"CodeNode",
+            "date":"2017-01-19",
+            "city":"London",
+            "country":"UK",
+            "url":"https://skillsmatter.com/meetups/8888-fsharpx-bytes",
+            "activities":
+            [
+                {
+                    "description":"Talk: Agile experiments in Machine Learning with F#"
+                }
+            ]
+        },          
         {
             "host":"NDC London",
             "date":"2017-01-16",
@@ -80,6 +93,19 @@
                 }
             ]
         },
+        {
+            "host":"FPIL",
+            "date":"2016-12-13",
+            "city":"Tel-Aviv",
+            "country":"Israel",
+            "url":"https://www.meetup.com/LetFPIL/events/235325376/",
+            "activities":
+            [
+                {
+                    "description":"Talk: Using F# to give your users a DSL"
+                }
+            ]
+        },          
         {
             "host":"Progressive F#",
             "date":"2016-12-05",
