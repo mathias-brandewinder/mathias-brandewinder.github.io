@@ -37,34 +37,5 @@ Conferences
 
 {% endfor %}
 
-<!---
-Training/Workshop
--->
-
-## Workshops, Classes, Trainings
-
-{% for event in events %}
-
-  {% assign eventdate = event.date | date: "%s" %}
-
-  {% if eventdate >= now %}
-
-    {% for activity in event.activities %}
-
-      {% if event.category = "Training" or activity.type = "Workshop" %}  
-
-[{{ event.date | date: "%b %d" }}{% if event.until <> nil %}-{{ event.until | date: "%d" }}{% endif %}: {{ activity.description }}, {{ event.city}} ({{ event.country }})]({{ activity.registration }})
-
-      {% endif %}
-
-    {% endfor %}
-
-  {% endif %}
-
-{% endfor %}
-
-<!---
-Meetups, User Groups
--->
 
 {% include disqus.html %}
