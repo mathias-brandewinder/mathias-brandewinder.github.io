@@ -13,26 +13,14 @@ Oh, and I am available for consulting, too :)
 
 [![Book Cover]({{ site.url }}/assets/book-cover.jpg)](http://www.amazon.com/Machine-Learning-Projects-NET-Developers/dp/1430267674/?tag=mathias-brandewinder-20)
 
-If you want to reach out directly, email me at mathias dot brandewinder at gmail, [ping me on Twitter as @brandewinder](https://twitter.com/brandewinder), or find me on the [fsharp.org Slack channels](https://fsharp.slack.com)!
+I travel around quite a bit for conferences and workshops. 
+And when I do, I try my best to also present at local user groups or meetups. 
+Check out my [events calendar]({{ site.url }}/events/) if you want to know more.
 
-## Upcoming events
-
-{% assign events = site.data.events.events | sort:"date" %}
-{% assign now = site.time | date: "%s" %}
-
-{% for event in events %}
-
-{% assign eventdate = event.date | date: "%s" %}
-{% if eventdate >= now %}
-
-[{{ event.date | date: "%b %d" }}{% if event.until <> nil %}-{{ event.until | date: "%d" }}{% endif %}: {{ event.host }}, {{ event.city}} ({{ event.country }})]({{ event.url }})
-
-{% for activity in event.activities %}
-* {{ activity.description }}
-{% endfor %}
-
-{% endif %}
-
-{% endfor %}
+<p class="message">
+If you want to reach out directly, email me at mathias dot brandewinder at gmail, 
+[ping me on Twitter as @brandewinder](https://twitter.com/brandewinder), or 
+find me on the [fsharp.org Slack channels](https://fsharp.slack.com)!
+</p>
 
 {% include disqus.html %}
