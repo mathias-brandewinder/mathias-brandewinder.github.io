@@ -17,10 +17,6 @@ I travel around quite a bit for conferences and workshops.
 And when I do, I try my best to also present at local user groups or meetups. 
 Check out my [events calendar]({{ site.url }}/events/) if you want to know more.
 
-<p class="message">
-If you want to reach out directly, email me at mathias dot brandewinder at gmail, 
-[ping me on Twitter as @brandewinder](https://twitter.com/brandewinder), or 
-find me on the [fsharp.org Slack channels](https://fsharp.slack.com)!
-</p>
+{% include contact.html %}
 
 {% include disqus.html %}
