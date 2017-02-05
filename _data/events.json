@@ -19,7 +19,7 @@
             "host":"ProgramUtvikling",
             "date":"2017-02-27",
             "until":"2017-02-28",
-            "city":"Oslo",
+            "city":"Kongsberg",
             "country":"Norway",
             "url":"http://programutvikling.no/en/course/practical-machine-learning-with-functional-programming-1/",
             "activities":
@@ -29,6 +29,19 @@
                 }
             ]
         },
+        {
+            "host":"MF#K + CopenhagenR",
+            "date":"2017-02-23",
+            "city":"Copenhagen",
+            "country":"Denmark",
+            "url":"http://diku.dk/begivenhedsmappe/begivenheder-2017/meetup/",
+            "activities":
+            [
+                {
+                    "description":"Machine Learning with F# and R"
+                }
+            ]
+        },        
         {
             "host":"Mini NDC Copenhagen",
             "date":"2017-02-22",
