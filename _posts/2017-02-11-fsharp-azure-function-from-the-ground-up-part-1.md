@@ -12,7 +12,7 @@ tags:
 - Type-Provider
 ---
 
-If you follow me on Twitter, you may have noticed a recurring topic: [Azure Functions][1]. I have found it both useful for many use cases, and simply fun to work with; and it fits pretty nicely with F#. I recently gave a talk at NDC London (the video should be online at some point), where I demoed a small example, trying to fit in as many features as I could, in as little time and code as possible. [Someone took up my offer to write a tutorial from the ground up][2], so I figured, let's take that example and turn it into a post. It is a demo, so what it does is not particularly useful by itself, but it illustrates many of the features and tricks I found useful, and should be a good starting point to write "real" code.
+If you follow me on Twitter, you may have noticed a recurring topic lately: [Azure Functions][1]. I have found it both useful for many use cases, and simply fun to work with; and it fits pretty nicely with F#. I recently gave a talk at NDC London (the video should be online at some point), where I demoed a small example, trying to fit in as many features as I could, in as little time and code as possible. [Someone took up my offer to write a tutorial from the ground up][2], so I figured, let's take that example and turn it into a post. It is a demo, so what it does is not particularly useful by itself, but it illustrates many of the features and tricks I found useful, and should be a good starting point to write "real" code.
 
 ## The app: sending exchange rate updates on Slack
 
@@ -22,7 +22,7 @@ Before starting with the code itself, we will need two things: exchange rates, a
 
 For the exchange rate, we will use Yahoo, while it's still there. Yahoo has a free API for exchange rates, available at the following URL:
 
-`http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.xchange where pair in ("GBPUSD")&env=store://datatables.org/alltableswithkeys`
+[`http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.xchange where pair in ("GBPUSD")&env=store://datatables.org/alltableswithkeys`][http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.xchange where pair in ("GBPUSD")&env=store://datatables.org/alltableswithkeys]
 
 This returns an xml document, which looks like this:
 
@@ -137,11 +137,11 @@ Now that we have all the pieces working, how do we get this to run on Azure Func
 
 The first thing we need is to create a **Function App**. A Function App is a container, where one or more functions will live. To do that, we'll head to the [Azure Portal][5]. Click on the + sign, pick Function App from Microsoft, and Create.
 
-![Create Function App]({{ site.url }}/assets/2017-02-11-portal-create-function-app.PNG.PNG)
+![Create Function App]({{ site.url }}/assets/2017-02-11-portal-create-function-app.PNG)
 
 You'll be presented with a few options to set up:
 
-![Setup Function App]({{ site.url }}/assets/2017-02-11-portal-create-function-app-2.PNG.PNG)
+![Setup Function App]({{ site.url }}/assets/2017-02-11-portal-create-function-app-2.PNG)
 
 Give the app a name and resource group a name - in our case, "sample-exchange-rate", and "sample_exchange_rate", pick the location where you want it deployed (West US in this case). I like also to give the Storage Account a human-friendly name (in this case sampleexchangerate), instead of the default random one; it makes it easier to figure out what a storage account is there for later on.
 
@@ -165,7 +165,7 @@ Let's begin with retrieving exchange rates from Yahoo. What we want is to automa
 
 ![Create Timer Function]({{ site.url }}/assets/2017-02-11-create-timer-function.PNG)
 
-We will name that function "retrieve-rate", and set it to run every 10 seconds, by configuring its schedule, using a [CRON-style format][6]:
+We will name that function "retrieve-rate", and set it to run every 15 seconds, by configuring its schedule, using a [CRON-style format][6]:
 
 ![Setup Timer Function]({{ site.url }}/assets/2017-02-11-setup-timer-function.PNG)
 
@@ -173,7 +173,7 @@ Once the function is created, you will be presented with an online development e
 
 ![Timer Template Code]({{ site.url }}/assets/2017-02-11-timer-template.PNG)
 
-The template code is probably the simplest Function code you could write:
+The template code is probably the simplest Function you could write:
 
 ``` fsharp
 open System
@@ -226,11 +226,45 @@ Save, and take a look at the logs:
 
 Looks like things are working. Code changes have been detected, the code is compiled, and starts running, pulling exchange rates from Yahoo. Success!
 
+Let's use our `parse` function, to extract the rate as a number, and not a raw string:
+
+``` fsharp
+open System
+open System.Net
+
+let parse (s:string) = 
+    let o = "<Rate>"
+    let c = "</Rate>"
+    
+    let st = s.IndexOf(o) + 6
+    let en = s.IndexOf(c) - st
+
+    s.Substring(st,en)
+
+let url = """http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.xchange where pair in ("GBPUSD")&env=store://datatables.org/alltableswithkeys"""
+
+let Run(myTimer: TimerInfo, log: TraceWriter) =
+    log.Info(
+        sprintf "F# Timer trigger function executed at: %s" 
+            (DateTime.Now.ToString()))
+
+    let client = new WebClient()
+    let result = 
+        client.DownloadString(url)
+        |> parse 
+        |> float
+
+    sprintf "%f" result            
+    |> log.Info 
+```
+
+And... done.
+
 Before going any further, let's click on the View Files button next to Logs: 
 
 ![View Files]({{ site.url }}/assets/2017-02-11-view-files.PNG)
 
-What we have is a folder, named "retrieve-rate", with 2 files: `run.fsx`, which we already looked at, and `function.json`. That file contains the bindings for our function:
+What we have is a folder, named "retrieve-rate" (the name of our function), with 2 files: `run.fsx`, which we already looked at, and `function.json`. That file contains the bindings for our function:
 
 ``` json
 {
@@ -246,7 +280,9 @@ What we have is a folder, named "retrieve-rate", with 2 files: `run.fsx`, which 
 }
 ```
 
-We have a list of bindings, with one binding defined, of type `timerTrigger`, named `myTimer`, going `in` the function. This is where the `myTimer: TimerInfo` argument in the `Run` function comes in. When we initially setup the function, all we did was creating that file, which we could now edit directly here. If you change the schedule to `"schedule": "*/5 * * * * *"`, Save and Run, your function will now run every 5 seconds. If you change the name of the binding from `myTimer` to `timer`, Save and Run, you'll see an error pop in the logs:
+That's the minimum setup for a function: a script (F# or not), which contains the code to run, and a `function.json` file, which defines the **trigger**, an event which, when it happens, will cause the script code to be executed.
+
+In the `function.json` file, we have a list of bindings, with, in our case, only one binding defined, of type `timerTrigger`, named `myTimer`, going `in` the function. This is where the `myTimer: TimerInfo` argument in the `Run` function comes in. When we initially setup the function, all we did was creating that file, which we could now edit directly here. If you change the schedule to `"schedule": "*/5 * * * * *"`, Save and Run, your function will now run every 5 seconds. If you change the name of the binding from `myTimer` to `timer`, Save and Run, you'll see an error pop in the logs:
 
 ```
 2017-02-11T22:46:54.826 Function compilation error
