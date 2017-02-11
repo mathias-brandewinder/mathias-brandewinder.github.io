@@ -22,7 +22,7 @@ Before starting with the code itself, we will need two things: exchange rates, a
 
 For the exchange rate, we will use Yahoo, while it's still there. Yahoo has a free API for exchange rates, available at the following URL:
 
-[`http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.xchange where pair in ("GBPUSD")&env=store://datatables.org/alltableswithkeys`][http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.xchange where pair in ("GBPUSD")&env=store://datatables.org/alltableswithkeys]
+`http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.xchange where pair in ("GBPUSD")&env=store://datatables.org/alltableswithkeys`
 
 This returns an xml document, which looks like this:
 
