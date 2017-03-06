@@ -12,7 +12,7 @@ tags:
 - Type-Provider
 ---
 
-In our last post, we went through [setting up a simple Azure Function App]({{ site.url }}/assets/2017-02-11/fsharp-azure-function-from-the-ground-up-part-1) through the portal. Starting from a local script that retrieved exchange rates from Yahoo and posted an update on Slack, we converted part of the code, using a Timer function to automatically make web requests every 15 seconds.
+In our last post, we went through [setting up a simple Azure Function App](http://brandewinder.com/2017/02/11/fsharp-azure-function-from-the-ground-up-part-1/) through the portal. Starting from a local script that retrieved exchange rates from Yahoo and posted an update on Slack, we converted part of the code, using a Timer function to automatically make web requests every 15 seconds.
 
 Today, we will finish turning our script into a Function App, illustrating as many useful tips as we can in the process. Among others, we'll see how to consume NuGet packages, use queues (and more generally bindings) to allow communication between functions, and upload and reference arbitrary files.
 
