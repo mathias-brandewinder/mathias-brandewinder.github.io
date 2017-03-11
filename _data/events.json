@@ -16,6 +16,45 @@
             ]
         },
         {
+            "host":"NDC Oslo",
+            "date":"2017-06-12",
+            "until":"2017-06-16",
+            "city":"Oslo",
+            "country":"Norway",
+            "url":"http://ndcoslo.com/speaker/mathias-brandewinder/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: TBA"
+                }
+            ]
+        },  
+        {
+            "host":"NCrafts",
+            "date":"2017-05-18",
+            "until":"2017-05-19",
+            "city":"Paris",
+            "country":"France",
+            "url":"http://ncrafts.io/",
+            "activities":
+            [           
+            ]
+        },
+        {
+            "host":"J on the Beach",
+            "date":"2017-05-17",
+            "until":"2017-05-19",
+            "city":"Malaga",
+            "country":"Spain",
+            "url":"http://jonthebeach.com/",
+            "activities":
+            [           
+            ]
+        },
+        {
             "host":"ProgramUtvikling",
             "date":"2017-02-27",
             "until":"2017-02-28",
