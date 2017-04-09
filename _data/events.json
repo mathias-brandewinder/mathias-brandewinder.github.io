@@ -31,7 +31,20 @@
                     "description":"Talk: TBA"
                 }
             ]
-        },  
+        },
+        {
+            "host":"Mødegruppe for F#unktionelle Københavnere",
+            "date":"2017-04-11",
+            "city":"Copenhagen",
+            "country":"Denmark",
+            "url":"https://www.meetup.com/MoedegruppeFunktionelleKoebenhavnere/events/rqbcdlywhbnc/",
+            "activities":
+            [
+                {
+                    "description":"TBA"
+                }
+            ]
+        },          
         {
             "host":"NCrafts",
             "date":"2017-05-18",
@@ -51,23 +64,28 @@
             "country":"Spain",
             "url":"http://jonthebeach.com/",
             "activities":
-            [           
-            ]
-        },
-        {
-            "host":"ProgramUtvikling",
-            "date":"2017-02-27",
-            "until":"2017-02-28",
-            "city":"Kongsberg",
-            "country":"Norway",
-            "url":"http://programutvikling.no/en/course/practical-machine-learning-with-functional-programming-1/",
-            "activities":
             [
                 {
-                    "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
+                    "description":"Workshop: Gentle introduction to Machine Learning with F#"
+                },
+                {
+                    "description":"Talk: Agile experiments in Machine Learning with F#"
                 }
             ]
         },
+        {
+            "host":"Bay Azure meetup",
+            "date":"2017-04-11",
+            "city":"San Francisco",
+            "country":"USA",
+            "url":"https://www.meetup.com/bayazure/events/238928398/",
+            "activities":
+            [
+                {
+                    "description":"Serverless .NET with Azure Functions"
+                }
+            ]
+        },          
         {
             "host":"MF#K + CopenhagenR",
             "date":"2017-02-23",
