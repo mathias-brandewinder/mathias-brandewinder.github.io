@@ -16,6 +16,39 @@
             ]
         },
         {
+            "host":"NDC Sydney",
+            "date":"2017-08-14",
+            "until":"2017-08-18",
+            "city":"Sydney",
+            "country":"Australia",
+            "url":"http://ndcsydney.com/speaker/mathias-brandewinder/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: Growing Serverless code with Azure Functions and F#"
+                },
+                {
+                    "description":"Talk: Machine Learning with F#, Redux"
+                }                
+            ]
+        },
+        {
+            "host":"Alt.NET Paris",
+            "date":"2017-06-22",
+            "city":"Paris",
+            "country":"France",
+            "url":"https://www.meetup.com/altnetfr/events/235124568/",
+            "activities":
+            [
+                {
+                    "description":"Meetup: Azure functions from the trenches"
+                }
+            ]
+        },          
+        {
             "host":"NDC Oslo",
             "date":"2017-06-12",
             "until":"2017-06-16",
@@ -28,7 +61,7 @@
                     "description":"Workshop: Practical Machine Learning with Functional Programming"
                 },
                 {
-                    "description":"Talk: TBA"
+                    "description":"Talk: Scaling Serverless F# with Azure Functions"
                 }
             ]
         },
@@ -41,7 +74,7 @@
             "activities":
             [
                 {
-                    "description":"TBA"
+                    "description":"Meetup: Fractal Forest"
                 }
             ]
         },          
@@ -53,7 +86,10 @@
             "country":"France",
             "url":"http://ncrafts.io/",
             "activities":
-            [           
+            [     
+                {
+                    "description":"Talk: Serverless F# with Azure Functions - fsibot goes nano-services"
+                }      
             ]
         },
         {
