@@ -121,7 +121,20 @@
                     "description":"Serverless .NET with Azure Functions"
                 }
             ]
-        },          
+        },
+        {
+            "host":"F# Paris Meetup",
+            "date":"2017-03-06",
+            "city":"Paris",
+            "country":"France",
+            "url":"https://www.meetup.com/Functional-Programming-in-F/events/237873641/",
+            "activities":
+            [
+                {
+                    "description":"Talk: Serverless F# with Azure Functions: fsibot goes nano-services"
+                }
+            ]
+        },        
         {
             "host":"MF#K + CopenhagenR",
             "date":"2017-02-23",
@@ -146,7 +159,10 @@
             [
                 {
                     "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
-                }
+                },
+                {
+                    "description":"Talk: Agile experiments in Machine Learning with F#"
+                }                
             ]
         },
         {
