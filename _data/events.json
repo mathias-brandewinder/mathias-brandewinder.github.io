@@ -3,8 +3,8 @@
     [
         {
             "host":"ProgramUtvikling",
-            "date":"2017-09-11",
-            "until":"2017-09-12",
+            "date":"2017-10-23",
+            "until":"2017-10-24",
             "city":"Oslo",
             "country":"Norway",
             "url":"http://programutvikling.no/en/course/practical-machine-learning-with-functional-programming-1/",
@@ -15,6 +15,20 @@
                 }
             ]
         },
+        {
+            "host":"NDC TechTown",
+            "date":"2017-10-17",
+            "until":"2017-10-20",
+            "city":"Kongsberg",
+            "country":"Norway",
+            "url":"http://ndctechtown.com/speaker/mathias-brandewinder/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                }           
+            ]
+        },        
         {
             "host":"NDC Sydney",
             "date":"2017-08-14",
