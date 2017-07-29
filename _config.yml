@@ -9,8 +9,8 @@ permalink:        pretty
 title:            ''
 tagline:          'Mathias Brandewinder blog'
 description:      'Figuring things out, one model at a time.'
-url:              http://mathias-brandewinder.github.io/
-baseurl:          http://mathias-brandewinder.github.io/
+url:              https://brandewinder.com/
+baseurl:          https://brandewinder.com/
 
 author:
   name:           'Mathias Brandewinder'
