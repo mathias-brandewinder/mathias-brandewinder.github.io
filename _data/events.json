@@ -2,6 +2,36 @@
     "events":
     [
         {
+            "host":"Trondheim Developer Conference",
+            "date":"2017-10-30",
+            "until":"2017-11-01",
+            "city":"Trondheim",
+            "country":"Norway",
+            "url":"https://2017.trondheimdc.no/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: Agile experiments in Machine Learning with F#"
+                }    
+            ]
+        },   
+        {
+            "host":"BitShift",
+            "date":"2017-10-26",
+            "city":"Bergen",
+            "country":"Norway",
+            "url":"https://www.meetup.com/BitShift/",
+            "activities":
+            [
+                {
+                    "description":"Meetup: TBA"
+                }
+            ]
+        },
+        {
             "host":"ProgramUtvikling",
             "date":"2017-10-23",
             "until":"2017-10-24",
@@ -11,7 +41,7 @@
             "activities":
             [
                 {
-                    "description":"Workshop (with Evelina Gabasova): Practical Machine Learning with Functional Programming"
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
                 }
             ]
         },
@@ -26,7 +56,10 @@
             [
                 {
                     "description":"Workshop: Practical Machine Learning with Functional Programming"
-                }           
+                },
+                {
+                    "description":"Talk: Agile experiments in Machine Learning with F#"
+                }    
             ]
         },        
         {
