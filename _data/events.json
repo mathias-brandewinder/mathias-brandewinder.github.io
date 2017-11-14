@@ -2,6 +2,34 @@
     "events":
     [
         {
+            "host":"Avanscoperta",
+            "date":"2018-04-09",
+            "until":"2018-04-10",
+            "city":"Milan",
+            "country":"Italy",
+            "url":"http://www.avanscoperta.it/en/training/practical-machine-learning-with-functional-programming-workshop/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                }
+            ]
+        },
+        {
+            "host":"F# Exchange",
+            "date":"2018-04-05",
+            "until":"2018-04-06",
+            "city":"London",
+            "country":"UK",
+            "url":"https://skillsmatter.com/conferences/9419-f-sharp-exchange-2018",
+            "activities":
+            [
+                {
+                    "description":"Talk: TBA"
+                }    
+            ]
+        },
+        {
             "host":"Trondheim Developer Conference",
             "date":"2017-10-30",
             "until":"2017-11-01",
@@ -17,7 +45,7 @@
                     "description":"Talk: Agile experiments in Machine Learning with F#"
                 }    
             ]
-        },   
+        },        
         {
             "host":"BitShift",
             "date":"2017-10-26",
