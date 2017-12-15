@@ -11,19 +11,19 @@ tags:
 
 We had our first ever [F# Dugnad at the San Francisco F# meetup](https://www.meetup.com/sfsharp/events/245454941/) last week! The event worked pretty well, and I figured I could share some quick notes on what we did, what worked, and what could be improved.
 
-The origin story for this event is two-fold. First, the question of how to encourage people to start actively contributing to open source projects has been on my mind for a while. My personal experience with open source has been roughly this. I have always wanted to contribute back to projects, especially the ones that help me daily, but many small things get in the way. I clone a project, struggle with a couple small things ("how do I build this thing?"), and after some time, I give up. I also remember being literally terrified sending my first pull request - this is a very public process, with a risk of looking foolish in a very public way.
+The origin story for this event is two-fold. First, the question of how to encourage people to start actively contributing to open source projects has been on my mind for a while. My personal experience with open source has been roughly this. I have always wanted to contribute back to projects, especially the ones that help me daily, but many small things get in the way. I clone a project, struggle for a bit ("how do I build this thing?"), and after some time, I give up. I also remember being terrified when I sent my first pull request - this is a very public process, with the risk of looking foolish in a very public way.
 
 The second element was me coming across the wonderful Dugnad tradition in Norway.
 
 <!--more-->
 
-A [Dugnad](https://en.wikipedia.org/wiki/Communal_work#Norway) is an event that traditionally takes place twice a year. Everybody from the neighborhood gathers and fixes the communal space together for an afternoon - clean up a park, repaint, fix whatever needs fixing ... - and enjoy drinks and hot-dog afterwards. I loved the idea: besides the obvious improvement to the environment, it creates a sense of common ownership and responsibility, and it's a wonderful way for people from the same community to connect with each other. 
+A [Dugnad](https://en.wikipedia.org/wiki/Communal_work#Norway) is an event that traditionally takes place twice a year. Everybody from the neighborhood gathers and fixes the communal space together for an afternoon - clean up a park, repaint, fix whatever needs fixing ... - and enjoy drinks and hot-dogs afterwards. I love the idea: it directly improves the environment for everyone with little effort, it creates a sense of common ownership and responsibility, and it is a wonderful way for people from the same community to connect with each other. 
 
 This got me wondering whether transposing the idea to open source software could work. After all, open source *is* our community space, and getting together for a few hours to "fix the neighborhood" seemed like a reasonable idea.
 
 ## Setup
 
-The setup was pretty simple. We organized a meetup a Saturday afternoon, 13:00 to 17:00, so we would have enough time to actually get things done. The good people at [@RealtyShares](https://twitter.com/realtyshares) were kind enough to accept to host us, with a comfortable meeting room with tables and power outlets, and even some tacos (writing code takes some fuel!).
+The setup was pretty simple. We organized a meetup a Saturday afternoon, 13:00 to 17:00, so we would have enough time to actually get things done. The good people at [@RealtyShares](https://twitter.com/realtyshares) were kind enough to host us, with a comfortable meeting room with tables and power outlets, and even some tacos (writing code takes some fuel!).
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Open source contributions as a group activity at the F# Dugnad yesterday with <a href="https://twitter.com/dplattsf?ref_src=twsrc%5Etfw">@dplattsf</a> <a href="https://twitter.com/foxyjackfox?ref_src=twsrc%5Etfw">@foxyjackfox</a> <a href="https://twitter.com/sergeyz?ref_src=twsrc%5Etfw">@sergeyz</a> <a href="https://twitter.com/Thuris?ref_src=twsrc%5Etfw">@Thuris</a> <a href="https://twitter.com/yankeefinn?ref_src=twsrc%5Etfw">@yankeefinn</a> &amp; Tracy, was a lot of fun :) Big thanks to <a href="https://twitter.com/realtyshares?ref_src=twsrc%5Etfw">@realtyshares</a> for hosting! <a href="https://twitter.com/hashtag/fsharp?src=hash&amp;ref_src=twsrc%5Etfw">#fsharp</a> <a href="https://t.co/7hIZpA5Hl5">pic.twitter.com/7hIZpA5Hl5</a></p>&mdash; Mathias Brandewinder (@brandewinder) <a href="https://twitter.com/brandewinder/status/939915781315354624?ref_src=twsrc%5Etfw">December 10, 2017</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -51,7 +51,7 @@ Based on that experience, we wrote a small tutorial. The goal is to have a fail-
 * Having a Slack channel up was quite helpful to exchange links or code snippets. One suggestion was to create a channel in the fsharp.org Slack.
 * Some groups forked the repositories into [our Meetup github organization](https://github.com/sfsharp/), and used that as a shared space to work together. The practical benefits are limited, but symbolically it was a nice way to signal that this was the collective work of a group.
 * Having multiple people in the same room ended up being super helpful in unblocking others. In a group of 8, chances are someone knows how to solve the problem you are struggling with.
-* Working in teams was very effective in getting newcomers over the stress of the first contribution, and demystifying it.
+* Working in teams was very effective in getting newcomers over the stress of the first contribution, and demystifying the whole thing.
 * The simple fact that each of us had blocked 4 hours dedicated to that particular task helped; It makes it much less likely to just give up and do something else.
 * Saturday is a bit of a constraint. On the other hand, it takes time to get up to speed, and getting a group to code for a few hours during a weekday evening seems difficult.
 * "When do we do it again" came up immediately after we finished. That session ended up being a great warm-up, and people are now comfortable with the projects and ready to make more "serious" contributions.
