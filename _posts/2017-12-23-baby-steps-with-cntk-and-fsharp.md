@@ -66,6 +66,8 @@ packages
 
 Let's start creating the script we will be working with now, by adding an F# script file `CNTK.fsx` to our folder. Unfortunately, CNTK depends on a few native libraries to run properly. As a result, the setup is a bit more involved than the usual `#r "path/to/library.dll`. We'll follow [@cdrnet](https://twitter.com/cdrnet) [approach to load native libraries described here][7], and add to the `PATH` every folder that contains the dlls we need, so `Cntk.Core.Managed-2.3.1.dll` can find them:
 
+> Note: I put the [full code used in the post on a gist here](https://gist.github.com/mathias-brandewinder/d48abe4a571c53a4a70c709c3121a566)
+
 ``` fsharp
 open System
 open System.IO
@@ -321,6 +323,8 @@ for _ in 1 .. 1000 do
 ```
 
 On my machine, extracting the weights and constant from the `Function` after training yields `3.0019`, `-1.9978` and `4.9975` - pretty close to the correct values of `3.0`, `-2.0` and `5.0` that we used in `realModel`.
+
+> Note: I put the [full code used in the post on a gist here](https://gist.github.com/mathias-brandewinder/d48abe4a571c53a4a70c709c3121a566)
 
 ## Parting thoughts
 
