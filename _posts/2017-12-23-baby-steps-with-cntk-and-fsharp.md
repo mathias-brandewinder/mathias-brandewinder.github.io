@@ -328,7 +328,7 @@ On my machine, extracting the weights and constant from the `Function` after tra
 
 ## Parting thoughts
 
-First, I want to re-iterate that the example we went through is not showcasing a good example of where and how to use CNTK. It is intended primarily as an illustration of CNTK's building blocks and how they work together. For a trivial linear regression example like this one (shallow learning, if you will), you would be better served with a standard library such as [Accord.NET(http://accord-framework.net/). CNTK becomes interesting if you have a deeper, more complex model, and a larger dataset - we'll explore this in later posts.
+First, I want to re-iterate that the example we went through is not showcasing a good example of where and how to use CNTK. It is intended primarily as an illustration of CNTK's building blocks and how they work together. For a trivial linear regression example like this one (shallow learning, if you will), you would be better served with a standard library such as [Accord.NET](http://accord-framework.net/). CNTK becomes interesting if you have a deeper, more complex model, and a larger dataset - we'll explore this in later posts.
 
 > As a side-note, my initial intent was to use real batches for the final example, passing in multiple examples at once, but for reasons I couldn't figure out yet, the code kept crashing.
 
