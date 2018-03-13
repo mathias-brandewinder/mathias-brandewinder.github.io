@@ -30,6 +30,32 @@
             ]
         },
         {
+            "host":"F# Paris",
+            "date":"2018-03-26",
+            "city":"Paris",
+            "country":"France",
+            "url":"https://www.meetup.com/Functional-Programming-in-F/events/248674925/",
+            "activities":
+            [
+                {
+                    "description":"Meetup: Deep Learning with CNTK and F#"
+                }
+            ]
+        },
+        {
+            "host":"SFSharp",
+            "date":"2018-01-23",
+            "city":"San Francisco",
+            "country":"California",
+            "url":"https://www.meetup.com/sfsharp/events/246786280/",
+            "activities":
+            [
+                {
+                    "description":"Meetup: Deep Learning with CNTK and F#"
+                }
+            ]
+        },
+        {
             "host":"Trondheim Developer Conference",
             "date":"2017-10-30",
             "until":"2017-11-01",
@@ -51,11 +77,11 @@
             "date":"2017-10-26",
             "city":"Bergen",
             "country":"Norway",
-            "url":"https://www.meetup.com/BitShift/",
+            "url":"https://www.meetup.com/BitShift/events/243455814/",
             "activities":
             [
                 {
-                    "description":"Meetup: TBA"
+                    "description":"Meetup: Machine learning hands-on"
                 }
             ]
         },
