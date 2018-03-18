@@ -2,6 +2,79 @@
     "events":
     [
         {
+            "host":"NDC Oslo",
+            "date":"2018-06-11",
+            "until":"2018-06-15",
+            "city":"Oslo",
+            "country":"Norway",
+            "url":"https://ndcoslo.com/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: TBA"
+                }    
+            ]
+        },
+        {
+            "host":"NDC Minnesota",
+            "date":"2018-05-07",
+            "until":"2018-05-10",
+            "city":"St Paul",
+            "country":"US",
+            "url":"https://ndcminnesota.com/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: Deep Learning with CNTK and F#"
+                }    
+            ]
+        },        
+        {
+            "host":"FSharping",
+            "date":"2018-04-13",
+            "city":"Prague",
+            "country":"Czech",
+            "url":"https://www.meetup.com/FSharping/events/248696970/",
+            "activities":
+            [
+                {
+                    "description":"Meetup: Deep Learning with CNTK and F#"
+                }
+            ]
+        },
+        {
+            "host":"F# |> Vienna",
+            "date":"2018-04-12",
+            "city":"Vienna",
+            "country":"Austria",
+            "url":"https://www.meetup.com/FSharp-Vienna/events/248630143/",
+            "activities":
+            [
+                {
+                    "description":"Meetup: A Gentle Introduction to Machine Learning with F#"
+                }
+            ]
+        },
+        {
+            "host":"F# |> Vienna",
+            "date":"2018-04-11",
+            "city":"Vienna",
+            "country":"Austria",
+            "url":"https://www.meetup.com/FSharp-Vienna/events/248630144/",
+            "activities":
+            [
+                {
+                    "description":"Meetup: Using F# to give your users a Domain Specific Language"
+                }
+            ]
+        },
+        {
             "host":"Avanscoperta",
             "date":"2018-04-09",
             "until":"2018-04-10",
@@ -25,7 +98,7 @@
             "activities":
             [
                 {
-                    "description":"Talk: TBA"
+                    "description":"Talk: Deep Learning with CNTK and F#"
                 }    
             ]
         },
@@ -42,6 +115,22 @@
                 }
             ]
         },
+        {
+            "host":"NDC Copenhagen",
+            "date":"2018-03-14",
+            "until":"2018-03-16",
+            "city":"Copenhagen",
+            "country":"Denmark",
+            "url":"https://cph.ndcmini.com/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },                {
+                    "description":"Talk: Deep Learning with CNTK and F#"
+                }    
+            ]
+        },        
         {
             "host":"SFSharp",
             "date":"2018-01-23",
@@ -71,7 +160,7 @@
                     "description":"Talk: Agile experiments in Machine Learning with F#"
                 }    
             ]
-        },        
+        },
         {
             "host":"BitShift",
             "date":"2017-10-26",
