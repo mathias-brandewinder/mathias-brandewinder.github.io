@@ -77,6 +77,19 @@
         {
             "host":"Avanscoperta",
             "date":"2018-04-09",
+            "city":"Milan",
+            "country":"Italy",
+            "url":"https://www.meetup.com/Avanscoperta-Meetups-Workshops-Courses/events/248884321/",
+            "activities":
+            [
+                {
+                    "description":"Meetup: Deep Learning with CNTK and F#"
+                }
+            ]
+        },
+        {
+            "host":"Avanscoperta",
+            "date":"2018-04-09",
             "until":"2018-04-10",
             "city":"Milan",
             "country":"Italy",
