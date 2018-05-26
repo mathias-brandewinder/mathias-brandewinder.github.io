@@ -6,7 +6,7 @@ tags:
 - Azure-Functions
 - Azure
 - Serverless
-- Script
+- Scripting
 ---
 
 I have been working with Azure Functions quite a bit lately. As a result, with more and more functions to develop and maintain, figuring out what a sane workflow might look like has gained some urgency. This post is not particularly deep, and is intended mainly as notes on things I have been trying out to get a decent local development experience with Azure Functions using F# scripts.

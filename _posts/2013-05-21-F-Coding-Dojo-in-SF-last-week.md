@@ -4,7 +4,7 @@ title: F# Coding Dojo in SF last week
 tags:
 - F#
 - Machine-Learning
-- Dojo
+- Coding-Dojos
 ---
 
 Last week, we had our [first Coding Dojo at SFSharp.org](http://www.meetup.com/sfsharp/events/115207492/), the San Francisco F# group – and it was great! A few people in the group had mentioned that at that point they were already convinced F# was a great language, and that what they wanted was help getting started writing actual code, so I figured this would be a good format to try out. 

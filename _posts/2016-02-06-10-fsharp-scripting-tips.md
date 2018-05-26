@@ -3,7 +3,7 @@ layout: post
 title: 10 Tips for Productive F# Scripting
 tags:
 - F#
-- Script
+- Scripting
 - FSI
 - REPL
 ---

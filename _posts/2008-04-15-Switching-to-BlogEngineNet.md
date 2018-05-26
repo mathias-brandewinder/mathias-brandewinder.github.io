@@ -3,9 +3,9 @@ layout: post
 title: Switching to BlogEngine.Net
 tags:
 - DasBlog
-- Blogengine.Net
+- BlogEngine.Net
 - GoDaddy
-- Blog
+- BlogS
 ---
 
 If you have experienced any weirdness with this blog over the past few days, I apologize - and will have to ask you to please bear with me for a little more: I have just spent part of the week-end switching from DasBlog to

@@ -3,7 +3,7 @@ layout: post
 title: Coming up soon&#58; Silicon Valley CodeCamp 2011
 tags:
 - TDD
-- Codecamp
+- Code-Camp
 - Mocks
 - F#
 - Events

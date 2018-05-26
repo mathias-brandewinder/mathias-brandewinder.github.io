@@ -9,7 +9,7 @@ tags:
 - Markdown
 - SQL
 - Html
-- Script
+- Scripting
 ---
 
 One of the reasons I use F# so much is that it's an awesome scripting language to Get Stuff Done. Case in point: this blog. I recently decided to switch from BlogEngine.NET to Jekyll, which meant porting over nearly 9 years of blog posts (about 300), extracting html-formatted content from SQL and converting it to markdown. After a couple of weeks of manual process, I realized that at the current cadence, it would take me about a year to complete, and that by then I would probably have lost my mind out of boredom. Time for some automation with F# scripts!

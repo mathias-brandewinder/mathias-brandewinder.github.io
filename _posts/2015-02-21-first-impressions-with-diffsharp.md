@@ -3,7 +3,7 @@ layout: post
 title: First impressions with DiffSharp, an F# autodiff library
 tags:
 - F#
-- Autodiff
+- AutoDiff
 - Optimization
 - Gradient
 ---

@@ -6,7 +6,7 @@ tags:
 - REPL
 - F#
 - Add-In
-- Script
+- Scripting
 - Scripting
 - C#
 ---

@@ -4,7 +4,7 @@ title: Order without design
 tags:
 - Simulation
 - Economics
-- Modelling
+- Modeling
 - Order
 - Design
 - Agent

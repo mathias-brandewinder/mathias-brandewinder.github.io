@@ -3,7 +3,7 @@ layout: post
 title: “Summer of F#” Tour
 tags:
 - F#
-- Event
+- Events
 - Road-Trip
 ---
 

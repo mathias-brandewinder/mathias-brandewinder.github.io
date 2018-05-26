@@ -4,7 +4,7 @@ title: Silicon Valley Code Camp material
 tags:
 - Mocks
 - F#
-- Presentation-Material
+- Presentations
 - Moq
 - Rhino.Mocks
 - NSubstitute

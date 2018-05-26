@@ -4,7 +4,7 @@ title: Scripting Excel tests with F#
 tags:
 - F#
 - Excel
-- Script
+- Scripting
 - Testing
 ---
 

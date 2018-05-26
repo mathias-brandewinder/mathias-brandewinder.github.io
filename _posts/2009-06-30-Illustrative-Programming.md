@@ -4,7 +4,7 @@ title: Illustrative Programming
 tags:
 - Excel
 - Languages
-- Modelling
+- Modeling
 - Design
 ---
 

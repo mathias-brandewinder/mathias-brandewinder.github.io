@@ -6,7 +6,7 @@ tags:
 - Machine-Learning
 - F#
 - Classification
-- FsharpChart
+- FSharpChart
 - Normalization
 ---
 

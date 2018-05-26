@@ -8,7 +8,7 @@ tags:
 - Probability
 - Logistic-Regression
 - Sigmoid
-- FsharpChart
+- FSharpChart
 ---
 
 {% include ml-in-action-series.html %}

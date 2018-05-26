@@ -4,7 +4,7 @@ title: Kaggle/StackOverflow contest field notes, part 1
 tags:
 - F#
 - Machine-Learning
-- Stackoverflow
+- StackOverflow
 - Kaggle
 ---
 

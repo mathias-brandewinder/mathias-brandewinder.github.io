@@ -4,7 +4,7 @@ title: FizzBuzz, the hard way
 tags:
 - Task
 - Recursion
-- Fizzbuzz
+- FizzBuzz
 - Continuation
 - C#
 ---

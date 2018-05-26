@@ -8,7 +8,7 @@ tags:
 - Support-Vector-Machine
 - Optimization
 - Classification
-- FsharpChart
+- FSharpChart
 ---
 
 {% include ml-in-action-series.html %}

@@ -8,7 +8,7 @@ tags:
 - Testing
 - Solid
 - Agile
-- OOD
+- OO
 ---
 
 I came across this dialog between [Joel Spolsky](http://www.joelonsoftware.com/) and [Jeff Atwood](http://www.codinghorror.com/blog/) a few days ago, where Joel rails against the SOLID principles. The origin of his ire is a [Hanselminutes](http://www.hanselminutes.com/default.aspx?showID=163) Podcast with [Uncle Bob](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod), to which he reacted with this comment: 

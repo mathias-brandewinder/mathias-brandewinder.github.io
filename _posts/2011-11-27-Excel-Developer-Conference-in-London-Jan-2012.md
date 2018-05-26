@@ -4,7 +4,7 @@ title: Excel Developer Conference in London, Jan 2012
 tags:
 - London
 - Excel
-- ExcelDna
+- ExcelDNA
 - VSTO
 - Events
 - Add-In

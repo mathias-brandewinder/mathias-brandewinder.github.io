@@ -6,7 +6,7 @@ tags:
 - Math
 - Algorithms
 - Optimization
-- Fizzbuzz
+- FizzBuzz
 ---
 A fun problem came my way today. Imagine that you are the owner of a renowned brewery in Bizzarostan, a country where beer is sold only in 7-packs and 13-packs, sometimes described as the ++ packs. Beer is a serious matter in Bizzarostan, and buying single bottles is not tolerated by the law.  
 

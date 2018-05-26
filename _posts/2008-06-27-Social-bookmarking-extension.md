@@ -2,7 +2,7 @@
 layout: post
 title: Social bookmarking extension
 tags:
-- Blogengine.Net
+- BlogEngine.Net
 - Extension
 - Blog
 ---

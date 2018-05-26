@@ -3,7 +3,7 @@ layout: post
 title: Are you more Chimp or Bonobo?
 tags:
 - Risk-Attitude
-- Experiment
+- Experiments
 - Finance
 - Evolution
 ---

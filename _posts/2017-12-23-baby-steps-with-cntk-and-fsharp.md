@@ -6,7 +6,7 @@ tags:
 - Machine-Learning
 - Deep-Learning
 - CNTK
-- Script
+- Scripting
 ---
 
 So what have I been up to lately? Obsessing over [CNTK, the Microsoft deep-learning library][1]. Specifically, the team released a [.NET API][2], which got me interested in exploring how usable this would be from the F# scripting environment. I started a [repository to try out some ideas already][3], but, before diving into that in later posts, I figure I could start by a simple introduction, to set some context.

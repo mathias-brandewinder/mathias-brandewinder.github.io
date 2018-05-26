@@ -5,7 +5,7 @@ tags:
 - Bay.Net
 - .Net-3.5
 - Education-Day
-- Event
+- Events
 ---
 
 Just plugging the next [Bay.Net Education Day](http://www.acteva.com/booking.cfm?bevaID=164561) (which I am organizing), where [Mark Michaelis](http://mark.michaelis.net/blog/) will
