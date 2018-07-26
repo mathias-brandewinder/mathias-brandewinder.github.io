@@ -155,10 +155,21 @@ module Markdown =
 
     let abilities (scores:Scores) =
         [
-            abilities |> List.map (sprintf "%A") |> String.concat " | "
-            abilities |> List.map (fun _ -> ":---:") |> String.concat " | "
-            abilities |> List.map (score scores >> sprintf "%i") |> String.concat " | "
-            abilities |> List.map (modifier scores >> signed) |> String.concat " | "
+            abilities 
+            |> List.map (sprintf "%A") 
+            |> String.concat " | "
+            
+            abilities 
+            |> List.map (fun _ -> ":---:") 
+            |> String.concat " | "
+            
+            abilities 
+            |> List.map (score scores >> sprintf "%i") 
+            |> String.concat " | "
+            
+            abilities 
+            |> List.map (modifier scores >> signed) 
+            |> String.concat " | "
         ]
         |> String.concat "  \n"
 ```
