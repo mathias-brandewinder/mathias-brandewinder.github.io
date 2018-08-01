@@ -21,7 +21,7 @@ Beyond **Hit Points**, dice rolls play a central role in D&D, and show up everyw
 
 ## Dice Rolls
 
-One fun aspect of D&D is its usage of [uncommon dice shapes][2]. Besides the iconic 20-sided dice, dice rolls involve 4, 6, 8, 10 and 12-sided dice.
+One fun aspect of D&D is its usage of [uncommon dice shapes][1]. Besides the iconic 20-sided dice, dice rolls involve 4, 6, 8, 10 and 12-sided dice.
 
 ![20 sided dice]({{ site.url }}/assets/2018-07-31-20-sided-die.jpg)
 _[Source: Scott Ogle / Wikimedia.][2]_
@@ -270,7 +270,8 @@ First, reassuringly, our results match the Monster Manual. This doesn't prove th
 
 Anyways, that's enough adventuring for one day! The current state of affairs described in this post is [here on GitHub][4], let me know if you have questions or comments. Not sure yet what I'll do in the next installment, we'll see where the code leads us :)
 
-[1]: https://commons.wikimedia.org/wiki/File:Dice_in_B%26W.jpg
-[2]: https://en.wikipedia.org/wiki/Dice#Polyhedral_dice
+
+[1]: https://en.wikipedia.org/wiki/Dice#Polyhedral_dice
+[2]: https://commons.wikimedia.org/wiki/File:Dice_in_B%26W.jpg
 [3]: http://media.wizards.com/2016/downloads/DND/PlayerBasicRulesV03.pdf#page=10
 [4]: https://github.com/mathias-brandewinder/MonsterVault/tree/f2a25d444a0a5304788ce1054d7532443b925948
