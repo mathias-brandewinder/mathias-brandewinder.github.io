@@ -227,6 +227,7 @@ goblin |> Markdown.monsterSheet
 ... which produces the following Markdown:
 
 # Goblin  
+
 STR | DEX | CON | INT | WIS | CHA  
 :---: | :---: | :---: | :---: | :---: | :---:  
 8 | 14 | 10 | 10 | 8 | 8  
@@ -306,6 +307,7 @@ _Small Humanoid, neutral evil_
 **Armor Class** 15 (Leather Armor, Shield)  
 **Hit Points** 7 (2d6+0)  
 **Speed** 30 ft.  
+
 STR | DEX | CON | INT | WIS | CHA  
 :---: | :---: | :---: | :---: | :---: | :---:  
 8 | 14 | 10 | 10 | 8 | 8  
