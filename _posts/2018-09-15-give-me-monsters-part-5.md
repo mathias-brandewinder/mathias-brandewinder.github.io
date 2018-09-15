@@ -103,7 +103,7 @@ This is _almost_ correct (or, as less charitable people might put it, it's wrong
 
 ## More Weapons
 
-To answer this, we will need to dig deeper into **Weapons**. Per the PHB pp 146-147, each [**Weapon** can have multiple properties][4] - let's list a few that are directly relevant to attacks:
+To answer this, we will need to dig deeper into **Weapons**. Per the PHB pp 146-147, each [**Weapon** can have multiple properties][5] - let's list a few that are directly relevant to attacks:
 
 - Finesse
 - Heavy
@@ -331,7 +331,7 @@ type AttackGrip =
 
 Two quick comments here. First, while that term doesn't exist in the rules, we included a `Normal` `Handling` category besides `Light` and `Heavy`. A discriminated union is collectively exhaustive and mutually exhaustive: no matter what the situation, we should be in one and only one of the cases. As it turns out, some weapons are neither light nor heavy, and we need to describe them, too. It's not uncommon for people to describe only how an item is unusual, without naming the "normal" case - watch out for this! The other point perhaps worth noting is how we separated `Weapon.Grip` from `AttackGrip`. On the surface, they might appear as one thing (can a weapon be used with one or two hands), but they appear in slighty different contexts, and forcing them into a single representation would force us to handle cases that should not even be possible.
 
-> Side note: if you are wondering how to handle creatures that have more than 2 hands, per this [RPG StackExchange discussion][5], a creature could wield multiple weapons, but is limited to attacking with at most 2 light weapons. That's one complication avoided!
+> Side note: if you are wondering how to handle creatures that have more than 2 hands, per this [RPG StackExchange discussion][6], a creature could wield multiple weapons, but is limited to attacking with at most 2 light weapons. That's one complication avoided!
 
 This is where returning a list of attacks will start paying off, because the same exact weapon could be used to perform 2 different melee attacks - or even 3 in theory, for a **Light** **Versatile** weapon.  
 
@@ -577,7 +577,7 @@ This is _almost_ right. We get the same results as the Monster Manual, except fo
 
 ## Parting Words
 
-I will stop here for today - you can find the [code in current state here][6]. We are not done with weapons and attacks, but this was a bit of a dense post, and I need to do some thinking on where to move from here. 
+I will stop here for today - you can find the [code in current state here][7]. We are not done with weapons and attacks, but this was a bit of a dense post, and I need to do some thinking on where to move from here. 
 
 Besides the issue mentioned above, there are a few challenges ahead. First, some monsters use "natural" attacks, such as **Claws** or **Bite**. This is similar to the natural armor issue we discussed [in the previous post][1]. While some creatures can choose which weapon to use, some others can't - it would make no sense for a bear to drop their claws, and pick up a sword to fight. In other words, some creatures have the ability to carry and use equipment, and some do not. I am not sure how to represent this just yet. 
 
@@ -592,5 +592,5 @@ In other words, we are far from done! As an intermediate goal, I hope to arrive 
 [3]: https://roll20.net/compendium/dnd5e/Black%20Bear 
 [4]: {{ site.url }}/2018/07/31/give-me-monsters-part-3/  
 [5]: http://media.wizards.com/2016/downloads/DND/PlayerBasicRulesV03.pdf#page=45 
-https://rpg.stackexchange.com/questions/85132/what-benefit-would-races-with-extra-hands-have
-[6]: https://github.com/mathias-brandewinder/MonsterVault/tree/3fbda8c51d2e4fbf48feb9a9eb436238e81ec1fc
+[6]: https://rpg.stackexchange.com/questions/85132/what-benefit-would-races-with-extra-hands-have  
+[7]: https://github.com/mathias-brandewinder/MonsterVault/tree/3fbda8c51d2e4fbf48feb9a9eb436238e81ec1fc  
