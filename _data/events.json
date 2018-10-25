@@ -2,6 +2,71 @@
     "events":
     [
         {
+            "host":"Avanscoperta",
+            "date":"2019-04-02",
+            "until":"2019-04-03",
+            "city":"Milan",
+            "country":"Italy",
+            "url":"https://www.avanscoperta.it/en/training/practical-machine-learning-with-functional-programming-workshop/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                }
+            ]
+        },
+        {
+            "host":"NDC Copenhagen",
+            "date":"2019-03-27",
+            "until":"2019-03-29",
+            "city":"Copenhagen",
+            "country":"Denmark",
+            "url":"https://cph.ndcmini.com/speaker/mathias-brandewinder/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: TBA"
+                }    
+            ]
+        },
+        {
+            "host":"NDC Porto",
+            "date":"2019-02-26",
+            "until":"2019-03-01",
+            "city":"Porto",
+            "country":"Portugal",
+            "url":"https://ndcporto.com/speaker/mathias-brandewinder/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: TBA"
+                }    
+            ]
+        },        
+        {
+            "host":"NDC London",
+            "date":"2019-01-28",
+            "until":"2019-02-01",
+            "city":"London",
+            "country":"UK",
+            "url":"https://ndc-london.com/speaker/mathias-brandewinder",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: TBA"
+                }    
+            ]
+        },
+        {
             "host":"NDC Oslo",
             "date":"2018-06-11",
             "until":"2018-06-15",
@@ -14,7 +79,7 @@
                     "description":"Workshop: Practical Machine Learning with Functional Programming"
                 },
                 {
-                    "description":"Talk: TBA"
+                    "description":"Talk: Deep Learning with CNTK and F#"
                 }    
             ]
         },
