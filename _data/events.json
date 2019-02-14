@@ -2,6 +2,51 @@
     "events":
     [
         {
+            "host":"NDC Oslo",
+            "date":"2019-06-06",
+            "until":"2019-06-09",
+            "city":"Oslo",
+            "country":"Norway",
+            "url":"https://ndcoslo.com/speaker/mathias-brandewinder/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                } 
+            ]
+        },
+        {
+            "host":"NDC Minnesota",
+            "date":"2019-05-06",
+            "until":"2019-05-09",
+            "city":"St. Paul",
+            "country":"USA",
+            "url":"https://ndcminnesota.com/speaker/mathias-brandewinder/",
+            "activities":
+            [
+                {
+                    "description":"Workshop: Practical Machine Learning with Functional Programming"
+                },
+                {
+                    "description":"Talk: Dungeons, Dragons & Functions"
+                }    
+            ]
+        },
+        {
+            "host":"F# eXchange",
+            "date":"2019-04-04",
+            "until":"2019-04-05",
+            "city":"London",
+            "country":"UK",
+            "url":"https://skillsmatter.com/conferences/10869-f-sharp-exchange-2019#program",
+            "activities":
+            [
+                {
+                    "description":"Talk: Dungeons, Dragons & Functions"
+                }    
+            ]
+        },
+        {
             "host":"Avanscoperta",
             "date":"2019-04-02",
             "until":"2019-04-03",
