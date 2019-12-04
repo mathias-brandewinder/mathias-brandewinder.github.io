@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Santa&#39; Mailbox
+title: Santa&#39;s Mailbox
 tags:
 - F#
 - fsAdvent
