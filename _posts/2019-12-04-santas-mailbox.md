@@ -25,7 +25,7 @@ type Job = {
 
 <!--more-->
 
-What is the `Value` for? We want something that keeps the ~Elves~ CPUs busy. Not being particularly imaginative today, we will just take that number, and factorize it into its prime factors:
+What is the `Value` for? We want something that keeps the <del>Elves</del> CPUs busy. Not being particularly imaginative today, we will just take that number, and factorize it into its prime factors:
 
 ``` fsharp
 let factorize x = 
@@ -108,11 +108,11 @@ New jobs arriving: 8
 
 This was a lot of setup! But, what is the problem we want to solve here, exactly?
 
-The problem is the following: in our particular example, every 5 seconds, we are getting somewhere between 0 and 10 work items, each taking about 5 seconds to solve. Clearly, if only one ~Elf~ CPU is handling this, we won't be able to keep up. The poor children! What can Mister Claus do here to make sure they get a response back before Christmas is over?
+The problem is the following: in our particular example, every 5 seconds, we are getting somewhere between 0 and 10 work items, each taking about 5 seconds to solve. Clearly, if only one <del>Elf</del> CPU is handling this, we won't be able to keep up. The poor children! What can Mister Claus do here to make sure they get a response back before Christmas is over?
 
 ## Bad Mailbox: A Sad Christmas Story
 
-Mister Claus is no fool, and realizes that, with an average of 5 tasks arriving every 5 seconds, each batch will take nearly half a minute to process. That's no task for a single ~Elf~ CPU, he needs to put many of them to work.
+Mister Claus is no fool, and realizes that, with an average of 5 tasks arriving every 5 seconds, each batch will take nearly half a minute to process. That's no task for a single <del>Elf</del> CPU, he needs to put many of them to work.
 
 To avoid blocking new letters arriving every 5 seconds, we will post them into a `MailboxProcessor`. And, because we are lazy (not the computer sciency type), we will try to process them using `Array.Parallel`:
 
@@ -170,7 +170,7 @@ module Producer =
         loop 0 |> Async.Start
 ```
 
-Santa is optimistic - he deploys the code in production Friday night, and starts running his mailbox, with 4 busy ~Elves~ CPUs at work. Everything looks good, tasks are completed in about 5 seconds each:
+Santa is optimistic - he deploys the code in production Friday night, and starts running his mailbox, with 4 busy CPUs at work. Everything looks good, tasks are completed in about 5 seconds each:
 
 ```
 Started batch 0 job 6
@@ -223,7 +223,7 @@ module Log =
         |> logger.Post
 ```
 
-After some more thinking, Mister Claus realizes that perhaps it is not such a hot idea to start so many parallel maps before the previous batches have been completed. Perhaps some throttling would help? He fires VS Code and Ionide, and rewrites that mailbox:
+After some more thinking, Mister Claus realizes that maybe it is not such a hot idea to start so many parallel maps before the previous batches have been completed. Perhaps some throttling would help? He fires VS Code and Ionide, and rewrites that mailbox:
 
 ``` fsharp
 module Queued = 
@@ -278,7 +278,7 @@ module Queued =
         )
 ```
 
-The mailbox will now run only 4 tasks at the same time at most. When a new `Batch` of jobs arrives, they go into a queue. If less that 4 jobs are currently running, jobs are dequeued and processed, increasing the count of jobs "in flight". When the job is `Completed`, a message is sent back to the mailbox, decreasing the count of jobs currently in flight.
+The mailbox will now run only 4 tasks at the same time at most. When a new `Batch` of jobs arrives, they go into a queue. If less that 4 jobs are currently running, jobs are dequeued and processed, increasing the count of jobs "in flight". When the job is `Completed`, a message is sent back to the mailbox, decreasing the count of jobs currently in flight, and signaling that new jobs can be started.
 
 Mister Claus deploys his updated code, and anxiously looks at the logs:
 
@@ -302,7 +302,7 @@ In hindsight, Mister Claus realizes that this was obvious. If he receives an ave
 You don't get to stay in business for centuries by giving up at the first headwind. Back to the drawing board for Mister Claus! After giving the problem more thought, Mister Claus has a moment of insight: his two initial approaches are the two sides of the same coin. If he wants to run tasks as quickly as possible, some will have to wait in the queue. If he
 wants to process them immediately, then there is a risk of overwhelming the machine by doing too much work at once.
 
-But then, if this is a trade-off, perhaps a compromise is possible? In the end, what matters is not how quickly it takes to run the task itself. What we want is to get as many tasks as possible entirely completed per time interval, _from their arrival in the queue all the way to completion_. 
+But then, if this is a trade-off, perhaps a compromise is possible? In the end, what matters is not how quickly we run the task itself. What we want is to get as many tasks as possible entirely completed per time interval, _from their arrival in the queue all the way to completion_. 
 
 In other words, we want to maximize throughput, which combines two elements:
 - How long does it take to process an individual task, end to end?
@@ -519,11 +519,11 @@ Hooray - with a bit of F#, we rescued Christmas! In and of itself, this is alrea
 
 Beyond that, hopefully you found something interesting in this post! For me, there are two bits of particular interest. First, I thought it would be fun to showcase the mailbox processor, an F# feature that doesn't get too much press. I wish the mailbox processor was a bit easier to us, but even then, it is a nice tool to have in the arsenal. As a side note, I would like to say a big thank you to [Jeremie Chassaing][3], who kindly took the time to show me how to use them some time ago.
 
-Then, perhaps the mechanics behind the self-adjusting mailbox will inspire you! They are a crude adaptation of ideas borrowed from reinforcement learning. In particular, I find the exploration vs. exploitation approach fascinating. It makes intuitive sense that learning requires making random and potentially bad decisions; And yet, I am always a bit surprised to see how such a simple technique can actually work. More generally, there is one thing that I hope came across in this example: machine learning techniques don't have to be complicated, and can be used to solve many problems besides recognizing whether or not there is a hotdog in a picture.
+Then, perhaps the mechanics behind the self-adjusting mailbox will inspire you! They are a very crude adaptation of ideas borrowed from reinforcement learning. In particular, I find the exploration vs. exploitation approach fascinating. It makes intuitive sense that learning requires making random and potentially bad decisions; And yet, I am always a bit surprised to see how such a simple technique can actually work. More generally, there is one thing that I hope came across in this example: machine learning techniques don't have to be complicated, and can be used to solve many problems besides recognizing whether or not there is a hotdog in a picture.
 
 Note also that, while the approach works in our particular example, this isn't a silver bullet. First, if too much work is coming in, no amount of adaptation will save you: Too much to handle is too much to handle. Then, if the complexity of tasks varies a lot, or if there is a large delay when observing throughput, it might take a while for the system to learn a good level of concurrency.
 
-Finally... I am sure both the code and algorithm can be improved! For instance, I noticed that over longer periods of time, the concurrency level seems to have a tendency to keep increasing, even with a low number of tasks in flight. So, I would love to hear your thoughts or suggestions! The complete code for the final example is [available here as a gist][4]. And, if there is enough interest in the idea, I'd be open to try and turn it into a library?
+Finally... I am sure both the code and algorithm can be improved! For instance, I noticed that over longer periods of time, the concurrency level seems to have a tendency to keep increasing, even with a low number of tasks in flight; a mechanism should probably be added to handle that. So, I would love to hear your thoughts or suggestions! The complete code for the final example is [available here as a gist][4]. And, if there is enough interest in the idea, I'd be open to try and turn it into a library?
 
 That's it for now! In the meanwhile, enjoy the Holidays, and until then, keep your eyes out for the other posts in the [F# Advent Calendar 2019][1]!
 
