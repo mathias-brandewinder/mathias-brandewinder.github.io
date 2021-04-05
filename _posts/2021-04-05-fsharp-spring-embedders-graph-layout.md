@@ -16,6 +16,8 @@ Before diving into the code, as a teaser, here is how the result looks like at t
 
 ![Graph layout of Dosvol factions]({{ site.url }}/assets/2021-04-05-doskvol-network.PNG)
 
+Or you can try it live [here][4].
+
 I can search for entries, select them, and as I do, the relationships between them is added to the graph, automatically highlighting existing connections.
 
 ## Graph Layout with Spring Embedders
@@ -31,22 +33,22 @@ What we want is a representation where:
 - entities that are connected appear close to each other,
 - nodes are nicely spread out.
 
-A classic technique to solve this problem is called spring embedders. If you want a great and fairly accessible overview of the topic, I recommend reading ["Spring Embedders and Force Directed Graph Drawing Algorithms, by Stephen G. Kobourov"][2]. In a nutshell, the idea is to add physical forces such as springs between connected nodes, to represent the tensions that exist in the network, and let them play out until the system reaches some equilibrium.
+A classic technique to solve this problem is called spring embedders. If you want a great and fairly accessible overview of the topic, I recommend reading ["Spring Embedders and Force Directed Graph Drawing Algorithms", by Stephen G. Kobourov][2]. In a nutshell, the idea is to add physical forces such as springs between connected nodes, to represent the tensions that exist in the network, and let them play out until the system reaches some equilibrium.
 
 The chart below, taken from the [same article mentioned above][2], illustrates the idea. We place the nodes randomly on the chart, and add springs between the nodes that are connected. Springs will pull together nodes that are too far apart, and push away nodes that are too close to each other. If we let the springs progressively adjust, we should end up with a balanced layout like this one:
 
 ![Spring Embedders]({{ site.url }}/assets/2021-04-05-generic-spring-embedder.png)
 
-The algorithm I ended up implementing and using is the second one in the article, the Fruchterman-Reingold algorithm, with a slight modification (more on this later). In this version, instead of springs, the 2 forces at play in the graph are:
+The algorithm I ended up using is the second one in the article, the Fruchterman-Reingold algorithm, with a slight modification (more on this later). In this version, instead of springs, the 2 forces at play in the graph are:
 
-- a repulsion force, which pushes every pair of nodes away from each other, and gets stronger as nodes get closer to each other,
+- a repulsion force, which pushes every pair of nodes away from each other, and gets weaker as nodes get further apart from each other,
 - an attraction force between connected nodes, similar to an elastic band, pulling them towards each other.
 
 I implemented the SPRING algorithm as well (the first one presented in the article), but I got better results with Fruchterman-Reingold, which I will focus on here. You can find the full implementation in the [Calder repository][3].
 
 ## Implementation: Forces
 
-At the heart of the algorithm, we have nodes that are in a certain position, and forces that apply to them, pushing or pulling them into a direction. Let's start by modelling that.
+At the heart of the algorithm, we have nodes that are located in a certain position, and forces that apply to them, pushing or pulling them into a direction. Let's start by modelling that.
 
 We can represent a position by coordinates X and Y, like this:
 
@@ -90,7 +92,7 @@ type Direction = {
         |> sqrt
 ```
 
-Thanks to the infix operators, we can now do this like this:
+Thanks to the infix operators, we can now do things like this:
 
 ``` fsharp
 let dir1 = { DX = 0.0; DY = 1.0 }
@@ -99,7 +101,7 @@ let total = dir1 + 2.0 * dir2
 total.Length // float = 3.605551275
 ```
 
-We added the `Zero` property, so we can safely do things like summing up list of directions, and handle the case of an empty list.
+We added the `Zero` property, so we can safely do things like summing up list of directions, and gracefully handle the case of an empty list.
 
 In a similar fashion, we can expand `Point` a little like this:
 
@@ -126,7 +128,7 @@ type Force =
 
 The idea here is that I want to apply a force to a `Point`, the target, from a particular origin, another `Point`. The result should be a `Direction`, describing where that force pushes or pulls, and how strongly (the length of the direction).
 
-Let's apply this to our example, the Fruchterman-Reingold algorithm. Two nodes that are connected attract each other, by a force `fa(d) = d^2`, proportional to the square of their distance `d`. That is easy enough to implement, using object expressions:
+Let's apply this to the Fruchterman-Reingold algorithm. Two nodes that are connected attract each other, by a force `fa(d) = d^2`, proportional to the square of their distance `d`. That is easy enough to implement, using object expressions:
 
 ``` fsharp
 let attraction = {
@@ -139,7 +141,7 @@ let attraction = {
     }
 ```
 
-Let's illustrate on a simple example, where `p1` and `p2` are supposed to be connected:
+Let's illustrate on a simple example, where `p1` and `p2` are two connected nodes:
 
 ``` fsharp
 let p1 = { X = 0.0; Y = 0.0 }
@@ -166,14 +168,14 @@ p2 |> attraction.applyFrom p1
 val it : Direction = { DX = -5.0; DY = -10.0 }
 ```
 
-In other words, `p1` and `p2` exerce opposite but equal forces on each other, pulling each node in the direction of the other. The `repulsion` force is quite similar, so we won't go into further details. You can find the corresponding code in the `Auto.fs` file.
+In other words, `p1` and `p2` exert opposite but equal forces on each other, pulling the nodes towards each other. The `repulsion` force is quite similar, so we won't go into further details. You can find the corresponding code in the `Auto.fs` file.
 
 ## Implementation: Graph and Layout
 
 Now that we have a model for the physics of forces, we need a graph to apply them to. I ended up separating things into 3 parts:
 
 - a `Graph` is simply a collection of nodes and edges,
-- a `ForceGraph` is a graph, where each node and each has forces attached,
+- a `ForceGraph` is a graph where each node and edges has forces attached,
 - a `Layout` is the current position of every node of a `Graph`.
 
 The `Graph` type is pretty straightforward, it is a set of nodes (of generic type `'Node`), and edges:
@@ -193,7 +195,7 @@ type Graph<'Node when 'Node: comparison> = {
         { graph with Edges = graph.Edges |> Set.add edge }
 ```
 
-I went back and forth with `Edges`, but landed on this:
+I went back and forth with `Edges`, and landed on this:
 
 ``` fsharp
 type Edge<'Node when 'Node: comparison> =
@@ -207,9 +209,15 @@ type Edge<'Node when 'Node: comparison> =
     member this.Node2 = match this with | Edge (_, node2) -> node2
 ```
 
-The issue I was trying to avoid here is that an edge between `Node1` and `Node2` is the same as the edge between `Node2` and `Node1` (we assume an undirected graph here). Representing an `Edge` as, for instance, a record with 2 nodes would force us to check both possible positions of the nodes to see if 2 edges are equal. Here, we hide the internals of the `Edge`, and guarantee that 2 nodes will always be stored in the same position: the only way to instantiate an edge is by calling the factory method `create`, where we ensure they are ordered consistently.
+The issue I was trying to avoid here is that an edge between `Node1` and `Node2` is the same as the edge between `Node2` and `Node1` (we assume an undirected graph here). Representing an `Edge` as, for instance, a record with 2 nodes would force us to check both possible positions of the nodes to see if 2 edges are equal. Here, we hide the internals of the `Edge`, and guarantee that 2 nodes will always be stored in the same position: the only way to instantiate an edge is by calling the factory method `create`, where we ensure they are ordered consistently:
 
-The `ForceGraph` type is simply an extension of this, reorganizing the information so we can quickly do things like retrieve all the forces that apply on a particular node:
+``` fsharp
+let edge1 = Edge.create (1, 2)
+let edge2 = Edge.create (2, 1)
+edge1 = edge2 // true
+```
+
+The `ForceGraph` type is simply an extension of this, reorganizing the information so we can quickly retrieve all the forces that apply on a particular node:
 
 ``` fsharp
 type ForceGraph<'Node when 'Node: comparison> = {
@@ -288,7 +296,7 @@ Graph.empty ()
 
 I'll leave it at that for today, with two parting comments.
 
-If you look at the implementation of `ForceGraph`, you will see that it is slightly different from what I presented above, with an additional field, `Center`:
+First, if you look at the implementation of `ForceGraph`, you will see that it is slightly different from what I presented above, with an additional field, `Center`:
 
 ``` fsharp
 type ForceGraph<'Node when 'Node: comparison> = {
@@ -298,13 +306,14 @@ type ForceGraph<'Node when 'Node: comparison> = {
     }
 ```
 
-What is that about? The short version of it is, I realized at some point that the Fruchterman-Reingold layout algorithm was producing pretty bad results when the graph was disjoint (that is, some sub-graphs had no connections to others). It makes total sense given the algorithm: a node without any connection will be pushed away without any force keeping it close to the rest. To address that issue, I ended up adding an (optional) central force, which can pull all nodes towards the center of gravity of the layout.
+What is that about? The short version of it is, I realized at some point that the Fruchterman-Reingold layout algorithm was producing pretty bad results when the graph was disjoint (that is, some sub-graphs had no connections to others). It makes total sense given the algorithm: a node without any connection will be pushed away without any attraction force keeping it close to the rest. To address that issue, I ended up adding an (optional) central force, which pulls all nodes towards the center of gravity of the layout.
 
-The second comment is that I keep being impressed by Fable. I am very incompetent in all things web related, and was expecting my code to perhaps cause issues when used in a Fable Elmish app. Turns out, everything worked just as advertised.
+The second comment is that I keep being impressed by Fable. I am very incompetent in all things web related, and was expecting my code to perhaps cause issues when used in a Fable Elmish app. Turns out, everything worked just as advertised. My F# code compiled without complaints, and... I was surprised at how fast everything ran.
 
-Anyways, that's it for today! Hope you found something of interest in this post, [the whole code is on github][3] in case you are curious. And... let me know if you have questions or comments, and stay safe out there!
+Anyways, that's it for today, hope you found something of interest in this post! [The whole code is on github][3] in case you are curious, and... let me know if you have questions or comments, and stay safe out there!
 
 
 [1]: https://bladesinthedark.com/
 [2]: https://arxiv.org/abs/1201.3011
 [3]: https://github.com/mathias-brandewinder/calder
+[4]: https://archipendulum.com/doskvol/
