@@ -168,9 +168,9 @@ I added a few more attributes, which illustrate some interesting points:
 
 ... which can then be used in Discord like so:
 
-![Bardic inspiration in action]({{ site.url }}/assets/2021-10-30-command-help.png)
+![Command help]({{ site.url }}/assets/2021-10-30-command-help.png)
 
-Note also in the method signature how `user` is a `DiscordMember`. `DSharpPlus` will use that information to try and parse the argument into a user for use.
+Note also in the method signature how `user` is a `DiscordMember`. `DSharpPlus` will use that information to try and parse the command argument directly into a user for us.
 
 ## From Async to Task
 
