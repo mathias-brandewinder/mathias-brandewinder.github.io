@@ -359,5 +359,5 @@ That is what I got today! I realize that this post might be a bit of a hodge-pod
 [2]: https://plotly.com/
 [3]: https://plotly.net/
 [4]: https://twitter.com/kmutagene
-[5]: https://archive.ics.uci.edu/ml/datasets/wine
+[5]: https://archive.ics.uci.edu/ml/datasets/wine+quality
 [6]: https://twitter.com/brandewinder
