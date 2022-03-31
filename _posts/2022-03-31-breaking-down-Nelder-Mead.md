@@ -6,6 +6,7 @@ tags:
 - Algorithms
 - Optimization
 - Machine-Learning
+use_math: true
 ---
 
 The [Nelder-Mead algorithm][1] is a classic numerical method for function minimization. 
