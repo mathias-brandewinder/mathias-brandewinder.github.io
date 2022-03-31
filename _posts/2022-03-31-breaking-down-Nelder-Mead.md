@@ -6,7 +6,6 @@ tags:
 - Algorithms
 - Optimization
 - Machine-Learning
-use_math: true
 ---
 
 The [Nelder-Mead algorithm][1] is a classic numerical method for function minimization. 
@@ -293,7 +292,7 @@ let solve (tolerance: float) (dim: int, f: float [] -> float) (start: float []) 
 
 Let's try out a few simple 1 dimension examples first. 
 
-The function $f(x) = x^2$ has a minimum at `0.0`. Let's set the tolerance to `0.000,001` 
+The function `f(x) = x^2` has a minimum at `0.0`. Let's set the tolerance to `0.000,001` 
 and see what happens, starting with an initial guess of `100.0`.
 
 ``` fsharp
@@ -312,14 +311,14 @@ solve tolerance (1, fun x -> pown x[0] 2) [| 100.0 |]
 
 In about 30 iterations, we have a good solution approximation.
 
-Let's try $f(x) = cos(x)$ next, starting at `0.0`:
+Let's try `f(x) = cos(x)` next, starting at `0.0`:
 
 ``` fsharp
 solve tolerance (1, fun x -> cos x[0]) [| 0.0 |]
 ```
 
 In about 30 iterations, we have a solution, `3.141963005`, which is pretty close 
-to the correct answer, $\pi$:
+to the correct answer, `Pi`:
 
 ```
 [|1.0|]: 0.5403
@@ -397,7 +396,7 @@ I tried my best to focus on a direct, literal transcription of the algorithm, wi
 making any effort at optimization or style. I will probably take a stab at improving it 
 in a follow up post. In no particular order, here is a list of things that could be improved:
 
-- Extract the reflection parameters $\alpha, \gamma, \rho, \sigma$,
+- Extract the reflection parameters `Alpha, Gamma, Rho, Sigma`,
 - Turn all 4 reflections into a single function,
 - Avoid un-necessary function evaluations,
 - Try to avoid un-necessary sorting of the simplex candidates,
