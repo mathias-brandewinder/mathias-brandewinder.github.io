@@ -19,7 +19,7 @@ you get gradient descent, a cornerstone of machine learning, for free.
 
 DiffSharp has been around for a while, but has undergone a major overhaul in the recent months. I hadn't had 
 time to check it out until now, but a project I am currently working on gave me a great excuse to look into these 
-changes. This post will likely extpand into more, and is intended as an exploration, trying to figure out 
+changes. This post will likely expand into more, and is intended as an exploration, trying to figure out 
 how to use the library. As such, my code samples will likely be flawed, and should not be taken as guidance. 
 This is me, getting my hands on a powerful and complex tool and playing with it!
 
@@ -35,7 +35,7 @@ Environment: dotnet 6.0.302 / Windows 10, DiffSharp 1.0.7
 
 ## An unfair coin
 
-Let's consider a coin, which, when tossed in the air, will land sometimes heads, sometimes tails. Imagine 
+Let's consider a coin, which, when tossed in the air, will land sometimes Heads, sometimes Tails. Imagine 
 that our coin is unbalanced, and tends to land more often than not on Heads, 65% of the time:  
 
 ``` fsharp
@@ -260,8 +260,7 @@ Let's do this, and use DiffSharp at last. All we need to do here is express the 
 function in a way that DiffSharp can work with. If we have that, then we can let it do the heavy 
 lifting and compute the derivatives for us.
 
->>> 
-Note: this part is mostly lifted from the [differentiable programming DiffSharp code sample][4]. 
+> Note: this part is mostly lifted from the [differentiable programming DiffSharp code sample][4]. 
 I took the sample, and tried to remove as much as I could to figure out what was happening.  
 
 First, let's load DiffSharp in our scripting environment:
@@ -276,8 +275,10 @@ The first element will be to create a function that we can differentiate, and us
 a log likelihood. This is what I ended up doing:
 
 ``` fsharp
-let differentiable (parameters: seq<Parameter>) (f: 'Input -> 'Output) =
-    Model<'Input, 'Output>.create [] parameters [] f
+let differentiable 
+    (parameters: seq<Parameter>)
+    (f: 'Input -> 'Output) =
+        Model<'Input, 'Output>.create [] parameters [] f
 
 let probabilityModel () =
     let init = { ProbabilityHeads = 0.5 }
@@ -345,10 +346,14 @@ let maximizeLikelihood (config: Config) sample (density: Model<_,_>) =
         evaluation.reverse()
         // update the parameters of density
         let p = density.parametersVector
-        density.parametersVector <- p.primal + config.LearningRate * p.derivative
+        density.parametersVector 
+            <- p.primal + config.LearningRate * p.derivative
         printfn $"Iteration {iteration}: Log Likelihood {evaluation}, Parameters {p}, Updated: {density.parametersVector}"
         // stop iterating, or keep going
-        if dsharp.norm p.derivative < tolerance || iteration >= config.MaximumIterations
+        if 
+            dsharp.norm p.derivative < tolerance 
+            || 
+            iteration >= config.MaximumIterations
         then density.parametersVector
         else learn (iteration + 1)
     learn 1
@@ -370,9 +375,9 @@ The recursive `learn` function is where Dark Magic happens. What I _think_ is ha
 along these lines. `density.reverseDiff()` declares that the `density` model is now open 
 to accept updates. We compute `evaluation` using `logLikelihood` and the current model, 
 and (with a lot of hand-waving), `evaluation.reverse()` propagates back the relevant partial 
-derivatives information to the parameters of density, our model.
+derivatives information to the parameters of `density`, our model.
 
-The next line is a direct statement of gradient update: we replace the values of the model parameters, 
+The next line is a direct implementation of gradient update: we replace the values of the model parameters, 
 by their current value (primal), plus a small step (the learning rate) towards the derivatives:
 
 ``` fsharp
@@ -412,10 +417,10 @@ The gradient update stops after 5 iterations, with an estimate of `p = tensor([0
 
 This is where I will stop for today. As is probably clear from my comments in the DiffSharp part, 
 I will need to do some more digging. However, with some heavy hand-waving... we did a thing! 
-And the thing worked! And all in all, it was fairly easy to get things working.
+And the thing worked! And all in all, it was fairly easy to get it working.
 
 For the next installment, I plan to expand on what we did here, but on a "real" problem, survival 
-analysis, where computing the log likelihood and its gradient are tricky.
+analysis, where computing the log likelihood and its gradient are much trickier.
 
 In the meantime, here are a few thoughts early in this journey:
 
