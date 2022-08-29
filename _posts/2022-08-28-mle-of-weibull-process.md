@@ -57,7 +57,7 @@ replacement to its next failure. A classic distribution used to model time to fa
 
 The Weibull distribution is not the only option available, but it has interesting properties. 
 It is a continuous probability distribution, over positive numbers, and is defined by 2 parameters, 
-one describing its shape, `k`, the other its scale, `lambda`. It . Let's examine these properties, 
+one describing its shape, `k`, the other its scale, `lambda`. Let's examine these properties, 
 through an F# code implementation:
 
 ``` fsharp
@@ -156,7 +156,7 @@ problem using grid search.
 
 What we are trying to do here is to find the parameters `k` and `lambda` of a Weibull distribution 
 that are the most likely to have generated a log of failures. In other words, we take as given that 
-the underlying process **is** Weibull distribution, and want to find the parameters that would fit 
+the underlying process **is** a Weibull distribution, and want to find the parameters that would fit 
 the data best.
 
 First, we need to transform the log a little. The original log example showed failures and their timestamp. 
@@ -166,7 +166,7 @@ that transformation, which leaves us with a "tape" of time spans between consecu
 In order to validate that our approach works, we need some benchmark. Again, we will use simulation: 
 we will take a Weibull distribution, with set parameters, and use it to simulate a sequence of failures. 
 As a result, we will be able to check how far off our estimates are from the true values of the parameters 
-that actually generate that sample.  
+that actually generated that sample.  
 
 First, let's simulate a tape:
 
@@ -198,8 +198,8 @@ For illustration, the first 5 results of that simulation look like this:
 What this tape represents is a first failure after 0.9405 units of time, followed by another 
 after 1.1146 units of time, and so on and so forth.
 
-We can now write a grid search for the parameters `k` and `lambda` that maximize the log-likelihood, 
-like so:
+We can now write a grid search over the combination of parameters `k` and `lambda` that 
+maximizes the log-likelihood, like so:
 
 ``` fsharp
 [
@@ -218,7 +218,7 @@ like so:
 We search for all combinations of `k` and `lambda` between `0.1` and `2.0`, by increments of `0.1`. For 
 each combination, we create the corresponding Weibull, and compute the log likelihood that this particular 
 distribution has generated the sample observations (the sum of the logarithms of the corresponding 
-density), and return the combination that gives us the largest log likelihood.
+Weibull density), and return the combination that gives us the largest log likelihood.
 
 In this example, we get `lambda = 0.9, k = 1.6`, which is decently close to the true parameters we used 
 to generate the sample, `lambda = 0.8, k = 1.6`. In other words, the method seems to work.
@@ -228,8 +228,9 @@ to generate the sample, `lambda = 0.8, k = 1.6`. In other words, the method seem
 Grid seach has the benefit of simplicity, but has also drawbacks. First, as mentioned in the 
 [previous post][3], the space of combinations we need to explore grows fast with the number of parameters. 
 In this case, we are exploring 20 values per parameter, or 20 x 20 = 400 combinations for 2 parameters. 
+If we were interested in `n` parameters, we would have to generate `20 ^ n` combinations, which is not ideal. 
 Furthermore, we capped the search at a maximum value of `2.0` - but in general, `k` or `lambda` could 
-take any value, and if these happened to be higher than `2.0`, we would miss them.
+take any positive value, and if these happened to be higher than `2.0`, we would miss them.
 
 Let's use automatic differentiation with DiffSharp instead! We will follow more or less the same path as 
 in the previous post, creating the log-likelihood function in F#, and using gradient ascent to find its 
@@ -339,8 +340,8 @@ complex one was actually very straightforward. The only work required was to exp
 Weibull density function as a DiffSharp function, which was not difficult at all. For that 
 matter, it seems that it should be possible to make the code more easily re-usable. All we 
 need for Maximum Likelihood Estimation is a density function, which can be applied to the 
-sample observations, so if we had a sample like `seq<'Obs>`, the density should be of form 
-`Model<'Obs, float>` (where the float is a probability).
+sample observations, so if we had a sample like `seq<'Obs>`, the density should be constrained 
+to be of the form `Model<'Obs, float>` (where the float is a probability).
 
 Next time, we will keep exploring reliability problems, taking on a more complex situation: 
 what if instead of a single source of failure, we had multiple competing ones?
