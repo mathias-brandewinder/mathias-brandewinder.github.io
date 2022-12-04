@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Elves Factory
+title: Simulating the Wrapinator 5000
 tags:
 - F#
 - Algorithms
@@ -8,6 +8,7 @@ tags:
 - Machine-Learning
 - AutoDiff
 - Maximum-Likelihood
+- Simulation
 - fsAdvent
 ---
 
