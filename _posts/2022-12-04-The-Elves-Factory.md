@@ -8,7 +8,7 @@ tags:
 - Machine-Learning
 - AutoDiff
 - Maximum-Likelihood
-- Reliability
+- fsAdvent
 ---
 
 <script>
@@ -254,6 +254,10 @@ reasonable, because to observe a failure of the Ribbon Feeder that happens after
 we need that failure to take that much time, and we also need the Paper Feeder to take 
 even more time than the Ribbon Feeder to fail.  
 
+> Note: that histogram presents another oddity. The curve looks like a triangle, 
+except for the first bin, where we observe very few failures. I am not entirely 
+sure what is going on there, I suspect it is a binning artifact.  
+
 Mister Claus frowns again. If the logs do not look anything like the distribution 
 that generated each incident, how is he going to estimate these distributions?  
 
@@ -474,7 +478,7 @@ Let's denote these 2 distributions as
 
 ```
 Ribbon: Weibull_0 (k_0, lambda_0)
-Paper: Weibull_1 (k_0, lambda_1)
+Paper: Weibull_1 (k_1, lambda_1)
 ```
 
 The cause of `failure 42` was `1`, that is, the `Paper` failed, after `45 minutes`. 
@@ -501,7 +505,7 @@ event that did NOT occur.
 Armed with this, we can now compute the likelihood of observing a particular event `i` 
 in the tape, with a time to failure `t`:  
 
-$Likelihood(i,t) = PDF_i(t) * \prod_{j \neq i}{(1-CDF_j(t))}$
+$Likelihood(i,t) = PDF_i(t) \times \prod_{j \neq i}{(1-CDF_j(t))}$
 
 Armed with this, we can now determine the likelihood of observing a particular failure in 
 our sample. All we need to do is plug in the formula for the corresponding PFD and CDF 
@@ -524,7 +528,7 @@ observation_n: cause_n = 0, time_n = 27
 
 Then the likelihood of observing that tape (given $k_0, lambda_0$ and $k_1, lambda_1$) will be  
 
-$Likelihood(tape) = Likelihood(observation_1)*Likelihood(observation_2)*...*Likelihood(observation_n)$
+$Likelihood(tape)=Likelihood(observation_1) \times Likelihood(observation_2)  \times ...  \times Likelihood(observation_n)$
 
 The beauty here is that we have now a function, the `Likelihood`, which allows us to quantify how 
 likely it is that a particular set of values $k_0, lambda_0$ and $k_1, lambda_1$ would have 
@@ -545,13 +549,13 @@ Let's dig a bit deeper here, and inspect $ln(Likelihood(observation))$:
 
 $ln(Likelihood(observation=i,t))=ln(PDF_i(t) * \prod_{j \neq i}{(1-CDF_j(t))})$
 
-Again, we are dealing with a product, and because $ln(a*b)=ln(a)+ln(b)$, we can transform this into a sum:  
+Again, we are dealing with a product, and because $ln(a \times b)=ln(a)+ln(b)$, we can transform this into a sum:  
 
 $ln(Likelihood(observation=i,t))=ln(PDF_i(t)) + \sum_{j \neq i}{ln(1-CDF_j(t))})$
 
 Why do we care? We care, because this makes our maximization problem separable. If we consider 
 for instance $k_0, lambda_0$, these 2 arguments will appear only in one PDF or CDF term, 
-and the rest of the expression will be a constant wrt to $k_0, lambda_0$.  
+and the rest of the expression will be a constant with respect to $k_0, lambda_0$.  
 
 Practically, what this means is that we can simplify our maximization problem. Instead of maximizing 
 one complicated function of 4 arguments $k_0, lambda_0$ and $k_1, lambda_1$, we can maximize 
@@ -670,7 +674,7 @@ This is what we will do here.
 
 I won't cover that part in detail, because I went through something 
 similar in [this post][3]. You can find the whole 
-[code performing the MLE using gradient descent][7]. 
+[code performing the MLE using gradient descent here][7]. 
 
 How does it work when we run that code against our tape? Let's check:  
 
@@ -733,7 +737,7 @@ fairly little code to make it all work.
 On the probability front, I was quite surprised when I realized that the problem was 
 separable. The result is interesting to me, for 2 reasons. First, we end up using the 
 full tape of failures for every event. Even when we do not observe the event type we care 
-about, that contains usable information, because we know that the event in question did 
+about, we have usable information, because we know that the event in question did 
 not "win the race". Then, fundamentally the log likelihood for each distribution depends 
 only on the PDF and CDF for that distribution, and nothing else. As an interesting result, 
 the approach can be generalized to any mixture of distributions, as long as we have 
@@ -742,7 +746,7 @@ a PDF and CDF for it.
 As a side-note, shout out to the awesome F# crew at [Simulation Dynamics][11]. 
 Many of the ideas presented in this post emerged from discussions with them :)  
 
-Anyways, I hope that you got something out of it. And if you have questions or comments, 
+Anyways, I hope that you got something out of this post. If you have questions or comments, 
 hit me up on [Twitter][9] or [Mastodon][10]. In the meantime, have fun coding, be nice 
 to each other, and wish you all wonderful holidays!  
 
