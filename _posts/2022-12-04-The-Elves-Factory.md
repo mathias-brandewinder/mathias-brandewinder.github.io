@@ -9,6 +9,7 @@ tags:
 - AutoDiff
 - Maximum-Likelihood
 - Reliability
+use_math: true
 ---
 
 > It is that time of the year again! The holidays are approaching, and the [F# Advent 
