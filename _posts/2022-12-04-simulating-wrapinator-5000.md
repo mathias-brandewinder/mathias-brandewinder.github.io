@@ -10,18 +10,8 @@ tags:
 - Maximum-Likelihood
 - Simulation
 - fsAdvent
+use_math: true
 ---
-
-<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  }
-};
-</script>
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-</script>
 
 > It is that time of the year again! The holidays are approaching, and the [F# Advent 
 calendar][1] is in full swing. My contribution this year might not be for the broadest 
