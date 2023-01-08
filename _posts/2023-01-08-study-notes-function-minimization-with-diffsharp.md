@@ -27,7 +27,7 @@ The full code is [here on GitHub][1], available as a .NET interactive notebook.
 
 The function we will be using in our exploration is the following:
 
-$$f(x,y)=0.26 \times (x^2+y^2) - 0.48 \times (x \times y)$$
+$f(x,y)=0.26 \times (x^2+y^2) - 0.48 \times (x \times y)$
 
 This function, which I lifted this function from [this blog post][5], 
 translates into this F# code:  
