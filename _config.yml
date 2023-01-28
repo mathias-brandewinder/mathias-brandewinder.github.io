@@ -6,9 +6,9 @@ highlighter:      rouge
 permalink:        pretty
 
 # Setup
-title:            ''
-tagline:          'Mathias Brandewinder blog'
-description:      'Figuring things out, one model at a time.'
+title:            'Mathias Brandewinder blog'
+tagline:          'Figuring things out, one model at a time.'
+description:      'Mathias Brandewinder blog, mainly about software development and numeric analysis'
 url:              https://mathias-brandewinder.github.io/
 baseurl:          https://mathias-brandewinder.github.io/
 
@@ -24,3 +24,6 @@ version:          2.1.0
 
 github:
   repo:           https://github.com/mathias-brandewinder/mathias-brandewinder.github.io/
+
+plugins:
+  - jekyll-feed
