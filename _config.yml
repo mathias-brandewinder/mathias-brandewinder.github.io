@@ -20,7 +20,7 @@ paginate:         5
 excerpt_separator: <!--more-->
 
 # Custom vars
-version:          2.1.0
+version:          3.9.2
 
 github:
   repo:           https://github.com/mathias-brandewinder/mathias-brandewinder.github.io/
