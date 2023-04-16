@@ -26,7 +26,9 @@ open Quipu.NelderMead
 
 let f x = x ** 2.0
 let solution =
-    NelderMead.solve Configuration.defaultValue (Objective.from f) [ 100.0 ]
+    NelderMead.solve 
+        Configuration.defaultValue
+        (Objective.from f) [ 100.0 ]
 printfn $"{solution}"
 ```
 
@@ -76,7 +78,7 @@ This is closer, and the minimum value, `6.663e-8`, is within `0.000_0001`, or
 While we are discussing caveats, Nelder-Mead is not guaranteed to find the 
 global minimum. It might give you a local minimum only.  
 
-So what would happen if we gave the solve a function that does not have a 
+So what would happen if we gave the solver a function that does not have a 
 minimum, like `f(x) = x`?
 
 ``` fsharp
@@ -90,6 +92,9 @@ printfn $"{solution}"
 ```
 Unbounded
 ```
+
+The solver returns `Unbounded` as a solution, that is, the problem has no 
+minimum.  
 
 In circumstances where abnormal situations are encountered (for instance, `nan` 
 value during the search), the solver will return `Abnormal`, with the values 
@@ -140,7 +145,7 @@ Optimal
 
 And... that's what I got at the moment! It is version `0.1.0` for a reason: it 
 works on my machine, for the problem I needed it for. There is obviously quite 
-a bit that can be improved around usability, too. So your mileage may vary, tut 
+a bit that can be improved around usability, too. So your mileage may vary, but 
 it was useful to me, so I figured I would share!  
 
 If you have comments or questions, hit me up on [Mastodon][5]!
