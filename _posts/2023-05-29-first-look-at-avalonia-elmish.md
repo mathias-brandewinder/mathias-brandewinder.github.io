@@ -417,7 +417,7 @@ Big shout-out to [Josua Jäger](https://mastodon.social/@josua_jaeger),
 [Angel Munoz](https://misskey.cloud/@angelmunoz) for the really nice work on 
 this library, and the samples, which were super helpful in getting started!  
 
-If you have comments or questions, hit me up on [Mastodon][5]!
+If you have comments or questions, hit me up on [Mastodon][9]!
 
 > You can find the [full code here on GitHub][8]
 
