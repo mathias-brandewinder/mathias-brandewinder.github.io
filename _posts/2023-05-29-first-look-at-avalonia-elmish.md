@@ -399,8 +399,8 @@ That is where I will leave it for today.
 
 My experience so far with Avalonia funcUI has been very pleasant. Based on what 
 I have seen so far, I will definitely keep investigating. I love the Elmish / 
-MVU UI model, and it was pretty easy to go from what I knew - Elmish with Fable 
-- to Avalonia.  
+MVU UI model, and it was pretty easy to go from what I knew, Elmish with Fable, 
+to Avalonia.  
 
 I really wanted to check how difficult it would be to wrap an existing library 
 in the DSL, and it was not too complicated overall, the docs provide plenty of 
