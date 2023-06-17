@@ -216,9 +216,9 @@ what happens:
 
 I am not an expert on profiling, but my sense from what I am seeing here is 
 that rendering is dying under pressure. What jumps out to me from a casual 
-inspection is: half the time spent in lock contention and UI freeze, the 
-method `Avalonia.Rendering.DeferredRenderer.Render()`, and to a lesser extent 
-`DrawPath`, `CreatePaint`, `DrawGeometry`.  
+inspection is: half the time spent in lock contention, and there is a whole lot 
+of UI freeze, and calls to `Avalonia.Rendering.DeferredRenderer.Render()`, and 
+to a lesser extent `DrawPath`, `CreatePaint`, `DrawGeometry`.  
 
 So... what next?
 
