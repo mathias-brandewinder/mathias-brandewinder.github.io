@@ -43,10 +43,12 @@ Regardless, the update was pretty straightforward. I replaced the dependencies,
 which brought Avalonia up from version `0.10.12` to `11.0.0.rc1.1`. This 
 required 2 changes to the original code:  
 
-### Minor changes in `Program.fs`, which launches the application. See 
-[this commit][3] for details, nothing particularly interesting going on here.  
+### 1) Minor changes in `Program.fs`
 
-### Changes to the asynchronous update
+This part launches the application. See [this commit][3] for details, nothing 
+particularly interesting going on here.  
+
+### 2) Changes to the asynchronous update
 
 That change was more interesting. In my original version, I triggered updates 
 by emitting a delayed asynchronous command, like so:  
@@ -115,7 +117,7 @@ The intent of this function goes something like this: if a UI element contains
 a list of nested UI elements (`IView`), compare the view before (`lastList`) 
 and after (`nextList`) the view update. Compute the differences if there is an 
 element in both (`Differ.diff`), otherwise, if new elements have been added to 
-the list, compute `ViewDelta` for the new element.  
+the list, compute `ViewDelta` for the new elements.  
 
 Now, typically there won't be many nested elements. However, in my case, that 
 list is pretty massive (`40,000` elements for a 200 x 200 grid), and this is 
@@ -123,7 +125,7 @@ where things begin to fall apart, for 2 reasons. An F# list is a linked list,
 and as a result:  
 
 - Accessing an item by index in a `List` scales with the index of the list,
-- Computing the length of a list scales with the lenght of the list.
+- Computing the length of a list scales with the length of the list.
 
 Let's illustrate with a crude benchmark in the scripting environment, 
 reproducing the situation with 2 simplified examples:  
@@ -179,7 +181,7 @@ lists get longer,
 - the calls themselves get slightly worse for longer lists.
 
 Long story short, I submitted a proposed improvement, and a 
-[fun discussion ensued][https://github.com/fsprojects/Avalonia.FuncUI/pull/317] 
+[fun discussion ensued](https://github.com/fsprojects/Avalonia.FuncUI/pull/317) 
 with [JaggerJo][6] and [Numpsy][7], exploring alternatives. And the result is 
 now part of [`Avalonia.FuncUI version 1.0.0-rc.1.1.1`][8]!
 
@@ -197,7 +199,7 @@ to find similarly clean hotspots - after all, I found that one only because of
 that specific Game of Life example, which happens to push the number of 
 UI elements beyond what you would typically expect :)
 
-And... thanks a lot to [JaggerJo][6] and [Numpsy][7] for a fun discussion!  
+And... thanks again to [JaggerJo][6] and [Numpsy][7] for a fun discussion!  
 
 If you have comments or questions, hit me up on [Mastodon][9]!  
 
@@ -211,5 +213,4 @@ If you have comments or questions, hit me up on [Mastodon][9]!
 [6]: https://mastodon.social/@josua_jaeger
 [7]: https://github.com/Numpsy
 [8]: https://www.nuget.org/packages/Avalonia.FuncUI
-
 [9]: https://hachyderm.io/@brandewinder
