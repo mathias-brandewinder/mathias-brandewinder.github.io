@@ -5,8 +5,8 @@ title: Events
 
 ## Want to meet me in person?
 
-I travel around quite a bit, for conferences and workshops. 
-And when I do, I try my best to also present at local user groups or meetups. 
+I travel around quite a bit for conferences and workshops. 
+When I do, I try my best to also present at local user groups or meetups. 
 If you are interested in having me speak somewhere near you, 
 or perhaps in organizing a course or training session, please contact me!
 
@@ -31,5 +31,3 @@ or perhaps in organizing a course or training session, please contact me!
 {% endif %}
 
 {% endfor %}
-
-{% include disqus.html %}

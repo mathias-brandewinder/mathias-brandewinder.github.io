@@ -1,15 +1,10 @@
 <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <a href="https://twitter.com/brandewinder">
+      <a href="https://hachyderm.io/@brandewinder">
         <img src="https://brandewinder.com/public/TournesolPendule_400x400.jpg" alt="Tournesol" height="200" width="200">
       </a>
       <a rel="me" href="https://hachyderm.io/@brandewinder"></a>
-      <!-- <h1>
-        <a href="{{ site.baseurl }}">
-          {{ site.title }}
-        </a>
-      </h1> -->
       <p class="lead">{{ site.tagline }}</p>
     </div>
 
@@ -30,7 +25,7 @@
         {% endif %}
       {% endfor %}
 
-      <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
+      <a class="sidebar-nav-item" href="{{ site.url }}/atom.xml"><i class="fa-solid fa-square-rss"></i> RSS feed</a>
     </nav>
 
     <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>

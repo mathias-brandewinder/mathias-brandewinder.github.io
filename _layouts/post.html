@@ -7,23 +7,11 @@ layout: default
   <span class="post-date">{{ page.date | date_to_string }}</span>
   {{ content }}
 
-  <h2>Comments</h2>
-  <p><em>Have a comment or a question? <a href="https://hachyderm.io/@brandewinder">Ping me on Mastodon</a>, or use the comments section!</em></p>
-  {% include disqus.html %}
-</div>
+  <div class="message">
+    <p>
+      Do you have a comment or a question?<br>
+      <a href="https://hachyderm.io/@brandewinder"><i class="fa-brands fa-mastodon"></i> Ping me on Mastodon</a>!
+    </p>
+  </div>
 
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    {% for post in site.related_posts limit:3 %}
-      <li>
-        <h3>
-          <a href="{{ post.url }}">
-            {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
-          </a>
-        </h3>
-      </li>
-    {% endfor %}
-  </ul>
 </div>
