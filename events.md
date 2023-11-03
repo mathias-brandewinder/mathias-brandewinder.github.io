@@ -10,7 +10,9 @@ When I do, I try my best to also present at local user groups or meetups.
 If you are interested in having me speak somewhere near you, 
 or perhaps in organizing a course or training session, please contact me!
 
-{% include contact.html %}
+## Past presentations
+
+[<i class="fa-brands fa-youtube"></i> Recordings on YouTube](https://www.youtube.com/playlist?list=PLpN8e7gfTS9zlAGvFx4QO1dkIjiZC3OMv)  
 
 ## Upcoming events
 
@@ -31,3 +33,5 @@ or perhaps in organizing a course or training session, please contact me!
 {% endif %}
 
 {% endfor %}
+
+{% include contact.html %}

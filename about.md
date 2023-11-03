@@ -44,5 +44,6 @@ You can find more about me on...
 
 [<i class="fa-brands fa-linkedin"></i> LinkedIn](https://linkedin.com/in/brandewinder)  
 [<i class="fa-brands fa-github"></i> GitHub](https://github.com/mathias-brandewinder)  
+[<i class="fa-brands fa-youtube"></i> YouTube](https://www.youtube.com/playlist?list=PLpN8e7gfTS9zlAGvFx4QO1dkIjiZC3OMv)  
 [<i class="fa-brands fa-stack-overflow"></i> StackOverflow](https://stackoverflow.com/users/114519/mathias)  
 [<i class="fa-brands fa-twitter"></i> <s>Twitter</s>](https://twitter.com/brandewinder)  
