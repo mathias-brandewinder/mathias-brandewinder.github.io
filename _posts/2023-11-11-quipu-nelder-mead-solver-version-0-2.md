@@ -162,8 +162,8 @@ I think my next steps will be focused on
 - Improving the performance of the core algorithm.
 
 Besides that, one thing I'd like to try out is adding constraints to the 
-problem, something along the lines of $argmin f(x,y)$, subject to a list of 
-inequality constraints like $3 \times x - y^2 >= 10$.  
+problem, something along the lines of $argmin_{x,y}(f(x,y))$, subject to a list of 
+inequality constraints like $3 \times x - y^2 \geq 10$.  
 
 I imagine that's something I should be able to do with penalty / barrier 
 functions. However, I haven't had much experience with that approach, and I can 
