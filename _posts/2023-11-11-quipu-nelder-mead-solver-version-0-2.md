@@ -5,6 +5,7 @@ tags:
 - F#
 - Optimization
 - Algorithms
+use_math: true
 ---
 
 Back in April '23, I needed a simple solver for function minimization, and 
@@ -13,9 +14,8 @@ won't go over the algorithm itself, if you are curious I wrote a post breaking
 down [how the Nelder-Mead algorithm works][3] a while back.  
 
 In a nutshell, the algorithm takes a function, and finds the set of inputs that 
-produces the smallest output. Or, in technical terms, it is a numerical method 
-to minimize a function. The algorithm is not foolproof, but it is very useful, 
-and has the benefit of being fairly simple.  
+produces the smallest output for that function. The algorithm is not foolproof, 
+but it is very useful, and has the benefit of being fairly simple.  
 
 After dog-fooding my library for a bit, I found some rough spots, and decided 
 it was time to make improvements. As a result, the API has changed a bit - 
@@ -105,7 +105,7 @@ should also be within the same bounds.
 The reason I made that change was that the original approach could result in 
 an premature termination. In situations where the function being minimized is 
 "flat" around the optimum, the search could stop early, with a wide simplex. 
-Tightening the rules will force the simplex to contract around the minimum.  
+Tightening the rules forces the simplex to contract around the minimum.  
 
 As an example, in the basic usage, the tolerance is set to $0.001$. We can 
 relax this:  
@@ -167,7 +167,7 @@ inequality constraints like $3 \times x - y^2 >= 10$.
 
 I imagine that's something I should be able to do with penalty / barrier 
 functions. However, I haven't had much experience with that approach, and I can 
-also already see in my mind all sorts of complications with that!  
+also already see in my mind all sorts of complications arising!  
 
 At any rate, this is where I will stop for today. Hope you found something of 
 interest in this post, and perhaps you'll even have a use for this library!  
