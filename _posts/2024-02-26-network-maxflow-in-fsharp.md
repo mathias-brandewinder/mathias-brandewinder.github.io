@@ -16,11 +16,14 @@ stuff and tie the sausage casings, and split them into delicious sausage links.
 
 We could represent this process as a graph, like so:
 
+![mermaid diagram 1: linear process]({{ site.url }}/assets/2024-02-26/mermaid-1.png)
+
+```
 ``` mermaid
 graph TD;
     grind_meat --> season_meat;
     season_meat --> stuff_casing;
-    stuff_casing --> cut_links;;
+    stuff_casing --> cut_links;
 ```
 
 Now the question is, how many sausages per minute could we produce?  
@@ -40,6 +43,9 @@ stuffing.
 Now we might be able to get a better throughput with some parallelization. For 
 instance, we could organize production like so:  
 
+![mermaid diagram 2: complex process]({{ site.url }}/assets/2024-02-26/mermaid-2.png)
+
+```
 ``` mermaid
 graph TD;
     grind_meat --> season_meat_1;
@@ -48,9 +54,9 @@ graph TD;
     season_meat_1 --> stuff_casing2;
     season_meat_2 --> stuff_casing2;
     season_meat_2 --> stuff_casing3;
-    stuff_casing1 --> cut_links_1;;
-    stuff_casing2 --> cut_links_1;;
-    stuff_casing3 --> cut_links_1;;
+    stuff_casing1 --> cut_links_1;
+    stuff_casing2 --> cut_links_1;
+    stuff_casing3 --> cut_links_1;
 ```
 
 This is still not overly complicated, but it is beginning to be hairy, and you 
@@ -291,6 +297,9 @@ graph TD;
 
 ... which produces the following visual representation of our solution:  
 
+![mermaid diagram 3: complex process with flows]({{ site.url }}/assets/2024-02-26/mermaid-3.png)
+
+```
 ```mermaid
 graph TD;
 1-- 5 -->2;
