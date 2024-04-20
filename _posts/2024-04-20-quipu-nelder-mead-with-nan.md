@@ -75,7 +75,7 @@ would say "$f$ is defined only for this subset of real numbers", with floating
 point numbers, we have "if $f(x) = nan$, then $x$ is not part of the domain of 
 definition".  
 
-This is... interesting. At first glance, one would think that floating point 
+At first glance, one would think that floating point 
 numbers are more or less equivalent to real numbers. However, floating point 
 numbers are an interesting beast. If you look up [`System.Double`][6], you will 
 notice a few fields:  
@@ -102,6 +102,7 @@ val it: float = infinity
 ... which reminded me of [this toot][7]:  
 
 <iframe src="https://mathstodon.xyz/@andrewt/111850193169329487/embed" width="400" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"></iframe>
+
 
 > As a side note, I could not quite figure out what the rules were to go from 
 `MaxValue` to `PositiveInfinity`.  
@@ -134,21 +135,25 @@ floats, I enjoyed reading this section on the [design rationale of IEEE 754][8].
 
 ## The bug and the fix
 
-So to summarize the long meandering tangent above: floating point numbers 
+So to summarize the long meandering tangent above: floating point numbers `NaN` 
 signal that a function inputs are outside of its domain of definition, and can 
-arise anywhere where floating point calculations are involved.  
+arise anywhere floating point calculations are involved.  
 
 In the case of the Nelder-Mead algorithm, this is something we want to take 
 into account, in case the function we are trying to minimize is partially 
 defined, like $f(x) = \sqrt{x}$.  
 
 We can break down how the algorithm works in a few steps:  
-1) It maintains a set of candidate points, the simplex,
+
+1) It maintains a set of candidate points, the simplex,  
+
 2) It tries to replace the worst point with a better one, to move to a "more 
-promising search area",
+promising search area",  
+
 3) If that fails, the points are possibly surrounding the optimum value, so it 
-shrinks them towards the best candidate and narrow down the "search area",
-4) When the "search area" is small enough, it stops the search.
+shrinks them towards the best candidate and narrows down the "search area",  
+
+4) When the "search area" is small enough, it stops the search.  
 
 If, as in the case of $f(x) = \sqrt{x}$, the function is partially defined, we 
 will run into a couple of issues. We cannot reach step (3), because if we have 
@@ -170,8 +175,10 @@ possibly get close enough to the optimum to stop.
 One interesting aspect of Nelder-Mead is how the steps are taken. Where a 
 method like gradient descent decides on the direction and amplitude of the step 
 based on the objective function, Nelder-Mead proceeds differently:  
+
 1) It tries a few candidate steps that depend only on the simplex. The direction 
-and amplitude of the step does not depend on the objective function.
+and amplitude of the step does not depend on the objective function.  
+
 2) It evaluates each candidate step using the objective function.  
 
 This is helpful. It implies that all we have to do is make sure that in (2) we 
@@ -207,7 +214,7 @@ val it: Solution = Optimal (1.490116119e-08, [|2.220446049e-16|])
 
 That's what I got for today! Hope you found something interesting in this post.
 If you are interested in the code or the specific changes I made, you can find 
-it on [GitHub][1].
+it on [GitHub][1]. Cheers!
 
 [1]: https://github.com/mathias-brandewinder/Quipu
 [2]: https://github.com/mathias-brandewinder/Quipu/releases/tag/0.2.2
