@@ -34,15 +34,15 @@ between 2 vectors.
 First, what is the Euclidean distance? Given 2 real-valued vectors $x$ and $y$, 
 where:
 
-$$x = (x_1, x_2, .. x_n)$$
+$x = (x_1, x_2, .. x_n)$
 
 and  
 
-$$y = (y_1, y_2, .. y_n)$$
+$y = (y_1, y_2, .. y_n)$
 
 the distance between $x$ and $y$ is
 
-$$d(x, y) = \sqrt { (x_1 - y_1) ^ 2 + (x_2 - y_2) ^ 2 ... + (x_n - y_n) ^ 2}$$
+$d(x, y) = \sqrt { (x_1 - y_1) ^ 2 + (x_2 - y_2) ^ 2 ... + (x_n - y_n) ^ 2}$
 
 One way to write this in F#, using `float []` to represent vectors, is as 
 follows:  
@@ -120,13 +120,13 @@ All this has serious practical implications. If I want to write code that works
 with vectors of arbitrary size, like my naive F# distance function, I will have 
 to break it down into chunks of 4 floats, write a function that operates on 
 these chunks and still allow me to aggregate back to the correct overall 
-result. And, of course, we want the overall speed to be faster, otherwise the 
+result. And, of course, I want the overall speed to be faster, otherwise the 
 entire exercise would be pointless.  
 
 Let's consider the first question - can we use divide-in-fours and conquer to 
 compute the distance? We can (with a caveat, more on that later), because:  
 
-$$((x_1 - y_1) ^ 2 + ... + (x_n - y_n) ^ 2) = ((x_1 - y_1) ^ 2 + (x_2 - y_2) ^ 2 + (x_3 - y_3) ^ 2 + (x_4 - y_4) ^ 2) + ... +$$
+$((x_1 - y_1) ^ 2 + ... + (x_n - y_n) ^ 2) = ((x_1 - y_1) ^ 2 + (x_2 - y_2) ^ 2 + (x_3 - y_3) ^ 2 + (x_4 - y_4) ^ 2) + ... +$
 
 In other words, we can compute a sum by computing the sum of groups of 4, and 
 then sum these together. Note that, by contrast, the square root cannot be 
