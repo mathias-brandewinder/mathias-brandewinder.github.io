@@ -90,7 +90,7 @@ The intent of these 4 cases was to capture 4 possible outcomes: the solver
 
 - found an Optimal solution, with the corresponding value and arguments,
 - found a SubOptimal solution, with the corresponding value and arguments,
-- found there is no solution, because the function is Unbounded,
+- found the solution is Unbounded,
 - encountered a problem along the way, returning the latest state of the solver.
 
 This isn't perfect, but from an F# standpoint, it was decently usable (I built 
@@ -153,6 +153,12 @@ type Solution =
     | Successful of (Status * Evaluation)
     | Abnormal of (float [][])
 ```
+
+> Note: I initially did not include the `Evaluation` in the `Unbounded` case, 
+I think because my thinking was biased by linear programming. In linear 
+programming, an unbounded solution implies unbounded arguments, which is not 
+necessarily the case for non-linear functions. As an example, `log(x)` is 
+unbounded, but the arguments are finite: `log(0) = -infinity`.  
 
 We still have a tuple in `Successful`, let's clean that up:  
 
