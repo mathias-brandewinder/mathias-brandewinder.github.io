@@ -96,8 +96,8 @@ someProblemTransformation: argument1 -> ... -> Problem -> Problem
 ... we can keep chaining them together, passing an initial `Problem` through a 
 series of transformations that will eventually give us a `Problem`.  
 
-Stated differently, our original pipeline can be rewritten in the follwing 
-equivalent code, expanding each step fully:  
+Stated differently, our original pipeline can be rewritten in the following 
+equivalent code, fully expanding each step:  
 
 ``` fsharp
 let f (x, y) = pown (x - 1.0) 2 + pown (y - 2.0) 2 + 42.0
@@ -135,7 +135,7 @@ var problem3 = problem2.WithTolerance(0.1);
 ```
 
 Or, omitting the intermediate variables, and calling `WithTolerance` directly 
-on the `Problem` that was returned previously:  
+on the `Problem` that the previous step returned:  
 
 ``` csharp
 var problem3 =
@@ -158,8 +158,9 @@ public is fine, so you can directly manipulate it in case you want to do
 something unusual, but by default you should not have to touch it.  
 
 In addition to this, `Problem` is a record which contains "non-obvious" types 
-(`IVectorFunction`, `IStartingPoint`). Instantiating a `Problem`, in particular 
-from C#, will be at best error prone and unpleasant.  
+(`IVectorFunction`, `IStartingPoint`). Instantiating a `Problem` manually 
+requires understanding how all these types work, and will be at best error 
+prone and unpleasant (in particular for C#).  
 
 The F# pipeline completely hides `Problem` from the user, can we do something 
 similar for C# consumers?  
