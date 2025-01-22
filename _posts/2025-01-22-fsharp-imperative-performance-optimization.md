@@ -4,6 +4,7 @@ title: Micro optimizing F# code with a dash of imperative code
 tags:
 - F#
 - Performance
+use_math: true
 ---
 
 In addition to re-designing my [Nelder-Mead solver][1] to improve usability, I have 
@@ -158,7 +159,7 @@ This produces the following benchmark result:
 ```
 
 Not much to say here, except that this is not a negligible improvement, we 
-shaved off 27%. I like sequences, but... arrays tend to be pretty fast!  
+shaved off 27%.  
 
 ## Take 2: imperative code
 
@@ -214,7 +215,7 @@ approaching that type of issue in general.
 
 There are probably other ways to do this, but I ended up coming across a 
 [post by Adam Sitnik][2], which, besides being a good read, showed how 
-BenchmarkDotNet can display performance counters. As I am already using 
+BenchmarkDotNet can display performance counters. As we are already using 
 BenchmarkDotNet here, this made it easy to try out.  
 
 After including a couple of performance counters in the benchmark, I got the 
