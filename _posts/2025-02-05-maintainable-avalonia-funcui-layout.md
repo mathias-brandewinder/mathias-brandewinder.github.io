@@ -80,14 +80,15 @@ will fill all the space still available.
 What I like about the `DockPanel` is that  
 
 - it handles dynamic screen resizing gracefully,  
-- it handles well dynamic scroll bars for controls with expanding contents, 
+- it handles dynamic scroll bars for controls with expanding contents, 
 such as `ListBox`,  
 - it is a pretty natural fit for layouts like item selector on the left / 
-selected item editor on the right.  
+selected item editor on the right, or more generally newspaper / column style 
+layouts.  
 
 ## DockPanel of Doom
 
-So what can go wrong when using `DockPanel` for layout? If you are not careful, 
+So what can go wrong using `DockPanels`? If you are not careful, 
 things can get out of hand quickly. As a simplistic (and ugly looking) example, 
 you might end up with a screen layout along these lines:  
 
@@ -177,7 +178,8 @@ docking information. The overall layout intent is not made obvious at all.
 As I see it, there are 2 separate problems at play:  
 
 - Docking multiple elements, in particular using different docking directions, 
-is difficult to follow,  
+can be difficult to follow, because the behavior of any element depends on the 
+entire chain of previous elements within the `DockPanel`.  
 - The more code there is inline, the harder it gets to see the relevant 
 information about the structure.  
 
@@ -210,7 +212,7 @@ module Selection =
             ]
 ```
 
-This allows us in turn to do the following refactor of the `view`:  
+This allows us to refactor the `view` like so:  
 
 ``` fsharp
 let view (state: State) (dispatch: Msg -> unit) =
@@ -230,10 +232,11 @@ let view (state: State) (dispatch: Msg -> unit) =
         ]
 ```
 
-While this de-cluttered the `view`, it is arguably even worse than before. 
-In the main view, all we see is a call to `Selection.view`, with no 
+While the `view` is now de-cluttered, this is arguably even worse than before. 
+In the main `view`, all we see is a call to `Selection.view`, with no 
 information about how it is docked. If we want to know how the `TextBlock` will 
-be docked, we need to navigate even further away in the code than before.  
+be positioned, we need to navigate even further away in the code than before, 
+inside the `Selection.view` function.  
 
 The problem here is that `Selection.view` should not contain information 
 about docking - it is not its responsibility to decide where it should appear 
@@ -241,7 +244,7 @@ in the containing element! So what can we do here?
 
 If the `Selection.view` is not responsible for how it is docked, that 
 responsibility should be moved up to its containing element. Let's refactor, 
-with a bit of added indirection:  
+adding a bit of indirection:  
 
 ``` fsharp
 module Selection =
@@ -282,11 +285,11 @@ let view (state: State) (dispatch: Msg -> unit) =
 
 Instead of directly using `Selection.view`, we introduce a `Border` in the 
 parent `DockPanel`, which carries the relevant docking information, as well as 
-any other information about layout in the parent `DockPanel`, like `minWidth` 
-in our example.  
+anything else that pertains to its layout in the parent `DockPanel`, like 
+`minWidth` in our example.  
 
-The next step refactoring would be to do something similar for the right 
-section. I won't go into the full details, and leave it as the proverbial 
+The next refactoring involves doing something similar for the right 
+section. I won't go into the details, and leave it as the proverbial 
 "exercise to the reader". Once completed, the result would look along these 
 lines, which I believe is markedly better than the original version:  
 
@@ -308,24 +311,26 @@ let view (state: State) (dispatch: Msg -> unit) =
                     Editor.view state dispatch
                     )
                 ]
+            ]
         ]
 ```
 
 ## Parting thoughts
 
-This approach is not particularly complicated or fancy, but I wanted to 
-document it, for myself and possibly others. While I realized relatively 
+The approach I described is not particularly complicated or fancy, but I wanted 
+to document it, for myself and possibly others. While I realized relatively 
 quickly that my UI was devolving into an un-manageable mess of `DockPanels`, it 
 took me longer than it should have to figure out what was wrong about it, and 
 how to resolve the issue.  
 
 The key insight was that when extracting view code, I needed to remove all 
-information pertaining to its layout _in the containing control_, which 
-required inserting a control in-between to carry that information. I suspect 
-part of why it took me a while to realize this, is that I tend to add controls 
-sparingly, and it did not seem at first that adding more controls was going to 
-help simplify an already over-complicated UI. Making that change also makes it 
-possible to re-use that same view in other places in an application.  
+information pertaining to its layout _in the containing control_.  
+
+I knew that having controls dictating their layout behaving in their container 
+was off, but realizing that I needed to insert a control in-between to carry 
+that information took me a while. It might simply be that adding more controls 
+did not seem like an obvious path to simplifying an already over-complicated 
+UI!  
 
 The result is a pretty simple pattern:  
 
@@ -333,13 +338,17 @@ The result is a pretty simple pattern:
 - wrap each area in a `Border` containing the corresponding controls, and 
 the correspondong layout information.  
 
-The `Border` control works pretty well for our purposes for a few reasons. 
+The `Border` control works pretty well for our purposes. 
 First, we are defining broad layout areas, so there is a good chance that if we 
 want to use actual visual borders to delineate organization, this is where we 
 will need them. Then, unlike most other layout controls, a `Border` has a 
 single child. This will enforce that its content have to be a single, self 
-contained control, and limit the possibility of adding a long list of controls 
-without grouping, something that can happen more easily with a `DockPanel`.  
+contained control, and leads to thinking in groups of related controls, rather 
+than individual disconnected ones. Finally, this leads to much easier UI 
+reorganization: reorganizing the layout within a `DockPanel` is straightforward 
+because that is what the `Borders` highlight, and moving the controls around or 
+even re-using them in different spots in the application is easy because they 
+are self-contained and layout agnostic.  
 
 This is what I got for today!  
 
