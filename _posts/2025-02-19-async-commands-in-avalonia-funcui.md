@@ -7,15 +7,17 @@ tags:
 - Elmish
 ---
 
-Another [Avalonia FuncUI][1] focused post this week! One problem I struggled 
-with initially with Avalonia FuncUI is how to handle `async` calls. From past 
-experience with Elmish, I was familiar with the [`Cmd.OfAsync`][2] module, and 
-wanted to use that if possible (Check out [Maxime Mangel's post on `Cmd`][4] if 
-you are interested in some of the things you can do with these!). Anyways, 
-using `Cmd.OfAsync` in Avalonia is what we will cover in this installment!  
+Another [Avalonia FuncUI][1] post this week! One problem I struggled 
+with initially with Avalonia FuncUI is how to handle `async` calls. 
+I had some familiarity with the Elmish [`Cmd.OfAsync`][2] module, and 
+wanted to use that if possible ([Maxime Mangel has a great post on `Cmd`][4] 
+and how to use them, if you are curious).  
 
-Without further due, let's dive in, with a very basic example, with nothing 
-async to begin with. Our example app will have just a `TextBox`, where the text 
+Anyways, using `Cmd.OfAsync` and its cousin `Cmd.OfTask` in Avalonia FuncUI is 
+what we will cover in today's installment!  
+
+Without further due, let's dive in, starting with a very basic example, without 
+anything async to begin with. Our example app will have just a `TextBox`, where the text 
 of a "Request" can be entered, and a `Button`, which will send the "Request", 
 and return a "Response", a string, which we will display back to our user.  
 
@@ -63,11 +65,11 @@ Our `State` has 2 fields, `Request`, the request we want to send, and
 user interactions: `SendRequest`, which should be self-explanatory, and 
 `UpdateRequest`, to reflect changes the user makes to the "Request".  
 
-`init ()` creates our initial `State`, and `update` takes action based on the 
-message received, to update the `State`. In particular, when `SendRequest` is 
-received, we take the current `Request`, call the 100% synchronous 
-`respondToRequest` function, which gives us back a "Response", a time-stamped 
-string, and updates the `Response` field in `State`. Pretty simple.  
+In typical MVU fashion, `init ()` creates our initial `State`, and `update` takes action based on the 
+message received, to update the `State` accordingly. When the `SendRequest` 
+message is received, we take the current `Request`, call the 100% synchronous 
+`respondToRequest` function, which gives us back a "Response" (a time-stamped 
+string), and update the `Response` field in `State`. Nothing particularly complicated.  
 
 How about the UI part? Not too complicated either:  
 
@@ -101,7 +103,7 @@ let view (state: State) (dispatch: Msg -> unit): IView =
 In a `StackPanel`, we create a `TextBox` where our user can type in a Request. 
 We bind the contents `TextBox.text` to `State.Request`, to display the current 
 state of that value. When the text is changed, we dispatch `UpdateRequest` with 
-the current text content.  
+the current text content, to reflect UI changes in the `State`.  
 
 We add a `Button`, which dispatches `SendRequest` when pressed, and a 
 `TextBlock` to display the current value of `State.Response`, and we are done. 
@@ -112,8 +114,8 @@ We have the scaffold of a working app.
 ## Async Problems
 
 Now imagine that the function `respondToRequest` was slow, or that for whatever 
-reason we wanted it to be asynchronous. For illustration purposes, let's say 
-that `respondToRequest` looks like this:  
+reason we wanted it to be asynchronous. For illustration purposes, let's change 
+`respondToRequest` to something like this:  
 
 ``` fsharp
 let respondToRequest (request: string) =
@@ -128,7 +130,8 @@ let respondToRequest (request: string) =
 to use `task`, because it will highlight an interesting issue that would not 
 show up otherwise.
 
-This immediately breaks `update` here:  
+This immediately breaks the `update` function, because `respondToRequest` 
+produces a `Task<string>` instead of a `string` previously:  
 
 ``` fsharp
     let update (msg: Msg) (state: State): State * Cmd<Msg> =
@@ -136,10 +139,9 @@ This immediately breaks `update` here:
         // omitted
         | SendRequest ->
             let response = respondToRequest state.Request
-            { state with Response = response }, Cmd.none
 ```
 
-Let's attempt something gross first:  
+Let's attempt something gross to fix the issue first:  
 
 ``` fsharp
 let update (msg: Msg) (state: State): State * Cmd<Msg> =
@@ -155,21 +157,22 @@ let update (msg: Msg) (state: State): State * Cmd<Msg> =
 
 This is gross, because we are throwing away all the benefits we could get from 
 `Async`: we are going to wait for the response in the update loop, completely 
-blocking the UI with an un-responsive application.  
+blocking the UI until `respondToRequest` completes its job, leaving the user 
+with an un-responsive application.  
 
-However, besides aesthetic considerations, this particular example has another 
+Besides being gross, this fix also has another, more serious 
 flaw: it just doesn't work. If you run the code, the application will go in an 
-endless loop and become unusable. As I understand it, the problem here is that 
+unusable, completely unresponsive state. As I understand it, the problem here is that 
 updates need to happen on the UI Thread, but this is not where the response 
-returns. At any rate, this we cannot ignore.  
+returns.  
 
 > Note: had we used `async` instead of `task` for our function, the gross 
 solution would have worked in this specific case.  
 
 ## Using Cmd.OfAsync or Cmd.OfTask
 
-So why did I want to use `Cmd.OfAsync`, or its cousin `Cmd.OfTask`? This module 
-has a couple of very useful functions, which allow you to create a `Cmd`, but 
+So why did I want to use `Cmd.OfAsync`, or its cousin `Cmd.OfTask`? This Elmish 
+module has a couple of very useful functions, which allow you to create a `Cmd`, but 
 defer its execution without blocking the `update`.  
 
 The specific one I am interested in today is `Cmd.OfTask.perform`. It has a 
@@ -184,7 +187,8 @@ val inline perform:
 ```
 
 `Cmd.OfTask.perform` expects 3 things:  
-- a `task` function to perform,  
+
+- a `task` (a function returning a `Task<'T>`) to perform,  
 - arguments to be passed to that function,  
 - a `Msg` to receive the result of the function evaluation.  
 
@@ -219,21 +223,21 @@ let update (msg: Msg) (state: State): State * Cmd<Msg> =
 
 [Gist: code of version 1][5]
 
-Note how we separated completely starting the request, and completing it. 
+Note how we separated starting the request, and completing it. 
 `SendRequest` creates a "deferred" command, which will:
 
 - execute `respondToRequest`,  
-- passing it `state.Request` as an argument,  
+- pass it `state.Request` as an argument,  
 - wrap the response, a `string`, in `ReceivedResponse`,  
-- and dispatch that `Msg` to `update` when it is done.  
+- and dispatch that `Msg` to `update` when it completed the task.  
 
-As a result, the `update` for `SendRequest` is quick - we don't change the 
+As a result, the `update` for `SendRequest` is quick. We don't change the 
 `State`, all we do is enqueue a `Cmd`, which will run asynchronously, and come 
-back to `update` when it's done.  
+back to `update` when it is done.  
 
 Does it work? Almost. The last change needed to make it work is to modify the 
-part where your Avalonia FuncUI app starts the Elmish main loop, like so, 
-replacing `Program.run` with `Program.runWithAvaloniaSyncDispatch ()`:  
+part where your Avalonia FuncUI app starts the Elmish main loop, 
+replacing `Program.run` with `Program.runWithAvaloniaSyncDispatch ()` like so:  
 
 ``` fsharp
 Elmish.Program.mkProgram Main.init Main.update Main.view
@@ -242,23 +246,24 @@ Elmish.Program.mkProgram Main.init Main.update Main.view
 |> Program.runWithAvaloniaSyncDispatch ()
 ```
 
-And... voilà! We are now getting all the benefits of async code, with nice, 
-non-blocking updates.  
+And... voilà! We are now getting all the benefits of asynchronous code: when we 
+click the button to send a request, our UI is not blocked. The task runs in the 
+background, and once completed, updates the UI with the response.  
 
 ## Parting thoughts
 
 Not much to add to this, really! I remember `Cmd.OfAsync` as one of these bits
 of code which took me a little to digest at first, but that ended up feeling 
-very natural quickly. If you haven't come across it before, hopefully this 
-example will help you started on the right foot!  
+very natural (and powerful!) after using it a couple of times.  
 
 One piece I find unfortunate is that `Program.runWithAvaloniaSyncDispatch ()` 
 is not the default mode in Avalonia.FuncUI. It's probably because `Program.run` 
-is already defined in Elmish itself. Anyways, it took me a bit to figure out 
-that this was the piece I was missing. That gold nugget is carefully buried in 
-Github issues, and not very discoverable...
+is already defined in Elmish itself. As far as I can tell, the only place where 
+this piece is documented is somewhere in Github issues.  
 
-Anyways, that's what I got for today!  
+Anyways, if you haven't seen `Cmd.OfAsync` before, and want to use that in your 
+Avalonia.FuncUI app, hopefully this example will help you start on the right 
+foot!  
 
 [1]: https://github.com/fsprojects/Avalonia.FuncUI
 [2]: https://github.com/elmish/elmish/blob/v4.x/src/cmd.fs#L121-L145
