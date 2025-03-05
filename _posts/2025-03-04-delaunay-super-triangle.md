@@ -157,8 +157,8 @@ let points =
     let rng = Random 0
     List.init 20 (fun _ ->
         {
-            X = rng.NextDouble() * 100. + 150.
-            Y = rng.NextDouble() * 100. + 150.
+            X = rng.NextDouble() * 100.
+            Y = rng.NextDouble() * 100.
         }
         )
 ```
