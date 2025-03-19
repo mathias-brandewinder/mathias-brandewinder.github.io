@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delaunay triangulation with Bowyer-Watson&#58; circumcircle
+title: Delaunay triangulation with Bowyer-Watson #58; circumcircle
 tags:
 - F#
 - Algorithms
