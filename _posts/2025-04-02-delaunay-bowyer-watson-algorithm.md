@@ -65,7 +65,7 @@ where the triangles have "reasonably even" angles:
 </svg>
 
 The Bowyer-Watson algorithm is one way to generate such a 
-triangulation. In this post, I'll go over implementing it.  
+triangulation. In this post, I'll go over implementing it in F#.  
 
 <!--more-->
 
@@ -83,8 +83,8 @@ for each point in pointList do
     for each triangle in triangulation do 
         if point is inside circumcircle of triangle
             add triangle to badTriangles
-    polygon := empty set
     // 2) find the boundary of the polygonal hole
+    polygon := empty set
     for each triangle in badTriangles do
         for each edge in triangle do
             if edge is not shared by any other triangles in badTriangles
