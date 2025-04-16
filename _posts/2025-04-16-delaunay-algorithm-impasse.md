@@ -17,8 +17,7 @@ might either get an idea, or perhaps someone else will spot what I am missing!
 
 Anyways, let's get into it. Per the [Wikipedia entry][2]:
 
->>>
-a Delaunay triangulation [...] of a set of points in the plane subdivides their 
+> a Delaunay triangulation [...] of a set of points in the plane subdivides their 
 convex hull into triangles whose circumcircles do not contain any of the points; 
 that is, each circumcircle has its generating points on its circumference, but 
 all other points in the set are outside of it. This maximizes the size of the 
@@ -107,8 +106,7 @@ points
 
 This is still pretty, but it can't be right. From the Wikipedia entry:  
 
->>>
-a Delaunay triangulation [...] of a set of points in the plane 
+> a Delaunay triangulation [...] of a set of points in the plane 
 **subdivides their convex hull** into triangles
 
 The result should be a convex hull, that is, the outer boundary should be 
@@ -413,12 +411,12 @@ a list of Delaunay diagrams, taking more and more points:
 </svg>
 
 This does unfortunately not look like a fluke. I can observe bends inwards 
-occurring multiple times, in images 7, 8, 13.  
+occurring multiple times, for example in images 7, 8, 13.  
 
-After Denial I switched straight to Acceptance: I must have made a bone-headed 
+So I switched from Denial to Acceptance: I must have made a bone-headed 
 coding error somewhere. Fine, but... how do I even approach understanding what 
 might be going wrong? The first problem occurs on image 7, and there are 
-already 10 points involved, this is going to be a nightmare to work with.  
+already 10 points involved. This is going to be a nightmare to work with.  
 
 My first step was to try and shrink the problem to the smallest failing case I 
 could. With a bit of tinkering and intuition, I ended up reproducing the issue 
@@ -442,7 +440,10 @@ polygon:
 
 Great. Now that we have a small test case, let's dig in. We'll run the 
 triangulation before and after the step where things go off the rails, 
-including the outer super-triangle for completeness:  
+including the outer super-triangle, which is relevant to how the triangulation 
+is updated:  
+
+**Before**  
 
 <svg width="500" height="500" viewbox="-68.12109349673665 -17.732218201380324 254.6004777097146 198.45172146961636">
   <circle cx="86.23701538249712" cy="99.53470812157481" r="2" />
@@ -454,6 +455,9 @@ including the outer super-triangle for completeness:
   <polygon points="72.62432699679599,81.73253595909688 174.9066352261727,-8.711685407306852 97.75497531413798,27.370445768987032" fill="lightyellow" stroke="black" stroke-width="1"/>
   <polygon points="20.60331540210327,55.88847946184151 72.62432699679599,81.73253595909688 97.75497531413798,27.370445768987032" fill="lightyellow" stroke="black" stroke-width="1"/>
 </svg>
+
+**After**  
+
 <svg width="500" height="500" viewbox="-68.12109349673665 -17.732218201380324 254.6004777097146 198.45172146961636">
   <circle cx="86.23701538249712" cy="99.53470812157481" r="2" />
   <polygon points="-56.54834450993145,-8.711685407306852 59.17914535812063,171.69897047416256 20.60331540210327,55.88847946184151" fill="lightyellow" stroke="black" stroke-width="1"/>
@@ -467,9 +471,9 @@ including the outer super-triangle for completeness:
   <polygon points="72.62432699679599,81.73253595909688 97.75497531413798,27.370445768987032 86.23701538249712,99.53470812157481" fill="lightyellow" stroke="black" stroke-width="1"/>
 </svg>
 
-Here we can see how, as we add a point in the South-East area, the 
-triangulation gets properly adjusted in the North-East area, but not in the 
-bottom section, where a bend inwards appears. Some of the triangles that should 
+Here we can see how, as we add a point in the South-East area, while the 
+triangulation gets properly adjusted in the North-East area, the 
+bottom section shows a bend inwards appearing. Some of the triangles that should 
 be recomputed are not.  
 
 How does the algorithm decide if a triangle needs to be recomputed? Per the 
@@ -480,13 +484,13 @@ for each point in pointList do
     badTriangles := empty set
     for each triangle in triangulation do
         // first find all the triangles that are no longer valid due to the insertion
-        **if point is inside circumcircle of triangle**
+        if point is inside circumcircle of triangle
             add triangle to badTriangles
 ```
 
 When a point is added, we take the existing triangles, and, if the point is 
-inside the circumcircle of a triangle, we recompute it. Let's visualize these 
-circles then:  
+inside the circumcircle of a triangle, we add it to the list of "bad triangles" 
+that need to be recomputed. Let's visualize these circles then:  
 
 <svg width="500" height="500" viewbox="-386.4345976284119 -378.787617873126 814.6234155230543 794.6288569119026">
   <circle cx="86.23701538249712" cy="99.53470812157481" r="2" />
@@ -507,10 +511,11 @@ circles then:
 </svg>
 
 And this is where I hit an impasse. On this diagram, we can see the point we 
-are adding to the triangulation. The triangle West of it must be recomputed to 
-avoid creating the issue we observe, but its circumcircle, while coming close 
-to our point, does not contain it. In other words, the algorithm concludes that 
-this section of the triangulation is fine - when it is not.  
+are adding to the triangulation, in the South-East area. The triangle West of 
+it must be recomputed to avoid creating the issue we observe, but its 
+circumcircle, while coming close to our point, does not contain it. In other 
+words, the algorithm concludes that this section of the triangulation is fine - 
+when it is not.  
 
 ## Parting thoughts
 
@@ -523,10 +528,29 @@ algorithm, or that perhaps there is an unspoken assumption / missing detail,
 perhaps around triangles that are connected to the corners of the outer 
 super-triangle.  
 
+I suspect the issue has to do with the initial super-triangle. The algorithm 
+begins by creating the so-called "super triangle", which, per the 
+[pseudo-code][4] outline, should just be 
+
+> large enough to completely contain all the points
+
+```
+add super-triangle to triangulation
+// must be large enough to completely contain all the points in pointList
+```
+
+However, that triangle is not unique, and, if I were to move a bit the 
+position of the South corner of the triangle, I could move it so that it still 
+contains all the points, and causes a re-computation of the problem area. Long 
+story short, I suspect that the source of the issue might be around what 
+conditions that initial triangle must satisfy, or perhaps around recomputations 
+involving its corners.  
+
 At any rate, I am stuck. My next steps are first to sleep on it, and then 
 possibly to see if the original source articles might help. In the meantime, 
-hopefully you will have found something of interest in this hunt for a bug, 
-and, if you happen to know what I am doing wrong, I would love to hear it :)
+hopefully you will have found something of interest in this bug hunt, with its 
+unusual graphical debugging. And if you happen to know what I am doing wrong, 
+I would love to hear it :)  
 
 [1]: https://en.wikipedia.org/wiki/Bowyer%E2%80%93Watson_algorithm
 [2]: https://en.wikipedia.org/wiki/Delaunay_triangulation
