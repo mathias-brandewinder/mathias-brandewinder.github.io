@@ -507,10 +507,10 @@ circles then:
 </svg>
 
 And this is where I hit an impasse. On this diagram, we can see the point we 
-are adding to the triangulation. The triangle East of it must be recomputed to 
+are adding to the triangulation. The triangle West of it must be recomputed to 
 avoid creating the issue we observe, but its circumcircle, while coming close 
 to our point, does not contain it. In other words, the algorithm concludes that 
-this section of the triangulation is fine.  
+this section of the triangulation is fine - when it is not.  
 
 ## Parting thoughts
 
@@ -524,9 +524,9 @@ perhaps around triangles that are connected to the corners of the outer
 super-triangle.  
 
 At any rate, I am stuck. My next steps are first to sleep on it, and then 
-possibly to see if the original articles might help. In the meantime, hopefully 
-you will have found something of interest in this hunt for a bug, and, if you 
-happen to know what I am doing wrong, I would love to hear it :)
+possibly to see if the original source articles might help. In the meantime, 
+hopefully you will have found something of interest in this hunt for a bug, 
+and, if you happen to know what I am doing wrong, I would love to hear it :)
 
 [1]: https://en.wikipedia.org/wiki/Bowyer%E2%80%93Watson_algorithm
 [2]: https://en.wikipedia.org/wiki/Delaunay_triangulation
