@@ -10,32 +10,33 @@ tags:
 In our [last installment][1], I hit a roadblock. I attempted to 
 implement Delaunay triangulations using the Bowyer-Watson algorithm, 
 followed [this pseudo-code from Wikipedia][2], 
-and ended up with a mostly working F# implementation. The working part 
-is that given a list of points, my code produces a triangulation. The 
-mostly part is that occasionally the outer boundary of the triangulation 
-displays bends towards the inside, something that should never 
+and ended up with a mostly working F# implementation. 
+Given a list of points, the code produces a triangulation, but 
+occasionally the outer boundary of the triangulation is not convex, 
+displaying bends towards the inside, something that should never 
 supposed happen for a proper Delaunay triangulation.  
 
-While I could not figure out the exact issue, by elimination I could 
-narrow it down a bit. My guess at that point was that the issue was 
+While I could not figure out the exact issue, by elimination I 
+narrowed it down a bit. My guess was that the issue was 
 probably a missing unstated condition, probably related to the initial 
 super-triangle. As it turns out, my guess was correct.  
 
 The reason I know is, a kind stranger on the internet reached out 
-with a couple of helpful links:  
+with a couple of helpful links (thank you!):  
 
-[Bowyer-Watson algorithm: how to fill "holes" left by removing triangles with super triangle vertices][3]
+[Bowyer-Watson algorithm: how to fill "holes" left by removing triangles with super triangle vertices][3]  
 [Bowyer-Watson algorithm for Delaunay triangulation fails, when three vertices approach a line][4]
 
-The second link in particular mentions that the Wikipedia page does 
-indeed omit some conditions, and suggests that a valid initial 
-super triangle should verify the following property:  
+The second link in particular mentions that the Wikipedia page is 
+indeed missing conditions, and suggests that the initial 
+super triangle should verify the following property to be valid:  
 
 > it seems that one should rather demand that the vertices of the 
 super triangle have to be outside all circumcircles of any three 
 given points to begin with (which is hard when any three points are almost collinear)
 
-That doesn't look overly complicated, let's check if this fixes our problem!   
+That doesn't look overly complicated, let's modify our code 
+accordingly, and check if this fixes our problem!   
 
 <!--more-->
 
@@ -43,11 +44,15 @@ First off, what does our [original code][5] do?
 
 What we are after with the so-called super-triangle is a 
 triangle that contains all the points we are triangulating. 
-The strategy we follow is simple:  
+The strategy we followed is simple:  
 
 1) compute a rectangular box that contains all the points 
 we want to triangulate,  
 2) compute a triangle that contains that rectangular box.  
+
+Below is how (1) looks in code; we omitted (2) because 
+we are simply going to re-use it as-is, but you can 
+look at [this earlier post for details][7].
 
 ``` fsharp
 let superTriangle (points: seq<Point>): Triangle =
@@ -78,7 +83,7 @@ corners of the super triangle
 
 > have to be outside all circumcircles of any three given points
 
-Or, stated differently, the super triangle needs to be large 
+Stated differently, the super triangle needs to be large 
 enough to contain not just the points we want to triangulate, 
 but also, for every single possible triangle they can form, the 
 corresponding circumcircle.  
@@ -111,16 +116,21 @@ problem, following this strategy:
 
 1) enumerate every triangle we can form with the points 
 we want to triangulate,  
-2) for each triangle, compute the circumcircles
-3) compute a rectangular box that contains all the circles,
+2) for each triangle, compute the circumcircle  
+3) compute a rectangular box that contains all the circles,  
 4) compute a triangle that contains that rectangular box.  
 
 (2) and (4) we know how to do already, all we need to focus on 
 is (1) and (3).  
 
 So how can we enumerate the triangles we can form 
-using a collection of points? One easy way to go 
-about it would be along these lines:  
+using a collection of points? Triangles that have 
+the same corners are identical, regardless of the 
+order (ABC is the same triangle as CBA or any other 
+combination), so all we need is to enumerate all 
+distinct combinations of 3 points we can form.  
+
+One way to go about it would be along these lines:  
 
 ``` fsharp
 let triangles (points: seq<Point>) =
@@ -139,11 +149,16 @@ let triangles (points: seq<Point>) =
 ```
 
 That takes care of (1), now let's consider (3). How can we 
-find a rectangular box that contains a collection of circles? 
-In our earlier version, we proceeded by finding the left, 
-right, top and bottom-most points. We can reduce our new problem 
-to that same problem, by converting each circle into 4 points 
-around it, like so:  
+find a rectangular box that contains a collection of circles?  
+
+In our earlier version, we proceeded by finding the left-most 
+and right-most points in our collection, which define the 
+left and right boundary of the rectangular box, and did 
+the same for the top and bottom-most points.  
+
+We can reduce our new problem to that same problem, by 
+converting each circle into 4 points that box it from the 
+left, right, top and bottom, like so:  
 
 ``` fsharp
 let xs =
@@ -298,8 +313,9 @@ super triangle with infinite coordinates. I am still
 wrapping my head around what that means practically, 
 and might look into it later. There is also still 
 the issue of points that could be aligned. But... these 
-questions can wait, this is where we'll stop for today!  
-
+questions can wait, this is where we'll stop for today! 
+And thank you again, Stranger on the Internet, for helping 
+me get un-stuck!  
 
 [1]: https://brandewinder.com/2025/04/16/delaunay-algorithm-impasse/
 [2]: https://en.wikipedia.org/wiki/Bowyer%E2%80%93Watson_algorithm#Pseudocode
@@ -307,3 +323,4 @@ questions can wait, this is where we'll stop for today!
 [4]: https://math.stackexchange.com/questions/4001660/bowyer-watson-algorithm-for-delaunay-triangulation-fails-when-three-vertices-ap
 [5]: https://github.com/mathias-brandewinder/delaunay/blob/47782f318e92168264a87ab8f5d36387f3ff43bb/src/Delaunay/Core.fs#L27-L147
 [6]: https://en.wikipedia.org/wiki/Circumcircle
+[7]: https://brandewinder.com/2025/03/05/delaunay-super-triangle/
