@@ -18,7 +18,7 @@ The two topics are related. Using gradient descent with DiffSharp worked fine,
 but wasn't ideal. For my purposes, it was too slow, and the gradient approach 
 was a little overly complex. This led me to investigate if perhaps a 
 simpler maximization technique like Nelder-Mead would do the job, which in turn 
-led me to writing Quipu.  
+led me to develop Quipu.  
 
 Fast forward to today: while Quipu is still in pre-release, its core is fairly 
 solid now, so I figured I would revisit the problem, and demonstrate how you 
@@ -26,7 +26,7 @@ could go about using Quipu on a Maximum Likelihood Estimation (or MLE in short)
 problem.  
 
 In this post, we will begin with a simple problem first, to set the stage. In 
-the next installment, we will dive into a more complex case, tp illustrates why 
+the next installment, we will dive into a more complex case, to illustrate why 
 MLE can be such a powerful technique.  
 
 ## The setup
@@ -157,20 +157,20 @@ If we try this with a different set of parameters, say `(1.0, 1.0)`, we get
 ```
 
 The log-likelihood using the "wrong" parameters `(1.0, 1.0)` is `-233`, much 
-lower than the value we get using the "correct" parameters `(1.3, 0.3`, `-151`.
-
-The idea here is to search across the possible parameters, and try to find the 
-pair that maximizes the log-likelihood.  
+lower than the value we get using the "correct" parameters `(1.3, 0.3`, `-151`. 
+In other words, a higher log-likelihood indicates a better fit. The idea here 
+is to search across the possible parameters, and try to find the pair that 
+maximizes the log-likelihood, which should give us a good fit.  
 
 ## Solution with Quipu
 
 Finding the parameters that minimize or maximize a function is exactly the type 
 of problems `Quipu` is intended to handle. `Quipu` takes an `objective` 
 function (the function we are trying to maximize), a starting value for the 
-parameters, and searches by probing different directions and following the 
-promising ones.  
+parameters (optional, defaulting to `0.0`), and searches by probing different 
+directions and following the most promising ones until it reaches a solution.  
 
-Conceptually, it should be as simple as this:  
+Setting up the problem should be as simple as this:  
 
 ``` fsharp
 open Quipu
@@ -192,9 +192,9 @@ val it: SolverResult =
 What is going on here?  
 
 The solver signals that it could not complete its search, and encountered an 
-`Abnormal` situation, probing around value `(0.25, -0.96)`, `(-0.96, 0.25)` and 
-`(0.70, 0.70)`. This makes sense, if you know that the parameter `sigma` of a 
-`LogNormal` is expected to be positive:  
+`Abnormal` situation, probing around values `(0.25, -0.96)`, `(-0.96, 0.25)` and 
+`(0.70, 0.70)`. This makes sense, if you happen to know that the parameter 
+`sigma` of a `LogNormal` is expected to be positive:  
 
 ``` fsharp
 LogNormal(1.0, -1.0)
@@ -273,8 +273,8 @@ Otherwise, readers familiar with statistics might be thinking "this example is
 a bit pointless, because the parameters of a LogNormal can be estimated easily 
 by transforming the sample back to a Normal distribution and computing some 
 averages" - and they would be right. Using MLE in that particular example is a 
-bit of overkill. However, in my next post, I will keep that same example, but 
-got into some more interesting examples, illustrating the flexibility of 
+bit of overkill. However, in my next post, I will keep that same setup, but 
+go into some more interesting examples, illustrating the flexibility of 
 Maximum Likelihood Estimation, and why I like it so much!  
 
 [1]: https://brandewinder.com/2022/08/28/mle-of-weibull-process/
