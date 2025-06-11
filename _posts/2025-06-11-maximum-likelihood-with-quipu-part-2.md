@@ -98,7 +98,7 @@ values we used to generate that sample, `(1.3, 0.3)`.
 
 I mentioned earlier that using MLE for this particular example was overkill. 
 A Log-Normal distribution, as the name suggests, has the following property: 
-if `X` follows a Log-Normal distribution, then `Ln X` follows a Normal 
+if `X` follows a Log-Normal distribution, then `Ln(X)` follows a Normal 
 distribution. The mean `Mu` and standard deviation `Sigma` of a Normal 
 distribution can be estimated in a direct fashion from a sample, so we can get 
 estimates for our Log-Normal by transforming the sample into logarithms, and 
@@ -241,7 +241,7 @@ partial
 ```
 
 `Quipu` estimates `Mu=1.33` and `Sigma=0.29`. It is not as good as what we got 
-using the full sample, which is not a surprise, given that we have only `58` 
+using the full sample, which is not a surprise, given that we have only `42` 
 clean observations instead of `100` initially. Still, this is pretty close to 
 the true values of `1.3` and `0.3`, and definitely much better than what the 
 "incorrect" estimation gave us!  
