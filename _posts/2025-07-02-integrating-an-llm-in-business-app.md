@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My experience integrating a LLM in a Business Application
+title: Field notes on integrating a LLM in a Business Workflow
 tags:
 - Machine-Learning
 - LLM
