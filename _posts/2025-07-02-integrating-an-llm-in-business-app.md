@@ -133,7 +133,7 @@ In the example above, I assumed that we knew what the intented query was. This
 is not the case in general: we need to determine what query is relevant, given 
 the user request.  
 
-![diagram of the workflow: identify relevant query from request]({{ site.url }}/assets/2025-07-02/determin-query.png)
+![diagram of the workflow: identify relevant query from request]({{ site.url }}/assets/2025-07-02/determine-query.png)
 
 Our strategy here was to use the LLM to make that determination, with prompts 
 along the lines of  
