@@ -35,12 +35,7 @@ a wide range of other languages.
 
 At a high level, we want something like this:  
 
-```mermaid
-flowchart TD
-    A[User Request] --> B[Prepare Query]
-    B --> C[Run Query]
-    C --> D[User Response]
-```
+![diagram of the workflow: convert a request to a query and respond]({{ site.url }}/assets/2025-07-02/overall-workflow.png)
 
 Given the time budget on the project, we did not have the option to fine-tune a 
 model for our domain, and used a "stock" LLM.  
@@ -138,12 +133,7 @@ In the example above, I assumed that we knew what the intented query was. This
 is not the case in general: we need to determine what query is relevant, given 
 the user request.  
 
-``` mermaid
-flowchart TD
-    A["User Request"] --> B{"Determine Query"}
-    B --> C["Query 1"]
-    B --> D["Query 2"]
-```
+![diagram of the workflow: identify relevant query from request]({{ site.url }}/assets/2025-07-02/determin-query.png)
 
 Our strategy here was to use the LLM to make that determination, with prompts 
 along the lines of  
@@ -210,15 +200,7 @@ was how well a LLM handled different languages.
 One goal was to accept requests in a variety of languages, and not just 
 English. Our initial thought was to reduce everything to English, like so:  
 
-``` mermaid
-flowchart TD
-    A["User Request"] --> B{"Determine Language"}
-    B --> C["English"]
-    C --> E["Determine Query"]
-    B --> D["Not English"]
-    D --> F["Translate to English"]
-    F --> E
-```
+![diagram of the workflow: translate non english requests]({{ site.url }}/assets/2025-07-02/translate.png)
 
 This is obviously fraught with issues, because we introduce a 
 [Telephone Game][2] in our workflow. Unsurprisingly, the results were not very 
