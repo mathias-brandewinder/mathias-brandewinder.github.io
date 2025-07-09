@@ -218,8 +218,8 @@ The only benefit I could see is for quick-and-dirty exploration. But even in
 that case, I think it's better to signal whatever exception might have 
 occurred, and let the user guard the objective function accordingly. In other 
 words, this `safe` function seems like a bad idea, potentially letting users do 
-bad things without any meaningful feedback to avoid the problem - and I will be 
-removing that code from the library!  
+things they should not, without any meaningful feedback to avoid the problem - 
+and I will be removing that code from the library!  
 
 [1]: https://github.com/mathias-brandewinder/Quipu
 [2]: https://en.wikipedia.org/wiki/Test_functions_for_optimization#Test_functions_for_single-objective_optimization
