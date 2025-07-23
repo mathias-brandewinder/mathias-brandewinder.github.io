@@ -26,8 +26,9 @@ Widgets:
 - Producing a Widget costs $5 per unit
 - Shipping widgets: the more Widgets we produce on a day, the further we have 
 to ship to reach customers and sell them. Shipping `n` Widgets costs us 
-$`0.5 * n * n`. Shipping 1 Widget would cost us half a dollar, shipping 2 
-Widgets would cost $2, and 10 would cost us a total of $50.
+$`0.5 * n * n`. As a result, the total transportation cost increases rapidly. 
+Shipping 1 Widget would cost us half a dollar only, whereas 10 Widgets would 
+cost us $50 total.
 
 We could represent this fictional model in C# like so:  
 
