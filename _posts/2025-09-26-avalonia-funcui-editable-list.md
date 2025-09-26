@@ -32,13 +32,13 @@ not sure this is the best way to do it, so if anybody can suggest a better
 approach, I would be very interested in hearing about it!  
 
 Anyways, let's dig into it, and build a simple example illustrating all of 
-these features. The final results will look something like this, and, in case 
+these features. The final result will look something like this, and, in case 
 you are impatient, you can find the [full code example here][4].
 
 ![A dynamic ListBox, with add, delete, edit and filter items]({{ site.url }}/assets/2025-09-26/dynamic-listbox.png)
 
 We'll start from [where we left off last time][1], 
-with a `State` that contains a collection of `Item`s, and the currently 
+with a `State` that contains a collection of Items, and the currently 
 selected item:  
 
 ``` fsharp
@@ -141,7 +141,7 @@ let view (state: State) dispatch =
 Note the usage of `View.withKey` after `ListBox.create`. Without that piece of 
 code, the UI freezes when an item is added to `State.Items`. Why is that piece 
 necessary? I am not sure. The issue disappears if we do not set the 
-`SelectedItemId` in the `update` function, so I suspect this triggers some 
+`SelectedItemId` in the `update` function, so I suspect this triggers an 
 infinite update loop somehow. Anyways, adding `View.withKey` fixes the issue. 
 As I understand it, `View.withKey` assigns an explicit key to the corresponding 
 UI element, so the view element gets redrawn when the key changes, instead of 
@@ -406,14 +406,14 @@ selected item highlighted, and handling editions, took me a bit of effort. The
 example I walked through details some of the steps I had to take to make it 
 work, and it mostly works.  
 
-One minor issue I could not resolve is that when the list is long enough that 
-it requires scrolling, selecting and editing an item in the list 
-causes an annoying flicker, and moves the scrollbar so the selected item 
+One minor issue I could not resolve is that when the list is long enough to 
+require scrolling, selecting and editing an item way down the list 
+causes an annoying flicker, and resets the scrollbar so the selected item 
 becomes the last one visible in the list. I think the issue is that the entire 
-list gets re-drawn when an edit occurs, and the state of the scrollbar is lost, 
+list gets re-drawn when an edit occurs, losing the state of the scrollbar, 
 causing it to scroll down just enough for the selected item to be visible. This 
 is not the end of the world, but it is visually jarring. One direction I 
-haven't tried that could help address it is using keys on the Item itself, 
+haven't tried that could maybe help address it is using keys on the Item itself, 
 perhaps tracking some unique version any time the selected item changed. If 
 someone knows of a better way to handle this, I am all ears :)
 
