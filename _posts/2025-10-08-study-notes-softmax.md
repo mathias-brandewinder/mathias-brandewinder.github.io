@@ -33,6 +33,8 @@ let softmax (values: float []) =
     exponentials |> Array.map (fun x -> x / total)
 ```
 
+<!--more-->
+
 We convert all the input values to their exponentials, which guarantees that 
 all of them are strictly positive, and we compute their relative weight. Note 
 that I used an array here, so we can operate on arbitrary many numbers.  
