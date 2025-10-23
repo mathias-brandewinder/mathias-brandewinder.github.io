@@ -7,12 +7,12 @@ tags:
 use_math: true
 ---
 
-I came across this [post on the fediverse][1] the other day, pointing to a very 
+I came across this [post on the fediverse][1] the other day, pointing to an 
 [interesting article][2] explaining the [CVM algorithm][3]. I found the 
 algorithm very intriguing, and thought I would go over it in this post, and try 
 to understand how it works by implementing it myself.  
 
-The CVM algorithm, named after its creators, is fairly recent (2023). It is a 
+The CVM algorithm, named after its creators, is a 
 procedure to count the number of distinct elements in a collection. In most 
 situations, this is not a hard problem. For example, in F#, one could write 
 something like this:  
@@ -133,23 +133,23 @@ it, with `proba = 0.5`.
 What is the probability then that an item shows up in `memory` when the 
 algorithm terminates? We have 3 cases to consider:  
 
-- The item is encountered during round 0, and not during round 1. In this case, 
-it will be added to `memory` during round 0, and with probability 0.5, it is 
-discarded when we start round 1, so there is a 0.5 probability that it ends in 
-`memory` when the algorithm finishes during round 1.  
-- The item is encountered during round 0 and during round 1. During round 1, 
+- The item is encountered during round `0`, and not during round `1`. In this case, 
+it will be added to `memory` during round `0`, and with probability 0.5, it is 
+discarded when we start round `1`, so there is a 0.5 probability that it ends in 
+`memory` when the algorithm finishes during round `1`.  
+- The item is encountered during round `0` and during round `1`. During round `1`, 
 when we encounter the item, we remove it from `memory`, and add it back with a 
 probability of 0.5, so again there is a 0.5 probability that the item ends up 
-in `memory` when the algorithm terminates during round 1.
-- The item is encountered during round 1, and not round 0. We simply add the 
-item with a probability of 0.5 to `memory` during round 1.  
+in `memory` when the algorithm terminates during round `1`.
+- The item is encountered during round `1`, and not round `0`. We simply add the 
+item with a probability of 0.5 to `memory` during round `1`.  
 
-In other words, if the algorithm terminates during round 1, any distinct item 
+In other words, if the algorithm terminates during round `1`, any distinct item 
 has a probability of 0.5 to be listed in `memory` when we terminate.  
 
 Now if we have `N` distinct items in our `stream`, how many distinct items should 
 we observe in `memory` when the algorithm terminates? Each item has a 
-probabiliy of 0.5 to be there, so on average we should have `N x 0.5` items 
+probabiliy of 0.5 to be there, so on average we should have `N * 0.5` items 
 listed. Or, conversely, if we end up with `M` items in `memory`, this means we 
 had around `M / 0.5` distinct items in the overall `stream`.
 
