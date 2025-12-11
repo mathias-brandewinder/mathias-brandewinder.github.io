@@ -9,8 +9,8 @@ use_math: true
 ---
 
 > This post is part of the [F# Advent 2025][6] series, which already has 
-bangers! Check out the whole series, and a big shout out to  
-[Sergey Tihon][5] for organizing this once again!  
+bangers! Check out the whole series, and a big shout out to [Sergey Tihon][5] 
+for organizing this once again!  
 
 It is that merry time of the year again! The holidays are approaching, and in 
 houses everywhere, people are happily sipping eggnogg and hanging decorations. 
@@ -244,10 +244,10 @@ my Excel days. And, as an added bonus, one thing it does that Excel doesn't
 (if memory serves) is handle functions with more than one argument. Whether 
 that would ever be useful is up for debate, but it is a feature!  
 
-Anyways, as always, I am all ears if you have feedback or thoughts! In the 
+Anyways, as always, I am all ears if you have feedback or thoughts. In the 
 meantime, I wish you wonderful holidays! And again, check out the other posts 
 in the [F# Advent series][6], and a big thanks to [Sergey Tihon][5] for 
-organizing F# Advent again this year!  
+organizing F# Advent again this year.  
 
 [1]: https://en.wikipedia.org/wiki/Returns_to_scale
 [2]: https://github.com/mathias-brandewinder/Quipu
