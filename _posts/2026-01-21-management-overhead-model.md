@@ -151,18 +151,13 @@ every 125 we add 1 extra, and so on and so forth.
 
 In other words, as an approximation, the overhead for `x` workers is:  
 
-$$
-overhead(x) = 
-x \times \frac{1}{5} 
-+ x \times \frac{1}{5 \times 5} 
-+ x \times \frac{1}{5 \times 5 \times 5} ...
-$$
+$overhead(x) = x \times \frac{1}{5}  + x \times \frac{1}{5 \times 5} + x \times \frac{1}{5 \times 5 \times 5} ...$  
 
 This is a sum of linear functions, that is, a linear function. We can even 
 compute its slope, recognizing that `1/5 + 1/5*5 + 1/5*5*5...` is a 
 [geometric series][3], which gives us a limit of  
 
-$$overhead(x) \approx \frac {x} {5 - 1}$$
+$overhead(x) \approx \frac {x} {5 - 1}$  
 
 This happens to match the last chart, where we see that for 200 workers, we 
 need approximately 50 managers.  
@@ -176,12 +171,7 @@ hierarchical pyramid gets a geometric paid increase, that is, each level is
 paid for instance 20% more than the previous, the results remain the same. The 
 overhead function becomes something like this:  
 
-$$
-overhead(x) = 
-x \times \frac{1}{5} \times 1.2
-+ x \times \frac{1}{5 \times 5} \times 1.2^2
-+ x \times \frac{1}{5 \times 5 \times 5} \times 1.2^3...
-$$
+$overhead(x) = x \times \frac{1}{5} \times 1.2 + x \times \frac{1}{5 \times 5} \times 1.2^2 + x \times \frac{1}{5 \times 5 \times 5} \times 1.2^3...$  
 
 We still have a geometric series pattern at play, and the overall behavior 
 remains the same.  
