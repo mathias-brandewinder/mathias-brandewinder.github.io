@@ -28,16 +28,19 @@ see if it fares any better!
 
 Let's illustrate the problem on a simple example. Imagine that we have a model, 
 where we observe a value `X` and a value `Y`, and that these 2 follow a simple 
-relationship where `Y = 1 + 0.5 * X`, that is, they form a straight line. Now 
-imagine that we have a dataset with a sample of observations for `X` and `Y`, 
-with 2 caveats:  
+relationship where  
+
+`Y = 1 + 0.5 * X`
+
+That is, they form a straight line. Now imagine that we have a dataset with a 
+sample of observations for `X` and `Y`, with 2 caveats:  
 
 - In half the cases, the observation is completely wrong, and there is no 
 relationship between `X` and `Y`,  
 - When the observation is correct, the observation is a bit off, and the 
 recorded values are `Y = 1 + 0.5 * X + some noise`.  
 
-Let's first create a model and a synthetic dataset to illustrate the problem:  
+Let's first create a model to represent that:  
 
 ``` fsharp
 type Obs = { X: float }
@@ -58,8 +61,8 @@ let trueParameters = {
     }
 ```
 
-This represents our model. We have observations `Obs` and model `Parameters`. 
-The "true" model has parameters `{ Constant = 1.0; Slope = 0.0 }`, which we can 
+We have observations `Obs` and model `Parameters`. 
+The "true" model has parameters `{ Constant = 1.0; Slope = 0.5 }`, which we can 
 use to predict the value `Y` like so:  
 
 ``` fsharp
@@ -69,7 +72,7 @@ val it: float = 1.5
 
 <!--more-->
 
-We can now generate a sample of 100 examples, recording the value `X` and the 
+We can now generate a synthetic sample of 100 examples, recording the value `X` and the 
 value we observe for `Y`, the Label. We deliberately add noise to the dataset, 
 so the Label we observe could be far off the correct value:  
 
@@ -93,7 +96,7 @@ let sample =
 
 With a 50% probability, the `Y` value is generated randomly, without any 
 relationship whatsoever to `X` (outlier). Otherwise, the `Y` value will be the 
-"correct" value, plus some random noise between plus and minus 0.1.
+"correct" value, plus some random noise, between plus and minus 0.1.
 
 Let's visualize the dataset, using [Plotly.NET][3], together with the "true" 
 model that we want to estimate from the data:  
