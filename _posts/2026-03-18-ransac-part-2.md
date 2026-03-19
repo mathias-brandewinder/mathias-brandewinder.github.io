@@ -44,7 +44,7 @@ outliers), this model is a bad fit, discard it,
 <!--more-->
 
 In other words, this routine attempts to find a suitable candidate. The overall 
-algorithm simply wraps that procedure in a search loop, producing candidates 
+algorithm simply wraps that procedure in a search loop, producing many candidates 
 and returning the best candidate found.  
 
 ## Why would it work?
@@ -72,16 +72,16 @@ the samples is completely free of outliers.
 With a small sample, we can estimate a model quickly. However, how do we decide 
 if that model is any good? We simply use that model to predict the rest of our 
 observations, and check how many of the predictions are bad. If many 
-predictions are bad, our small sample probably contained an outlier, and we 
-have a bad model. Try again, and draw another sample!  
+predictions are bad, our small sample probably contained an outlier (a likely 
+situation), and we have a bad model. Try again, and draw another sample!  
 
 Note that because because we draw small samples, a single outlier will likely 
-result in a terrible prediction model, so this approach should be effective at 
-discarding bad samples, too.  
+result in a terrible prediction model, so this approach will also be effective 
+at discarding bad samples, too.  
 
 If the model is not too bad, we simply eliminate all the observations which 
-had poor predictions as outliers, and retain only the inliners to re-estimate a 
-model, using only observations that are plausible inliners.  
+had poor predictions as outliers, and re-estimate a model, using all the data 
+available, minus the observations that were flagged as probable outliers.  
 
 ## F# Implementation
 
@@ -105,7 +105,7 @@ In other words, a Predictor is a function that, given an `'Obs`, returns a
 predicted `'Lbl`: `'Obs -> 'Lbl`.
 
 - To instantiate such a Predictor, we need parameters, of some generic type 
-`'Param`. So estimating a model means using a sample of Example to get good 
+`'Param`. So estimating a model means using a sample of Examples to get good 
 Parameters, which we can then use to instantiate a Predictor.  
 
 With that out of the way, let's look at a possible F# 
@@ -155,12 +155,16 @@ We discussed most of the arguments already, the only 2 that need a comment are
 
 The purpose of `isInliner` is to detect if an Example 
 is an inliner, which requires comparing its true Label (the correct answer) 
-with its predicted Label. Technically, we could have just passed the 2 Labels, 
+with its predicted Label.  
+
+> Technically, we could have just passed the 2 Labels, 
 but by passing the entire Example, we enable more complex predicates.  
 
-The `Inliners` module in `Ransac.fs` contains one standard way of deciding 
+The `Inliners` module in `Ransac.fs` contains one simple way of deciding 
 if an Example is an inliner. The `within` function checks if the actual and 
-predicted labels are within a certain distance of each other.   
+predicted labels are within a certain distance of each other, so for instance 
+`Inliners.within 0.5` will flag an example as an inliner if the correct label 
+is within 0.5 of the value the model predicts.  
 
 The purpose of `loss` is to compare the quality of 2 models on the same data. 
 `loss` is usually some form of distance, measuring goodness of fit. A `loss` of 
@@ -172,11 +176,12 @@ evaluate, `Example<'Obs, 'Lbl> []`, the dataset we use for comparison, and
 `float`, the goodness of fit measurement.  
 
 The `Loss` module in the same `Ransac.fs` file has 2 examples of classic loss 
-functions, the MAE (mean average error) and the RMSE (root mean square error).  
+functions, `Loss.mae`, the MAE (mean average error) and `Loss.rmse`, the RMSE 
+(root mean square error).  
 
 And that's pretty much it for the implementation! The `Ransac.fit` function 
-wraps the `findCandidate` function and generates a sequence of improving 
-candidates.
+simply wraps the `findCandidate` function, and generates a sequence of the best 
+candidates it found so far.  
 
 ## Does it work? An example
 
@@ -191,7 +196,7 @@ does any better.
 
 You can find the full example in the script [linear-simple.fsx][5].  
 
-The RANSAC setup is fairly simple:  
+We setup the RANSAC algorithm:  
 
 ``` fsharp
 let config: Configuration = {
@@ -215,9 +220,14 @@ models (`MinimumTrainingSampleSize = 5`), and require that at least 70
 predictions are inliners to select a model, which we define as "the predicted 
 value must be within 0.1 from the correct value". And we are done!  
 
-`search` produces an infinite sequence of models, with decreasing loss, which 
+> Note: we could, and perhaps should, use less than 5 observations. Also, using 
+a threshold of 70 decent values when we know 50% of the values are outliers is 
+probably too aggressive.  
+
+`search` produces an infinite sequence of models, with improving loss, which 
 we can then look at. For instance we could start searching until we get actual 
-candidates, take at least 20, and return the last one:  
+candidates (`Seq.choose`), then take at least 20, and return the last one, 
+which will by definition be the best one found so far:  
 
 ``` fsharp
 let best =
@@ -227,7 +237,7 @@ let best =
     |> Seq.last
 ```
 
-... which produces the following parameters, very close to the correct values: 
+This produces the following parameters, very close to the correct values:  
 
 ``` fsharp
 { Constant = 1.007498869; Slope = 0.5012996577 }
@@ -241,7 +251,7 @@ regression here:
 ## Parting thoughts
 
 That's where I will leave things today! I am not entirely satisfied with the 
-organization of the `Ransac.fit` arguments, and will probably revisit the code 
+organization of the `Ransac.fit` signature, and will probably revisit the code 
 in the future. That being said, my intent wasn't to produce a production 
 quality library (yet!), I mainly wanted to understand how the algorithm works, 
 and have something usable for my own purposes.  
@@ -250,27 +260,28 @@ I find the algorithm quite interesting. My initial instinct was to increase the
 `MinimumTrainingSampleSize` to improve model estimation, because that is what 
 you do in general in machine learning - if you want better results, use more 
 data. This is clearly not the case here: the idea is to get a sample as small 
-as possible, to increase the chances of having no outliers, and therefore a 
+as possible, to increase the chances of having no outliers, and therefore get a 
 model good enough to determine which points are outliers. Using a sample that 
 was as small as possible was initially counter-intuitive to me, but makes 
 perfect sense in hindsight.   
 
 The algorithm also made me mull over the notion of outliers. In essence, RANSAC 
-is about eliminating observations we deem not plausible. This is something I am 
+is about eliminating observations we deem implausible. This is something I am 
 uncomfortable with in general. Discarding observations that are further than an 
-arbitrary threshold is a blunt instrument, essentially truncating the tails of 
+arbitrary threshold is a blunt instrument, truncating the tails of 
 the error around data. I noticed that one area of application of RANSAC is 
-image recognition, where the notion of "too far to be right" makes sense. I am 
-less clear on when RANSAC is, and isn't, an appropriate approach. I am also 
-wondering if a maximum likelihood approach might work, with a setup along the 
-lines of a probability that each observation is an outlier.   
+image recognition, where the notion of "too far to be right" makes sense. This 
+is a reasonable use case, but I am not entirely clear on when RANSAC is, and 
+isn't, an appropriate approach. I have also been wondering if a maximum 
+likelihood approach could work, with a setup along the lines of including a 
+probability that each observation is an outlier.  
 
 Finally, I have been wondering if one could devise an approach to auto-tune the 
-RANSAC parameters. The part that is definitely needed as an input is "what is 
-the smallest sample usable to estimate a model". Beyond that, the algorithm 
-hinges on the proportion of outliers in the data, and what distance is too 
-large for a prediction to be an inliner. I suspect these can be estimated - 
-I might try that out next!  
+RANSAC parameters. One input that is definitely needed "what is the smallest 
+sample usable to estimate a model". Beyond that, the algorithm hinges on the 
+proportion of outliers in the data, and what distance is too large for a 
+prediction to be an inliner. I suspect these could be estimated, and I might 
+try that out next!  
 
 [1]: https://brandewinder.com/2026/03/05/ransac-part-1/
 [2]: https://en.wikipedia.org/wiki/Random_sample_consensus
