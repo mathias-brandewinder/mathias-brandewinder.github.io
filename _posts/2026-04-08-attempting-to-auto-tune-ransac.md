@@ -71,7 +71,7 @@ Now if I knew `p`, I could compute the probability that a random sample of `n`
 observations is in Case 1, 2 or 3. Case 1 occurs if I pick inliners `n` times. 
 Picking an inliner has a probability `(1 - p)` of occurring, so Case 1 has a 
 probability of `(1 - p) ^ n`. Similarly Case 2 has a probability of `p ^ n`, 
-and Case 2 is whatever is left.  
+and Case 3 is whatever is left.  
 
 Let's illustrate on a concrete example, with `p = 0.2` (20% outliers) and 
 `n = 3`. In that case, the probability of Case 1 is `0.8 * 0.8 * 0.8 = 0.512`: 
