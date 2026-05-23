@@ -13,8 +13,28 @@ So what have I been up to lately? Obsessing over [CNTK, the Microsoft deep-learn
 
 First, what problem does CNTK solve?
 
-Imagine that you are interested in predicting something, and that you have data available, both inputs you can observe (the `features`), and the values you are trying to predict (the `labels`). Imagine now that you have an idea of the type of relationship between the input and the output, something along the lines of:
+Imagine that you are interested in predicting something.  You have some data available, both inputs you can observe (the `features`), and the values you are trying to predict (the `labels`). 
 
+For example, consider this data frame:
+
+| Years  | Engine Size | Price |
+| ------ | ----------- | ----- |
+| 2007   | 350         | $10,000 |
+| 2015   | 150         | $30,000 |
+| 2010   | 325         | $15,000 |
+
+The "Years" and "Engine Size" are the `features`.  "Price" is the `label`.
+
+Next you are given some new data where you only have the `features` and you want to predict the `label`
+
+| Years  | Engine Size | Price |
+| ------ | ----------- | ----- |
+| 2014   | 275         |  ???  |
+
+
+Imagine now that you have an idea of the type of relationship between the input and the output.  For each "Engine Size" and "Price", there is a `parameter` that you can use to adjust the value to give you the best predicted value of the `label`.
+
+In an function, it might look like this:
 `labels ≈ function(features, parameters)`.
 
 <!--more-->
