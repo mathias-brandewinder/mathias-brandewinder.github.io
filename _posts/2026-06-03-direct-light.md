@@ -16,6 +16,8 @@ result first:
 
 ![Animation showing direct light on model of mountains]({{ site.url }}/assets/2026-06-03/direct-light.gif)
 
+<!--more-->
+
 ## Representing the terrain
 
 First things first, in order to render a map, we need a map. Our map will be 
