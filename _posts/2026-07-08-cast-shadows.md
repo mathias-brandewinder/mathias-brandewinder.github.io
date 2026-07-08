@@ -41,8 +41,10 @@ receive.
 
 Practically, things are a little messy. The question we need to answer is not 
 "is this point in the shadow of another point", but "is this tile in the shadow 
-of other terrain elements". This is messy because a tile could, for instance, 
-be only partially obscured.  
+of other terrain elements". This is messy because there is no reason a tile 
+should be entirely obscured or devoid of shadow. A tile is a surface, and each 
+of its point could be obscured or not, causing the tile to be only partially 
+obscured.  
 
 Rather than being correct, we chose to try the simplest thing that we could get 
 to work, committing sins and making approximations along the way, so we could 
@@ -50,8 +52,9 @@ see how that worked out.
 
 The general approach we followed was to assume that a tile was either in the 
 shadow or not (as opposed to partially obscured). We determine that by 
-starting from the mid-point of the tile, and "walking backwards", following the 
-direction of the light backwards, until we reach one of two cases:  
+starting from the mid-point of the tile, treating that point as if it were the 
+tile. We "walk backwards" from that point, following the 
+direction of the light, until we reach one of two cases:  
 
 - we find a location that would block the light (in what case the tile is "in 
 the shadow"), or 
@@ -67,15 +70,15 @@ the light is blocked.
 
 Unfortunately, we do not have that altitude readily available. What we have is 
 the altitude at the 4 edges of each tile. Fortunately, we are not trying to be 
-precise here, so we will approximate the altitude of our location by taking the 
-average of the altitudes of the 4 corners of the tile.  
+precise here, so we approximate the altitude of that location by taking the 
+average of the altitudes of the 4 corners of the tile that contains it.  
 
 The relevant code is in the [CastShadow][4] module, and in the [`altitude`][5] 
 function.  
 
 And that's pretty much it. After we determined the amount of light a tile 
-receives, we simply compute if its light is obstructed, and give it a darker 
-shade if so.  
+receives, we simply compute if its light is obstructed, and if so, we give it a 
+darker shade.  
 
 ## Parting thoughts
 
@@ -91,7 +94,7 @@ After
 ![Animation showing light and shadows on model of mountains]({{ site.url }}/assets/2026-07-08/cast-shadow.gif)
 
 Our initial idea was to go the other way around, and iterate over the known 
-altitudes of the terrain, following the light downwards until we hit a tile. 
+altitudes of the terrain (the edges of our tiles), following the light downwards until we hit a tile. 
 Inverting the direction and going backwards, asking "is the light for this tile 
 obstructed" ended up being more straightforward, but feels inefficient. One 
 easy improvement would be to not follow the light until we exit the map, but 
