@@ -117,7 +117,7 @@ to have? I can think of a few:
 - (3) When `t` increases, `f(t, c)` should increase too (strictly).  
 
 Our initial attempt, `f0`, was simply `f0(t, c) = t + c`, and did not pass (1) 
-or (2). Our first modification, `f1(t, c) = max(t + c, 0)`, failed (2) and (3).  
+or (2). Our first modification, `f1(t, c) = max (t + c, 0)`, failed (2) and (3).  
 
 Condition (2) is interesting, because it creates a tension, if not a 
 contradiction. Our initial goal was to create a function that corrects the 
@@ -160,7 +160,7 @@ This is not the ony option. As an example, another candidate would be
 
 These functions are helpful building blocks, in that they map any positive 
 value into values in the `[0, 1]` interval. And, once we have values that are 
-guaranteed to be in `[0, 1], it is easy to produce values that are guaranteed 
+guaranteed to be in `[0, 1]`, it is easy to produce values that are guaranteed 
 to be in any interval we want.  
 
 In our case, what we want is values that are between `0` and `c`. All we need 
@@ -202,7 +202,7 @@ the predictions approach `t - 2`, which is what we want, but again, close to
 in the first place.  
 
 Hand-waving the details, the root of the issue is that the correction term `g` 
-is decreasing too quickly near `0`. In order to make sure that `g` remains 
+is decreasing too quickly near `0`. In order to make sure that `f` remains 
 positive at all times, as the derivative of `t` is `1`, the derivative of `g` 
 at `0` must be greater than `-1`.  
 
@@ -211,7 +211,7 @@ in negative predictions. However, values of `c > 1` are also problematic, but
 in a more subtle way. In this case, near `0`, we get corrections that are 
 greater than `t + c`, which is also undesirable.  
 
-We can guaranteed that by making a small modification:  
+We can guarantee that by making a small modification:  
 
 `let g(t, c) = c * (1.0 - exp(-t / abs (c)))`  
 
@@ -233,20 +233,20 @@ gradually gets closer to `c` as `t` increases. But as a result, the average
 correction will not be `c`. How far off we are, and how acceptable the 
 correction is, depends on how large `c` is, compared to the range of values we 
 expect for `t`. If `c` is comparatively small, the gap will be small. If not, 
-less so.  
+the approximation won't be very good.  
 
 One valid question about the approach I followed is why I used an additive 
 correction, instead of a multiplier. Rather than a model where 
 `f(t, c) = t + c`, I could have estimated a model along the lines of 
 `f(t, a) = a * t`. One advantage with the latter approach is that we wouldn't 
-have any of the problems we had adding a bias term: `f(0, a) = 0`, and for as 
+have any of the problems we had adding a bias term: `f(0, a) = 0`. As 
 long as `a >= 0`, `f` is positive for all positive values of `t`.  
 
 The reason I did not go that route is that it wasn't a good fit with the 
 observations. With a multiplicative model, corrections become larger and larger 
-as `t` increases, which was not what I was observing. That being said, the more 
-general approach would be a mixture of both, a traditional linear model along 
-the lines of `f(t, c, a) = a * t + c`. With a few adjustments, an approach 
-similar to the one I followed in this post should work there as well.  
+as `t` increases, which was not consistent with the data. That being said, a 
+more general approach would be a mixture of both, a traditional linear model 
+along the lines of `f(t, c, a) = a * t + c`. With a few adjustments, an 
+approach similar to the one I followed in this post should work there as well.  
 
 And that's where I will leave things for today!  
