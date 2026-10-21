@@ -39,8 +39,9 @@ One insight I gained from take 1 was that by "augmenting" variables to also
 carry the value of their derivatives, you can efficiently compute the 
 derivative of chains of functions, by applying the chain rule.  
 
-The chain rule tells us that the derivative of a function `h(x) = g(f(x))` is 
-`h'(x) = g'(f(x)) * f'(x)`  
+The chain rule tells us that the derivative of a function  
+`h(x) = g(f(x))` is  
+`h'(x) = g'(f(x)) * f'(x)`.  
 
 As a result, all you need to compute `h'(x)` for some value `x` is:
 - `f(x)` and `f'(x)`,  
@@ -65,6 +66,8 @@ type V (x: float, dx: float) =
     member this.X = x
     member this.DX = dx
 ```
+
+> You can find the corresponding [finished code here on Codeberg][4].  
 
 First, we need to express functions, so we can write something like 
 `f(x) = sin (x + 42.0)`, operating on `V` instead of `float`. To do that, we 
@@ -154,7 +157,8 @@ only requirement is to annotate `x` as `V` in the function, and everything
 works as it would for a regular function over floating point values. Evaluation 
 is about twice as fast as it was before. And adding your own functions is 
 fairly easy: you can just write your own, like 
-`let myFunction (v: V) = V(v.X, 42.0)`, and it just works.  
+`let myFunction (v: V) = V(v.X, 42.0)`, plug that into functions and it just 
+works.  
 
 On the downside, we cannot compute the derivative of a derivative. This is 
 pretty obvious from the signature of `diff`: `(V -> V) -> (float -> float)`. 
@@ -164,7 +168,7 @@ This is a major problem - what we would need is something that looks like this:
 
 Another downside is that, while `f (x: V) = x + 1.0` looks like a normal 
 function, using it as a "plain" function is very awkward. I would like to be 
-able to just ask for the value of `f(1.0)` but I can't. To do that, I need to 
+able to just ask for the value of `f(1.0)`, but I can't. To do that, I need to 
 pass in a `V`, with some value for `dx` - and I will get back `f(1.0)`, as well 
 as a derivative value computed using the `dx` value we passed in, which could 
 be entirely wrong. This is also not ideal.  
@@ -182,6 +186,9 @@ something, related to the repeated differentiation problem.
 
 But this can wait until next episode! In the meantime, happy coding, everyone.  
 
+> You can find the corresponding [finished code here on Codeberg][4].  
+
 [1]: https://en.wikipedia.org/wiki/Automatic_differentiation
 [2]: https://brandewinder.com/2026/10/07/automatic-differentiation-part-1/
 [3]: https://en.wikipedia.org/w/index.php?title=Automatic_differentiation&oldid=1373407057#Forward_accumulation
+[4]: https://codeberg.org/mathias-brandewinder/Galet/src/branch/main/src/Galet/Galet.fs#L3-L50
